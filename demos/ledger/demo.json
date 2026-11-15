@@ -1,0 +1,12 @@
+{
+  "id": "ledger",
+  "title": "Ledger: a stale cache and a coin-flip test",
+  "summary": "A currency converter. A promo test overrides a cached exchange rate and never resets it, and a fee test uses random amounts, so it fails about half the time even on its own.",
+  "shows": ["module-level cache polluter", "truly random test classified as nondeterministic (not blamed on ordering)"],
+  "expect": {
+    "order_dependent": {
+      "tests/test_convert.py::test_convert_euros": ["tests/test_promo.py::test_promo_rate_halves_price"]
+    },
+    "nondeterministic": ["tests/test_fees.py::test_fee_stays_small"]
+  }
+}

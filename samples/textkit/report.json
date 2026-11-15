@@ -1,0 +1,687 @@
+{
+  "repo": "textkit",
+  "generated_at": "2026-10-28T12:34:16+00:00",
+  "seconds": 86.2,
+  "backends": {
+    "llm": "mock",
+    "sandbox": "docker"
+  },
+  "models": {
+    "reasoner": "mock",
+    "worker": "mock"
+  },
+  "stability": {
+    "runs": 20,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "tests_total": 5,
+    "unstable": [],
+    "always_failing": [],
+    "stable_observed": 5,
+    "per_test": [
+      {
+        "test": "tests/test_words.py::test_word_count",
+        "passed": 20,
+        "failed": 0
+      },
+      {
+        "test": "tests/test_words.py::test_word_count_empty",
+        "passed": 20,
+        "failed": 0
+      },
+      {
+        "test": "tests/test_words.py::test_title_case_keeps_small_words_lower",
+        "passed": 20,
+        "failed": 0
+      },
+      {
+        "test": "tests/test_words.py::test_palindrome_ignores_punctuation",
+        "passed": 20,
+        "failed": 0
+      },
+      {
+        "test": "tests/test_words.py::test_initials",
+        "passed": 20,
+        "failed": 0
+      }
+    ],
+    "run_matrix": [
+      {
+        "seed": 1,
+        "evidence_id": "E-0002",
+        "failed": []
+      },
+      {
+        "seed": 2,
+        "evidence_id": "E-0003",
+        "failed": []
+      },
+      {
+        "seed": 3,
+        "evidence_id": "E-0004",
+        "failed": []
+      },
+      {
+        "seed": 4,
+        "evidence_id": "E-0005",
+        "failed": []
+      },
+      {
+        "seed": 5,
+        "evidence_id": "E-0006",
+        "failed": []
+      },
+      {
+        "seed": 6,
+        "evidence_id": "E-0007",
+        "failed": []
+      },
+      {
+        "seed": 7,
+        "evidence_id": "E-0008",
+        "failed": []
+      },
+      {
+        "seed": 8,
+        "evidence_id": "E-0009",
+        "failed": []
+      },
+      {
+        "seed": 9,
+        "evidence_id": "E-0010",
+        "failed": []
+      },
+      {
+        "seed": 10,
+        "evidence_id": "E-0011",
+        "failed": []
+      },
+      {
+        "seed": 11,
+        "evidence_id": "E-0012",
+        "failed": []
+      },
+      {
+        "seed": 12,
+        "evidence_id": "E-0013",
+        "failed": []
+      },
+      {
+        "seed": 13,
+        "evidence_id": "E-0014",
+        "failed": []
+      },
+      {
+        "seed": 14,
+        "evidence_id": "E-0015",
+        "failed": []
+      },
+      {
+        "seed": 15,
+        "evidence_id": "E-0016",
+        "failed": []
+      },
+      {
+        "seed": 16,
+        "evidence_id": "E-0017",
+        "failed": []
+      },
+      {
+        "seed": 17,
+        "evidence_id": "E-0018",
+        "failed": []
+      },
+      {
+        "seed": 18,
+        "evidence_id": "E-0019",
+        "failed": []
+      },
+      {
+        "seed": 19,
+        "evidence_id": "E-0020",
+        "failed": []
+      },
+      {
+        "seed": 20,
+        "evidence_id": "E-0021",
+        "failed": []
+      }
+    ]
+  },
+  "environment": {
+    "sources": [],
+    "requirements": [],
+    "skipped": [],
+    "install_status": "not_needed",
+    "install_evidence": "",
+    "install_error": "",
+    "missing_modules": [],
+    "collection_errors": []
+  },
+  "investigations": {
+    "limit": 10,
+    "investigated": 0,
+    "unstable": 0
+  },
+  "repairs": [],
+  "behavior": {
+    "functions_total": 4,
+    "functions_with_pins": 4,
+    "pinned": 16,
+    "flagged_for_review": [],
+    "nondeterministic_excluded": 0,
+    "stateful_isolated": 0,
+    "stateful_excluded": 0,
+    "generated_tests_dropped": [],
+    "gate_runs": 6,
+    "failed_functions": {},
+    "validation_passed": true,
+    "validation_evidence": "E-0041"
+  },
+  "docs": {
+    "observed": 16,
+    "inferred": 0,
+    "downgraded": []
+  },
+  "uncertainties": [
+    "This run used the offline mock model, not NVIDIA Nemotron: inputs were heuristic and no real diagnosis was attempted.",
+    "Stability results cover 20 shuffled runs (seeds 1-20) in one sandbox environment. Tests with no observed failures may still fail under other orders, timing, operating systems or load.",
+    "Characterization tests pin what the code does today, which may include bugs. Review them before treating them as a specification."
+  ],
+  "model_usage": [
+    {
+      "role": "reasoner",
+      "model": "mock-reasoner",
+      "calls": 4,
+      "ok_calls": 4,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "avg_latency": 0.0
+    },
+    {
+      "role": "worker",
+      "model": "mock-worker",
+      "calls": 4,
+      "ok_calls": 4,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "avg_latency": 0.0
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-0001",
+      "kind": "collect",
+      "command": "python -m pytest -p no:cacheprovider -p no:randomly --collect-only -q",
+      "exit_code": 0,
+      "duration": 2.33,
+      "seed": null,
+      "order": null,
+      "stdout": "tests/test_words.py::test_word_count\ntests/test_words.py::test_word_count_empty\ntests/test_words.py::test_title_case_keeps_small_words_lower\ntests/test_words.py::test_palindrome_ignores_punctuation\ntests/test_words.py::test_initials\n\n5 tests collected in 0.22s\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0002",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=1",
+      "exit_code": 0,
+      "duration": 2.42,
+      "seed": 1,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=1\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_initials PASSED\n\n============================== 5 passed in 0.30s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0003",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=2",
+      "exit_code": 0,
+      "duration": 2.14,
+      "seed": 2,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=2\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\n\n============================== 5 passed in 0.24s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0004",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=3",
+      "exit_code": 0,
+      "duration": 1.94,
+      "seed": 3,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=3\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\n\n============================== 5 passed in 0.24s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0005",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=4",
+      "exit_code": 0,
+      "duration": 2.91,
+      "seed": 4,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=4\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_word_count_empty PASSED\n\n============================== 5 passed in 0.34s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0006",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=5",
+      "exit_code": 0,
+      "duration": 2.49,
+      "seed": 5,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=5\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_word_count_empty PASSED\n\n============================== 5 passed in 0.31s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0007",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=6",
+      "exit_code": 0,
+      "duration": 2.65,
+      "seed": 6,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=6\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_word_count_empty PASSED\n\n============================== 5 passed in 0.25s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0008",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=7",
+      "exit_code": 0,
+      "duration": 2.35,
+      "seed": 7,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=7\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_word_count PASSED\n\n============================== 5 passed in 0.27s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0009",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=8",
+      "exit_code": 0,
+      "duration": 2.4,
+      "seed": 8,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=8\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_word_count PASSED\n\n============================== 5 passed in 0.26s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0010",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=9",
+      "exit_code": 0,
+      "duration": 2.6,
+      "seed": 9,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=9\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\n\n============================== 5 passed in 0.26s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0011",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=10",
+      "exit_code": 0,
+      "duration": 2.38,
+      "seed": 10,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=10\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_word_count PASSED\n\n============================== 5 passed in 0.28s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0012",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=11",
+      "exit_code": 0,
+      "duration": 2.32,
+      "seed": 11,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=11\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\n\n============================== 5 passed in 0.29s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0013",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=12",
+      "exit_code": 0,
+      "duration": 1.98,
+      "seed": 12,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=12\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_word_count_empty PASSED\n\n============================== 5 passed in 0.22s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0014",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=13",
+      "exit_code": 0,
+      "duration": 2.09,
+      "seed": 13,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=13\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\n\n============================== 5 passed in 0.28s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0015",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=14",
+      "exit_code": 0,
+      "duration": 2.13,
+      "seed": 14,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=14\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_word_count_empty PASSED\n\n============================== 5 passed in 0.22s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0016",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=15",
+      "exit_code": 0,
+      "duration": 2.07,
+      "seed": 15,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=15\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_initials PASSED\n\n============================== 5 passed in 0.22s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0017",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=16",
+      "exit_code": 0,
+      "duration": 2.06,
+      "seed": 16,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=16\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_initials PASSED\n\n============================== 5 passed in 0.24s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0018",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=17",
+      "exit_code": 0,
+      "duration": 1.93,
+      "seed": 17,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=17\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\n\n============================== 5 passed in 0.23s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0019",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=18",
+      "exit_code": 0,
+      "duration": 1.85,
+      "seed": 18,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=18\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_word_count PASSED\n\n============================== 5 passed in 0.22s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0020",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=19",
+      "exit_code": 0,
+      "duration": 2.24,
+      "seed": 19,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=19\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_word_count_empty PASSED\n\n============================== 5 passed in 0.24s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0021",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=20",
+      "exit_code": 0,
+      "duration": 2.03,
+      "seed": 20,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=20\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\n\n============================== 5 passed in 0.22s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0022",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py textkit.words word_count --batch [{\"args\": [\"\"], \"kwargs\": {}}, {\"args\": [\"abc\"], \"kwargs\": {}}, {\"args\": [\"Hello, World!\"], \"kwargs\": {}}, {\"args\": [\"apple\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.02,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"textkit.words\", \"function\": \"word_count\", \"status\": \"returned\", \"repr\": \"0\", \"type\": \"int\", \"duration\": 8.90199999048491e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"textkit.words\", \"function\": \"word_count\", \"status\": \"returned\", \"repr\": \"1\", \"type\": \"int\", \"duration\": 5.300999873725232e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 2, \"module\": \"textkit.words\", \"function\": \"word_count\", \"status\": \"returned\", \"repr\": \"2\", \"type\": \"int\", \"duration\": 5.000999863113975e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 3, \"module\": \"textkit.words\", \"function\": \"word_count\", \"status\": \"returned\", \"repr\": \"1\", \"type\": \"int\", \"duration\": 4.500999921219773e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0023",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py textkit.words word_count --batch [{\"args\": [\"\"], \"kwargs\": {}}, {\"args\": [\"abc\"], \"kwargs\": {}}, {\"args\": [\"Hello, World!\"], \"kwargs\": {}}, {\"args\": [\"apple\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.27,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"textkit.words\", \"function\": \"word_count\", \"status\": \"returned\", \"repr\": \"0\", \"type\": \"int\", \"duration\": 9.202000001096167e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"textkit.words\", \"function\": \"word_count\", \"status\": \"returned\", \"repr\": \"1\", \"type\": \"int\", \"duration\": 5.601000111710164e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 2, \"module\": \"textkit.words\", \"function\": \"word_count\", \"status\": \"returned\", \"repr\": \"2\", \"type\": \"int\", \"duration\": 4.400999841891462e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 3, \"module\": \"textkit.words\", \"function\": \"word_count\", \"status\": \"returned\", \"repr\": \"1\", \"type\": \"int\", \"duration\": 3.201000026820111e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0024",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py textkit.words title_case --batch [{\"args\": [\"\"], \"kwargs\": {}}, {\"args\": [\"abc\"], \"kwargs\": {}}, {\"args\": [\"Hello, World!\"], \"kwargs\": {}}, {\"args\": [\"apple\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.17,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"textkit.words\", \"function\": \"title_case\", \"status\": \"returned\", \"repr\": \"''\", \"type\": \"str\", \"duration\": 1.6703000028428505e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"textkit.words\", \"function\": \"title_case\", \"status\": \"returned\", \"repr\": \"'Abc'\", \"type\": \"str\", \"duration\": 1.8205000060333987e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 2, \"module\": \"textkit.words\", \"function\": \"title_case\", \"status\": \"returned\", \"repr\": \"'Hello, World!'\", \"type\": \"str\", \"duration\": 1.0901999985435396e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 3, \"module\": \"textkit.words\", \"function\": \"title_case\", \"status\": \"returned\", \"repr\": \"'Apple'\", \"type\": \"str\", \"duration\": 8.102000037979451e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0025",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py textkit.words title_case --batch [{\"args\": [\"\"], \"kwargs\": {}}, {\"args\": [\"abc\"], \"kwargs\": {}}, {\"args\": [\"Hello, World!\"], \"kwargs\": {}}, {\"args\": [\"apple\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.06,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"textkit.words\", \"function\": \"title_case\", \"status\": \"returned\", \"repr\": \"''\", \"type\": \"str\", \"duration\": 1.3402999911704683e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"textkit.words\", \"function\": \"title_case\", \"status\": \"returned\", \"repr\": \"'Abc'\", \"type\": \"str\", \"duration\": 2.6607000108924694e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 2, \"module\": \"textkit.words\", \"function\": \"title_case\", \"status\": \"returned\", \"repr\": \"'Hello, World!'\", \"type\": \"str\", \"duration\": 1.4403000022866763e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 3, \"module\": \"textkit.words\", \"function\": \"title_case\", \"status\": \"returned\", \"repr\": \"'Apple'\", \"type\": \"str\", \"duration\": 1.0103000022354536e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0026",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py textkit.words is_palindrome --batch [{\"args\": [\"\"], \"kwargs\": {}}, {\"args\": [\"abc\"], \"kwargs\": {}}, {\"args\": [\"Hello, World!\"], \"kwargs\": {}}, {\"args\": [\"apple\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.27,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"textkit.words\", \"function\": \"is_palindrome\", \"status\": \"returned\", \"repr\": \"True\", \"type\": \"bool\", \"duration\": 9.202000001096167e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"textkit.words\", \"function\": \"is_palindrome\", \"status\": \"returned\", \"repr\": \"False\", \"type\": \"bool\", \"duration\": 8.000999969226541e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 2, \"module\": \"textkit.words\", \"function\": \"is_palindrome\", \"status\": \"returned\", \"repr\": \"False\", \"type\": \"bool\", \"duration\": 8.501999900545343e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 3, \"module\": \"textkit.words\", \"function\": \"is_palindrome\", \"status\": \"returned\", \"repr\": \"False\", \"type\": \"bool\", \"duration\": 4.601000000548083e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0027",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py textkit.words is_palindrome --batch [{\"args\": [\"\"], \"kwargs\": {}}, {\"args\": [\"abc\"], \"kwargs\": {}}, {\"args\": [\"Hello, World!\"], \"kwargs\": {}}, {\"args\": [\"apple\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.63,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"textkit.words\", \"function\": \"is_palindrome\", \"status\": \"returned\", \"repr\": \"True\", \"type\": \"bool\", \"duration\": 8.8019999111566e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"textkit.words\", \"function\": \"is_palindrome\", \"status\": \"returned\", \"repr\": \"False\", \"type\": \"bool\", \"duration\": 8.802000138530275e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 2, \"module\": \"textkit.words\", \"function\": \"is_palindrome\", \"status\": \"returned\", \"repr\": \"False\", \"type\": \"bool\", \"duration\": 9.10300013856613e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 3, \"module\": \"textkit.words\", \"function\": \"is_palindrome\", \"status\": \"returned\", \"repr\": \"False\", \"type\": \"bool\", \"duration\": 6.8020001435797894e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0028",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py textkit.words initials --batch [{\"args\": [\"\"], \"kwargs\": {}}, {\"args\": [\"abc\"], \"kwargs\": {}}, {\"args\": [\"Hello, World!\"], \"kwargs\": {}}, {\"args\": [\"apple\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.66,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"textkit.words\", \"function\": \"initials\", \"status\": \"returned\", \"repr\": \"''\", \"type\": \"str\", \"duration\": 1.5803999986019335e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"textkit.words\", \"function\": \"initials\", \"status\": \"returned\", \"repr\": \"'A'\", \"type\": \"str\", \"duration\": 7.202000006145681e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 2, \"module\": \"textkit.words\", \"function\": \"initials\", \"status\": \"returned\", \"repr\": \"'HW'\", \"type\": \"str\", \"duration\": 6.402000053640222e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 3, \"module\": \"textkit.words\", \"function\": \"initials\", \"status\": \"returned\", \"repr\": \"'A'\", \"type\": \"str\", \"duration\": 5.100999942442286e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0029",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py textkit.words initials --batch [{\"args\": [\"\"], \"kwargs\": {}}, {\"args\": [\"abc\"], \"kwargs\": {}}, {\"args\": [\"Hello, World!\"], \"kwargs\": {}}, {\"args\": [\"apple\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.23,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"textkit.words\", \"function\": \"initials\", \"status\": \"returned\", \"repr\": \"''\", \"type\": \"str\", \"duration\": 1.0102000032929936e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"textkit.words\", \"function\": \"initials\", \"status\": \"returned\", \"repr\": \"'A'\", \"type\": \"str\", \"duration\": 1.0202999874309171e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 2, \"module\": \"textkit.words\", \"function\": \"initials\", \"status\": \"returned\", \"repr\": \"'HW'\", \"type\": \"str\", \"duration\": 8.601999979873654e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 3, \"module\": \"textkit.words\", \"function\": \"initials\", \"status\": \"returned\", \"repr\": \"'A'\", \"type\": \"str\", \"duration\": 7.201000016721082e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0030",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=500",
+      "exit_code": 0,
+      "duration": 2.16,
+      "seed": 500,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=500\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_word_count PASSED\n\n============================== 5 passed in 0.24s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0031",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=501",
+      "exit_code": 0,
+      "duration": 2.02,
+      "seed": 501,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=501\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_initials PASSED\n\n============================== 5 passed in 0.22s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0032",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=502",
+      "exit_code": 0,
+      "duration": 2.14,
+      "seed": 502,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=502\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_initials PASSED\n\n============================== 5 passed in 0.22s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0033",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=503",
+      "exit_code": 0,
+      "duration": 2.29,
+      "seed": 503,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=503\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\n\n============================== 5 passed in 0.22s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0034",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=504",
+      "exit_code": 0,
+      "duration": 2.09,
+      "seed": 504,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=504\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 5 items\n\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\n\n============================== 5 passed in 0.26s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0035",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=500",
+      "exit_code": 0,
+      "duration": 2.26,
+      "seed": 500,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=500\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 21 items\n\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_4 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_2 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_word_count_case_4 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_word_count_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_2 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_word_count_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_4 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_4 PASSED\ntests/test_inherit_characterization.py::test_textki",
+      "stderr": ""
+    },
+    {
+      "id": "E-0036",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=501",
+      "exit_code": 0,
+      "duration": 2.13,
+      "seed": 501,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=501\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 21 items\n\ntests/test_inherit_characterization.py::test_textkit_words_word_count_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_2 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_2 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_word_count_case_4 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_4 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_4 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_2 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_word_count_case_2 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_4 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_",
+      "stderr": ""
+    },
+    {
+      "id": "E-0037",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=502",
+      "exit_code": 0,
+      "duration": 2.27,
+      "seed": 502,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=502\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 21 items\n\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_2 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_word_count_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_word_count_case_2 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_4 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_4 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_word_count_case_4 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_2 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_2 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_wor",
+      "stderr": ""
+    },
+    {
+      "id": "E-0038",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=503",
+      "exit_code": 0,
+      "duration": 2.34,
+      "seed": 503,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=503\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 21 items\n\ntests/test_words.py::test_word_count PASSED\ntests/test_words.py::test_initials PASSED\ntests/test_words.py::test_word_count_empty PASSED\ntests/test_words.py::test_palindrome_ignores_punctuation PASSED\ntests/test_words.py::test_title_case_keeps_small_words_lower PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_word_count_case_2 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_4 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_4 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_word_count_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_2 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_4 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_word_count_case_1 PASSED\ntests/test_inherit_characterization.py::t",
+      "stderr": ""
+    },
+    {
+      "id": "E-0039",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=504",
+      "exit_code": 0,
+      "duration": 2.44,
+      "seed": 504,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=504\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 21 items\n\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_4 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_word_count_case_2 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_4 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_word_count_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_2 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_4 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_word_count_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_2 PASSED\ntests/test_inherit_characterization.py::test_textkit_",
+      "stderr": ""
+    },
+    {
+      "id": "E-0040",
+      "kind": "gate_generated_first",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_inherit_characterization.py .",
+      "exit_code": 0,
+      "duration": 2.41,
+      "seed": null,
+      "order": [
+        "tests/test_inherit_characterization.py",
+        "."
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 21 items\n\ntests/test_inherit_characterization.py::test_textkit_words_word_count_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_word_count_case_2 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_word_count_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_word_count_case_4 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_2 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_title_case_case_4 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_2 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_3 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_is_palindrome_case_4 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_1 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_2 PASSED\ntests/test_inherit_characterization.py::test_textkit_words_initials_case_3 PASSED\ntests/test_inheri",
+      "stderr": ""
+    },
+    {
+      "id": "E-0041",
+      "kind": "characterization_validation",
+      "command": "python -m pytest -q -p no:cacheprovider -p no:randomly tests/test_inherit_characterization.py",
+      "exit_code": 0,
+      "duration": 2.48,
+      "seed": null,
+      "order": null,
+      "stdout": "................                                                         [100%]\n16 passed in 0.35s\n",
+      "stderr": ""
+    }
+  ]
+}

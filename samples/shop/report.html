@@ -1,0 +1,1623 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inherit Report</title>
+<style>
+:root{--bg:#fbfbfa;--card:#fff;--fg:#1d1d1f;--muted:#5f6368;--line:#e3e3e0;--ok:#1a7f37;--warn:#9a6700;--bad:#cf222e;--accent:#76b900;--code:#f3f3f1}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111214;--card:#1a1b1e;--fg:#e8e8e6;--muted:#a0a3a8;--line:#2c2e33;--ok:#3fb950;--warn:#d29922;--bad:#f85149;--code:#22242a}}
+:root[data-theme="dark"]{--bg:#111214;--card:#1a1b1e;--fg:#e8e8e6;--muted:#a0a3a8;--line:#2c2e33;--ok:#3fb950;--warn:#d29922;--bad:#f85149;--code:#22242a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1040px;margin:0 auto;padding:32px 16px 64px}
+h1{font-size:26px;margin:0 0 4px}h2{font-size:18px;margin:0 0 12px}.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:16px}
+.stat b{display:block;font-size:24px}.stat span{color:var(--muted);font-size:13px}
+.pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid currentColor}
+.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+code,pre{font-family:ui-monospace,Consolas,monospace;font-size:12.5px}pre{background:var(--code);padding:10px;border-radius:6px;overflow-x:auto;white-space:pre-wrap;word-break:break-word;margin:6px 0}
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:2px}
+ul{padding-left:20px;margin:6px 0}details summary{cursor:pointer}.scroll{overflow-x:auto}
+</style></head><body><main>
+<h1>Inherit reliability report</h1>
+<div class="muted"><code>demo_repo</code> · 2026-10-28T12:21:48+00:00 · 247.2s · sandbox: docker · models: mock / mock</div>
+<p class="muted">Each dimension is reported separately. There is deliberately no single trust score: a suite can be stable but shallow, or broad but flaky.</p>
+
+<div class="grid">
+<div class="card stat"><b>2</b><span>unstable tests in 20 shuffled runs</span></div>
+<div class="card stat"><b>31</b><span>behaviors pinned across 8/8 functions</span></div>
+<div class="card stat"><b>0/2</b><span>repairs verified by re-running</span></div>
+<div class="card stat"><b>6</b><span>open uncertainties</span></div>
+</div>
+
+<section class="card"><h2>Stability</h2>
+<p class="muted">11 tests, 20 runs, seeds 1–20. 9 tests had no observed failures (not proof of determinism).</p>
+<div class="scroll"><table><tr><th>Test</th><th>Failed</th><th>Classification</th><th>Polluter(s)</th><th>Evidence</th></tr>
+<tr><td><code>tests/test_report.py::test_opening_stock_levels</code></td><td>8/20</td><td>order_dependent<br><span class="muted">fails only after running 1 specific earlier test(s)</span></td>
+<td><code>tests/test_inventory.py::test_reserve_all_apples</code><br></td><td><a href="#E-0034">E-0034</a> <a href="#E-0035">E-0035</a> <a href="#E-0036">E-0036</a> <a href="#E-0037">E-0037</a> <a href="#E-0038">E-0038</a> <a href="#E-0039">E-0039</a> <a href="#E-0040">E-0040</a> <a href="#E-0041">E-0041</a> <a href="#E-0042">E-0042</a> <a href="#E-0043">E-0043</a> <a href="#E-0044">E-0044</a> <a href="#E-0045">E-0045</a> <a href="#E-0046">E-0046</a> <a href="#E-0047">E-0047</a> </td></tr><tr><td><code>tests/test_settings.py::test_default_price_format</code></td><td>9/20</td><td>order_dependent<br><span class="muted">fails only after running 1 specific earlier test(s)</span></td>
+<td><code>tests/test_settings.py::test_euro_store_uses_eur</code><br></td><td><a href="#E-0022">E-0022</a> <a href="#E-0023">E-0023</a> <a href="#E-0024">E-0024</a> <a href="#E-0025">E-0025</a> <a href="#E-0026">E-0026</a> <a href="#E-0027">E-0027</a> <a href="#E-0028">E-0028</a> <a href="#E-0029">E-0029</a> <a href="#E-0030">E-0030</a> <a href="#E-0031">E-0031</a> <a href="#E-0032">E-0032</a> </td></tr></table></div>
+
+
+</section>
+
+<section class="card"><h2>Repairs</h2>
+<div style="margin-bottom:14px">
+<span class="pill warn">no_patch</span> <code>tests/test_settings.py::test_default_price_format</code>
+<p><b>Diagnosis</b> <span class="muted">(model-generated: unknown, low confidence)</span><br>Offline mock model: no diagnosis. Configure Nebius Token Factory.</p>
+<p><b>Verification</b><br>no patch proposed</p>
+
+<details><summary>0 verification runs</summary></details>
+</div><div style="margin-bottom:14px">
+<span class="pill warn">no_patch</span> <code>tests/test_report.py::test_opening_stock_levels</code>
+<p><b>Diagnosis</b> <span class="muted">(model-generated: unknown, low confidence)</span><br>Offline mock model: no diagnosis. Configure Nebius Token Factory.</p>
+<p><b>Verification</b><br>no patch proposed</p>
+
+<details><summary>0 verification runs</summary></details>
+</div>
+</section>
+
+<section class="card"><h2>Behavior coverage</h2>
+<table>
+<tr><td>Functions with pinned behavior</td><td>8 / 8</td></tr>
+<tr><td>Behaviors pinned as tests</td><td>31</td></tr>
+<tr><td>State-changing calls pinned with isolation</td><td>1</td></tr>
+<tr><td>Excluded: non-deterministic output</td><td>0</td></tr>
+<tr><td>Excluded: state that could not be isolated</td><td>0</td></tr>
+<tr><td>Generated tests dropped by the 6-run gate</td><td>0</td></tr>
+<tr><td>Generated suite passes on unmodified code</td><td><span class="pill ok">yes</span> <a href="#E-0076">E-0076</a></td></tr>
+</table>
+<p><b>Pinned behavior to review</b></p><ul><li><code>shop.inventory.reserve</code> raises OutOfStock() <a href="#E-0051">E-0051</a> <a href="#E-0052">E-0052</a> </li><li><code>shop.inventory.reserve</code> raises OutOfStock(abc) <a href="#E-0051">E-0051</a> <a href="#E-0052">E-0052</a> </li><li><code>shop.inventory.reserve</code> raises OutOfStock(Hello, World!) <a href="#E-0051">E-0051</a> <a href="#E-0052">E-0052</a> </li></ul>
+</section>
+
+<section class="card"><h2>Documentation</h2>
+<p>31 observed statements (each cites recorded runs, checked for provenance) · 0 inferred statements (unverified) · 0 downgraded by the validator. See <code>docs.md</code>.</p>
+
+</section>
+
+<section class="card"><h2>Open uncertainties</h2><ul><li>This run used the offline mock model, not NVIDIA Nemotron: inputs were heuristic and no real diagnosis was attempted.</li><li>Stability results cover 20 shuffled runs (seeds 1-20) in one sandbox environment. Tests with no observed failures may still fail under other orders, timing, operating systems or load.</li><li>Characterization tests pin what the code does today, which may include bugs. Review them before treating them as a specification.</li><li>shop.inventory.reserve raises OutOfStock for 3 recorded input(s); confirm this is intended.</li><li>Repair for tests/test_settings.py::test_default_price_format is no_patch: no patch proposed</li><li>Repair for tests/test_report.py::test_opening_stock_levels is no_patch: no patch proposed</li></ul></section>
+
+<section class="card"><h2>Model usage (NVIDIA Nemotron via Nebius Token Factory)</h2>
+<div class="scroll"><table><tr><th>Role</th><th>Model</th><th>Calls</th><th>OK</th><th>Prompt tok</th><th>Completion tok</th><th>Avg latency</th></tr>
+<tr><td>reasoner</td><td><code>mock-reasoner</code></td><td>10</td><td>10</td><td>0</td><td>0</td><td>0.0s</td></tr><tr><td>worker</td><td><code>mock-worker</code></td><td>8</td><td>8</td><td>0</td><td>0</td><td>0.0s</td></tr></table></div>
+
+</section>
+
+<section class="card"><h2>Evidence (76 recorded runs)</h2>
+<details id="E-0001"><summary><code>E-0001</code> collect · exit 0 · 5.64s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -p no:randomly --collect-only -q</pre>
+<pre>tests/test_inventory.py::test_unknown_item_is_unavailable
+tests/test_inventory.py::test_out_of_stock_raises
+tests/test_inventory.py::test_reserve_all_apples
+tests/test_pricing.py::test_small_order_has_no_discount
+tests/test_pricing.py::test_tax_default_rate
+tests/test_report.py::test_opening_stock_levels
+tests/test_settings.py::test_euro_store_uses_eur
+tests/test_settings.py::test_default_price_format
+tests/test_text.py::test_slugify
+tests/test_text.py::test_truncate_short_text_unchanged
+tests/test_text.py::test_truncate_long_text
+
+11 tests collected in 2.09s
+</pre></details><details id="E-0002"><summary><code>E-0002</code> suite_random · exit 1 · 3.78s · seed 1</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=1</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=1
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_report.py::test_opening_stock_levels PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_settings.py::test_default_price_format FAILED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+
+=================================== FAILURES ===================================
+__________________________ test_default_price_format ___________________________
+
+    def test_default_price_format():
+&gt;       assert settings.format_price(3) == &#34;3.00 USD&#34;
+E       AssertionError: assert &#39;3.00 EUR&#39; == &#39;3.00 USD&#39;
+E         
+E         - 3.00 USD
+E         ?       ^^
+E         + 3.00 EUR
+E         ?      + ^
+
+tests/test_settings.py:12: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_settings.py::test_default_price_format - AssertionError: as...
+==========</pre></details><details id="E-0003"><summary><code>E-0003</code> suite_random · exit 0 · 2.98s · seed 2</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=2</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=2
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_report.py::test_opening_stock_levels PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+
+============================== 11 passed in 0.81s ==============================
+</pre></details><details id="E-0004"><summary><code>E-0004</code> suite_random · exit 1 · 3.3s · seed 3</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=3</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=3
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E       AssertionError: assert 0 == 5
+E        +  where 0 = &lt;function available at 0x7d132a166340&gt;(&#39;apple&#39;)
+E        +    where &lt;function available at 0x7d132a166340&gt; = inventory.available
+
+tests/test_report.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_report.py::test_opening_stock_levels - Asse</pre></details><details id="E-0005"><summary><code>E-0005</code> suite_random · exit 1 · 3.66s · seed 4</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=4</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=4
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_settings.py::test_default_price_format FAILED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_report.py::test_opening_stock_levels PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+
+=================================== FAILURES ===================================
+__________________________ test_default_price_format ___________________________
+
+    def test_default_price_format():
+&gt;       assert settings.format_price(3) == &#34;3.00 USD&#34;
+E       AssertionError: assert &#39;3.00 EUR&#39; == &#39;3.00 USD&#39;
+E         
+E         - 3.00 USD
+E         ?       ^^
+E         + 3.00 EUR
+E         ?      + ^
+
+tests/test_settings.py:12: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_settings.py::test_default_price_format - AssertionError: as...
+==========</pre></details><details id="E-0006"><summary><code>E-0006</code> suite_random · exit 1 · 3.37s · seed 5</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=5</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=5
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_report.py::test_opening_stock_levels PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_settings.py::test_default_price_format FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_default_price_format ___________________________
+
+    def test_default_price_format():
+&gt;       assert settings.format_price(3) == &#34;3.00 USD&#34;
+E       AssertionError: assert &#39;3.00 EUR&#39; == &#39;3.00 USD&#39;
+E         
+E         - 3.00 USD
+E         ?       ^^
+E         + 3.00 EUR
+E         ?      + ^
+
+tests/test_settings.py:12: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_settings.py::test_default_price_format - AssertionError: as...
+==========</pre></details><details id="E-0007"><summary><code>E-0007</code> suite_random · exit 1 · 3.89s · seed 6</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=6</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=6
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+
+=================================== FAILURES ===================================
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E       AssertionError: assert 0 == 5
+E        +  where 0 = &lt;function available at 0x75a630fe6340&gt;(&#39;apple&#39;)
+E        +    where &lt;function available at 0x75a630fe6340&gt; = inventory.available
+
+tests/test_report.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_report.py::test_opening_stock_levels - Asse</pre></details><details id="E-0008"><summary><code>E-0008</code> suite_random · exit 1 · 4.26s · seed 7</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=7</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=7
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_settings.py::test_default_price_format FAILED
+tests/test_text.py::test_slugify PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_default_price_format ___________________________
+
+    def test_default_price_format():
+&gt;       assert settings.format_price(3) == &#34;3.00 USD&#34;
+E       AssertionError: assert &#39;3.00 EUR&#39; == &#39;3.00 USD&#39;
+E         
+E         - 3.00 USD
+E         ?       ^^
+E         + 3.00 EUR
+E         ?      + ^
+
+tests/test_settings.py:12: AssertionError
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E   </pre></details><details id="E-0009"><summary><code>E-0009</code> suite_random · exit 1 · 2.86s · seed 8</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=8</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=8
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+
+=================================== FAILURES ===================================
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E       AssertionError: assert 0 == 5
+E        +  where 0 = &lt;function available at 0x7e58118be340&gt;(&#39;apple&#39;)
+E        +    where &lt;function available at 0x7e58118be340&gt; = inventory.available
+
+tests/test_report.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_report.py::test_opening_stock_levels - Asse</pre></details><details id="E-0010"><summary><code>E-0010</code> suite_random · exit 0 · 2.91s · seed 9</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=9</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=9
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_report.py::test_opening_stock_levels PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+
+============================== 11 passed in 0.68s ==============================
+</pre></details><details id="E-0011"><summary><code>E-0011</code> suite_random · exit 1 · 3.36s · seed 10</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=10</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=10
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E       AssertionError: assert 0 == 5
+E        +  where 0 = &lt;function available at 0x7519e67aa340&gt;(&#39;apple&#39;)
+E        +    where &lt;function available at 0x7519e67aa340&gt; = inventory.available
+
+tests/test_report.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_report.py::test_opening_stock_levels - Ass</pre></details><details id="E-0012"><summary><code>E-0012</code> suite_random · exit 1 · 4.53s · seed 11</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=11</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=11
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+
+=================================== FAILURES ===================================
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E       AssertionError: assert 0 == 5
+E        +  where 0 = &lt;function available at 0x7c4f3b9da340&gt;(&#39;apple&#39;)
+E        +    where &lt;function available at 0x7c4f3b9da340&gt; = inventory.available
+
+tests/test_report.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_report.py::test_opening_stock_levels - Ass</pre></details><details id="E-0013"><summary><code>E-0013</code> suite_random · exit 0 · 6.34s · seed 12</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=12</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=12
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_report.py::test_opening_stock_levels PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+
+============================== 11 passed in 0.91s ==============================
+</pre></details><details id="E-0014"><summary><code>E-0014</code> suite_random · exit 1 · 4.62s · seed 13</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=13</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=13
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_settings.py::test_default_price_format FAILED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_report.py::test_opening_stock_levels PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+
+=================================== FAILURES ===================================
+__________________________ test_default_price_format ___________________________
+
+    def test_default_price_format():
+&gt;       assert settings.format_price(3) == &#34;3.00 USD&#34;
+E       AssertionError: assert &#39;3.00 EUR&#39; == &#39;3.00 USD&#39;
+E         
+E         - 3.00 USD
+E         ?       ^^
+E         + 3.00 EUR
+E         ?      + ^
+
+tests/test_settings.py:12: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_settings.py::test_default_price_format - AssertionError: as...
+=========</pre></details><details id="E-0015"><summary><code>E-0015</code> suite_random · exit 0 · 3.64s · seed 14</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=14</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=14
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_report.py::test_opening_stock_levels PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+
+============================== 11 passed in 0.81s ==============================
+</pre></details><details id="E-0016"><summary><code>E-0016</code> suite_random · exit 0 · 7.5s · seed 15</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=15</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=15
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_report.py::test_opening_stock_levels PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+
+============================== 11 passed in 1.69s ==============================
+</pre></details><details id="E-0017"><summary><code>E-0017</code> suite_random · exit 1 · 3.26s · seed 16</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=16</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=16
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_report.py::test_opening_stock_levels PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_settings.py::test_default_price_format FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_default_price_format ___________________________
+
+    def test_default_price_format():
+&gt;       assert settings.format_price(3) == &#34;3.00 USD&#34;
+E       AssertionError: assert &#39;3.00 EUR&#39; == &#39;3.00 USD&#39;
+E         
+E         - 3.00 USD
+E         ?       ^^
+E         + 3.00 EUR
+E         ?      + ^
+
+tests/test_settings.py:12: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_settings.py::test_default_price_format - AssertionError: as...
+=========</pre></details><details id="E-0018"><summary><code>E-0018</code> suite_random · exit 0 · 2.95s · seed 17</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=17</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=17
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_report.py::test_opening_stock_levels PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+
+============================== 11 passed in 0.94s ==============================
+</pre></details><details id="E-0019"><summary><code>E-0019</code> suite_random · exit 1 · 2.55s · seed 18</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=18</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=18
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_settings.py::test_default_price_format FAILED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_default_price_format ___________________________
+
+    def test_default_price_format():
+&gt;       assert settings.format_price(3) == &#34;3.00 USD&#34;
+E       AssertionError: assert &#39;3.00 EUR&#39; == &#39;3.00 USD&#39;
+E         
+E         - 3.00 USD
+E         ?       ^^
+E         + 3.00 EUR
+E         ?      + ^
+
+tests/test_settings.py:12: AssertionError
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E  </pre></details><details id="E-0020"><summary><code>E-0020</code> suite_random · exit 1 · 4.59s · seed 19</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=19</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=19
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_report.py::test_opening_stock_levels PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_settings.py::test_default_price_format FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_default_price_format ___________________________
+
+    def test_default_price_format():
+&gt;       assert settings.format_price(3) == &#34;3.00 USD&#34;
+E       AssertionError: assert &#39;3.00 EUR&#39; == &#39;3.00 USD&#39;
+E         
+E         - 3.00 USD
+E         ?       ^^
+E         + 3.00 EUR
+E         ?      + ^
+
+tests/test_settings.py:12: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_settings.py::test_default_price_format - AssertionError: as...
+=========</pre></details><details id="E-0021"><summary><code>E-0021</code> suite_random · exit 1 · 5.23s · seed 20</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=20</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=20
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_text.py::test_slugify PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_settings.py::test_default_price_format FAILED
+tests/test_report.py::test_opening_stock_levels FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_default_price_format ___________________________
+
+    def test_default_price_format():
+&gt;       assert settings.format_price(3) == &#34;3.00 USD&#34;
+E       AssertionError: assert &#39;3.00 EUR&#39; == &#39;3.00 USD&#39;
+E         
+E         - 3.00 USD
+E         ?       ^^
+E         + 3.00 EUR
+E         ?      + ^
+
+tests/test_settings.py:12: AssertionError
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E  </pre></details><details id="E-0022"><summary><code>E-0022</code> isolation · exit 0 · 2.48s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_settings.py::test_default_price_format</pre><div class="muted">order: tests/test_settings.py::test_default_price_format</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_settings.py::test_default_price_format PASSED
+
+============================== 1 passed in 0.28s ===============================
+</pre></details><details id="E-0023"><summary><code>E-0023</code> isolation · exit 0 · 3.58s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_settings.py::test_default_price_format</pre><div class="muted">order: tests/test_settings.py::test_default_price_format</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_settings.py::test_default_price_format PASSED
+
+============================== 1 passed in 0.87s ===============================
+</pre></details><details id="E-0024"><summary><code>E-0024</code> isolation · exit 0 · 4.63s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_settings.py::test_default_price_format</pre><div class="muted">order: tests/test_settings.py::test_default_price_format</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_settings.py::test_default_price_format PASSED
+
+============================== 1 passed in 1.04s ===============================
+</pre></details><details id="E-0025"><summary><code>E-0025</code> isolation · exit 0 · 3.23s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_settings.py::test_default_price_format</pre><div class="muted">order: tests/test_settings.py::test_default_price_format</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_settings.py::test_default_price_format PASSED
+
+============================== 1 passed in 0.36s ===============================
+</pre></details><details id="E-0026"><summary><code>E-0026</code> isolation · exit 0 · 4.28s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_settings.py::test_default_price_format</pre><div class="muted">order: tests/test_settings.py::test_default_price_format</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_settings.py::test_default_price_format PASSED
+
+============================== 1 passed in 0.42s ===============================
+</pre></details><details id="E-0027"><summary><code>E-0027</code> replay_order · exit 1 · 3.11s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_report.py::test_opening_stock_levels tests/test_settings.py::test_euro_store_uses_eur tests/test_settings.py::test_default_price_format</pre><div class="muted">order: tests/test_report.py::test_opening_stock_levels → tests/test_settings.py::test_euro_store_uses_eur → tests/test_settings.py::test_default_price_format</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 3 items
+
+tests/test_report.py::test_opening_stock_levels PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_settings.py::test_default_price_format FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_default_price_format ___________________________
+
+    def test_default_price_format():
+&gt;       assert settings.format_price(3) == &#34;3.00 USD&#34;
+E       AssertionError: assert &#39;3.00 EUR&#39; == &#39;3.00 USD&#39;
+E         
+E         - 3.00 USD
+E         ?       ^^
+E         + 3.00 EUR
+E         ?      + ^
+
+tests/test_settings.py:12: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_settings.py::test_default_price_format - AssertionError: as...
+========================= 1 failed, 2 passed in 0.60s ==========================
+</pre></details><details id="E-0028"><summary><code>E-0028</code> replay_order · exit 1 · 2.87s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_report.py::test_opening_stock_levels tests/test_settings.py::test_euro_store_uses_eur tests/test_settings.py::test_default_price_format</pre><div class="muted">order: tests/test_report.py::test_opening_stock_levels → tests/test_settings.py::test_euro_store_uses_eur → tests/test_settings.py::test_default_price_format</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 3 items
+
+tests/test_report.py::test_opening_stock_levels PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_settings.py::test_default_price_format FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_default_price_format ___________________________
+
+    def test_default_price_format():
+&gt;       assert settings.format_price(3) == &#34;3.00 USD&#34;
+E       AssertionError: assert &#39;3.00 EUR&#39; == &#39;3.00 USD&#39;
+E         
+E         - 3.00 USD
+E         ?       ^^
+E         + 3.00 EUR
+E         ?      + ^
+
+tests/test_settings.py:12: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_settings.py::test_default_price_format - AssertionError: as...
+========================= 1 failed, 2 passed in 0.54s ==========================
+</pre></details><details id="E-0029"><summary><code>E-0029</code> bisect · exit 1 · 3.36s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_report.py::test_opening_stock_levels tests/test_settings.py::test_euro_store_uses_eur tests/test_settings.py::test_default_price_format</pre><div class="muted">order: tests/test_report.py::test_opening_stock_levels → tests/test_settings.py::test_euro_store_uses_eur → tests/test_settings.py::test_default_price_format</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 3 items
+
+tests/test_report.py::test_opening_stock_levels PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_settings.py::test_default_price_format FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_default_price_format ___________________________
+
+    def test_default_price_format():
+&gt;       assert settings.format_price(3) == &#34;3.00 USD&#34;
+E       AssertionError: assert &#39;3.00 EUR&#39; == &#39;3.00 USD&#39;
+E         
+E         - 3.00 USD
+E         ?       ^^
+E         + 3.00 EUR
+E         ?      + ^
+
+tests/test_settings.py:12: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_settings.py::test_default_price_format - AssertionError: as...
+========================= 1 failed, 2 passed in 0.65s ==========================
+</pre></details><details id="E-0030"><summary><code>E-0030</code> bisect · exit 0 · 2.56s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_report.py::test_opening_stock_levels tests/test_settings.py::test_default_price_format</pre><div class="muted">order: tests/test_report.py::test_opening_stock_levels → tests/test_settings.py::test_default_price_format</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 2 items
+
+tests/test_report.py::test_opening_stock_levels PASSED
+tests/test_settings.py::test_default_price_format PASSED
+
+============================== 2 passed in 0.32s ===============================
+</pre></details><details id="E-0031"><summary><code>E-0031</code> bisect · exit 1 · 2.72s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_settings.py::test_euro_store_uses_eur tests/test_settings.py::test_default_price_format</pre><div class="muted">order: tests/test_settings.py::test_euro_store_uses_eur → tests/test_settings.py::test_default_price_format</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 2 items
+
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_settings.py::test_default_price_format FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_default_price_format ___________________________
+
+    def test_default_price_format():
+&gt;       assert settings.format_price(3) == &#34;3.00 USD&#34;
+E       AssertionError: assert &#39;3.00 EUR&#39; == &#39;3.00 USD&#39;
+E         
+E         - 3.00 USD
+E         ?       ^^
+E         + 3.00 EUR
+E         ?      + ^
+
+tests/test_settings.py:12: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_settings.py::test_default_price_format - AssertionError: as...
+========================= 1 failed, 1 passed in 0.45s ==========================
+</pre></details><details id="E-0032"><summary><code>E-0032</code> bisect · exit 0 · 2.43s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_settings.py::test_default_price_format</pre><div class="muted">order: tests/test_settings.py::test_default_price_format</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_settings.py::test_default_price_format PASSED
+
+============================== 1 passed in 0.25s ===============================
+</pre></details><details id="E-0033"><summary><code>E-0033</code> diagnose_repro · exit 1 · 3.09s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_settings.py::test_euro_store_uses_eur tests/test_settings.py::test_default_price_format</pre><div class="muted">order: tests/test_settings.py::test_euro_store_uses_eur → tests/test_settings.py::test_default_price_format</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 2 items
+
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_settings.py::test_default_price_format FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_default_price_format ___________________________
+
+    def test_default_price_format():
+&gt;       assert settings.format_price(3) == &#34;3.00 USD&#34;
+E       AssertionError: assert &#39;3.00 EUR&#39; == &#39;3.00 USD&#39;
+E         
+E         - 3.00 USD
+E         ?       ^^
+E         + 3.00 EUR
+E         ?      + ^
+
+tests/test_settings.py:12: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_settings.py::test_default_price_format - AssertionError: as...
+========================= 1 failed, 1 passed in 0.47s ==========================
+</pre></details><details id="E-0034"><summary><code>E-0034</code> isolation · exit 0 · 2.46s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_report.py::test_opening_stock_levels</pre><div class="muted">order: tests/test_report.py::test_opening_stock_levels</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_report.py::test_opening_stock_levels PASSED
+
+============================== 1 passed in 0.24s ===============================
+</pre></details><details id="E-0035"><summary><code>E-0035</code> isolation · exit 0 · 2.31s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_report.py::test_opening_stock_levels</pre><div class="muted">order: tests/test_report.py::test_opening_stock_levels</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_report.py::test_opening_stock_levels PASSED
+
+============================== 1 passed in 0.25s ===============================
+</pre></details><details id="E-0036"><summary><code>E-0036</code> isolation · exit 0 · 2.82s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_report.py::test_opening_stock_levels</pre><div class="muted">order: tests/test_report.py::test_opening_stock_levels</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_report.py::test_opening_stock_levels PASSED
+
+============================== 1 passed in 0.21s ===============================
+</pre></details><details id="E-0037"><summary><code>E-0037</code> isolation · exit 0 · 2.71s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_report.py::test_opening_stock_levels</pre><div class="muted">order: tests/test_report.py::test_opening_stock_levels</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_report.py::test_opening_stock_levels PASSED
+
+============================== 1 passed in 0.39s ===============================
+</pre></details><details id="E-0038"><summary><code>E-0038</code> isolation · exit 0 · 4.67s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_report.py::test_opening_stock_levels</pre><div class="muted">order: tests/test_report.py::test_opening_stock_levels</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_report.py::test_opening_stock_levels PASSED
+
+============================== 1 passed in 0.40s ===============================
+</pre></details><details id="E-0039"><summary><code>E-0039</code> replay_order · exit 1 · 5.47s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_pricing.py::test_small_order_has_no_discount tests/test_pricing.py::test_tax_default_rate tests/test_text.py::test_truncate_short_text_unchanged tests/test_text.py::test_truncate_long_text tests/test_text.py::test_slugify tests/test_settings.py::test_default_price_format tests/test_settings.py::test_euro_store_uses_eur tests/test_inventory.py::test_reserve_all_apples tests/test_inventory.py::test_unknown_item_is_unavailable tests/test_inventory.py::test_out_of_stock_raises tests/test_report.py::test_opening_stock_levels</pre><div class="muted">order: tests/test_pricing.py::test_small_order_has_no_discount → tests/test_pricing.py::test_tax_default_rate → tests/test_text.py::test_truncate_short_text_unchanged → tests/test_text.py::test_truncate_long_text → tests/test_text.py::test_slugify → tests/test_settings.py::test_default_price_format → tests/test_settings.py::test_euro_store_uses_eur → tests/test_inventory.py::test_reserve_all_apples → tests/test_inventory.py::test_unknown_item_is_unavailable → tests/test_inventory.py::test_out_of_stock_raises → tests/test_report.py::test_opening_stock_levels</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 11 items
+
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E       AssertionError: assert 0 == 5
+E        +  where 0 = &lt;function available at 0x7759fb500220&gt;(&#39;apple&#39;)
+E        +    where &lt;function available at 0x7759fb500220&gt; = inventory.available
+
+tests/test_report.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_report.py::test_opening_stock_levels - AssertionError: asse...
+========================= 1 </pre></details><details id="E-0040"><summary><code>E-0040</code> replay_order · exit 1 · 4.55s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_pricing.py::test_small_order_has_no_discount tests/test_pricing.py::test_tax_default_rate tests/test_text.py::test_truncate_short_text_unchanged tests/test_text.py::test_truncate_long_text tests/test_text.py::test_slugify tests/test_settings.py::test_default_price_format tests/test_settings.py::test_euro_store_uses_eur tests/test_inventory.py::test_reserve_all_apples tests/test_inventory.py::test_unknown_item_is_unavailable tests/test_inventory.py::test_out_of_stock_raises tests/test_report.py::test_opening_stock_levels</pre><div class="muted">order: tests/test_pricing.py::test_small_order_has_no_discount → tests/test_pricing.py::test_tax_default_rate → tests/test_text.py::test_truncate_short_text_unchanged → tests/test_text.py::test_truncate_long_text → tests/test_text.py::test_slugify → tests/test_settings.py::test_default_price_format → tests/test_settings.py::test_euro_store_uses_eur → tests/test_inventory.py::test_reserve_all_apples → tests/test_inventory.py::test_unknown_item_is_unavailable → tests/test_inventory.py::test_out_of_stock_raises → tests/test_report.py::test_opening_stock_levels</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 11 items
+
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E       AssertionError: assert 0 == 5
+E        +  where 0 = &lt;function available at 0x725d3f4ac220&gt;(&#39;apple&#39;)
+E        +    where &lt;function available at 0x725d3f4ac220&gt; = inventory.available
+
+tests/test_report.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_report.py::test_opening_stock_levels - AssertionError: asse...
+========================= 1 </pre></details><details id="E-0041"><summary><code>E-0041</code> bisect · exit 1 · 5.45s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_pricing.py::test_small_order_has_no_discount tests/test_pricing.py::test_tax_default_rate tests/test_text.py::test_truncate_short_text_unchanged tests/test_text.py::test_truncate_long_text tests/test_text.py::test_slugify tests/test_settings.py::test_default_price_format tests/test_settings.py::test_euro_store_uses_eur tests/test_inventory.py::test_reserve_all_apples tests/test_inventory.py::test_unknown_item_is_unavailable tests/test_inventory.py::test_out_of_stock_raises tests/test_report.py::test_opening_stock_levels</pre><div class="muted">order: tests/test_pricing.py::test_small_order_has_no_discount → tests/test_pricing.py::test_tax_default_rate → tests/test_text.py::test_truncate_short_text_unchanged → tests/test_text.py::test_truncate_long_text → tests/test_text.py::test_slugify → tests/test_settings.py::test_default_price_format → tests/test_settings.py::test_euro_store_uses_eur → tests/test_inventory.py::test_reserve_all_apples → tests/test_inventory.py::test_unknown_item_is_unavailable → tests/test_inventory.py::test_out_of_stock_raises → tests/test_report.py::test_opening_stock_levels</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 11 items
+
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E       AssertionError: assert 0 == 5
+E        +  where 0 = &lt;function available at 0x7446e5084220&gt;(&#39;apple&#39;)
+E        +    where &lt;function available at 0x7446e5084220&gt; = inventory.available
+
+tests/test_report.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_report.py::test_opening_stock_levels - AssertionError: asse...
+========================= 1 </pre></details><details id="E-0042"><summary><code>E-0042</code> bisect · exit 0 · 4.58s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_pricing.py::test_small_order_has_no_discount tests/test_pricing.py::test_tax_default_rate tests/test_text.py::test_truncate_short_text_unchanged tests/test_text.py::test_truncate_long_text tests/test_text.py::test_slugify tests/test_report.py::test_opening_stock_levels</pre><div class="muted">order: tests/test_pricing.py::test_small_order_has_no_discount → tests/test_pricing.py::test_tax_default_rate → tests/test_text.py::test_truncate_short_text_unchanged → tests/test_text.py::test_truncate_long_text → tests/test_text.py::test_slugify → tests/test_report.py::test_opening_stock_levels</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 6 items
+
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_report.py::test_opening_stock_levels PASSED
+
+============================== 6 passed in 0.47s ===============================
+</pre></details><details id="E-0043"><summary><code>E-0043</code> bisect · exit 1 · 3.35s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_settings.py::test_default_price_format tests/test_settings.py::test_euro_store_uses_eur tests/test_inventory.py::test_reserve_all_apples tests/test_inventory.py::test_unknown_item_is_unavailable tests/test_inventory.py::test_out_of_stock_raises tests/test_report.py::test_opening_stock_levels</pre><div class="muted">order: tests/test_settings.py::test_default_price_format → tests/test_settings.py::test_euro_store_uses_eur → tests/test_inventory.py::test_reserve_all_apples → tests/test_inventory.py::test_unknown_item_is_unavailable → tests/test_inventory.py::test_out_of_stock_raises → tests/test_report.py::test_opening_stock_levels</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 6 items
+
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E       AssertionError: assert 0 == 5
+E        +  where 0 = &lt;function available at 0x7216ccf49bc0&gt;(&#39;apple&#39;)
+E        +    where &lt;function available at 0x7216ccf49bc0&gt; = inventory.available
+
+tests/test_report.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_report.py::test_opening_stock_levels - AssertionError: asse...
+========================= 1 failed, 5 passed in 0.94s ==========================
+</pre></details><details id="E-0044"><summary><code>E-0044</code> bisect · exit 1 · 3.5s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_settings.py::test_default_price_format tests/test_settings.py::test_euro_store_uses_eur tests/test_inventory.py::test_reserve_all_apples tests/test_report.py::test_opening_stock_levels</pre><div class="muted">order: tests/test_settings.py::test_default_price_format → tests/test_settings.py::test_euro_store_uses_eur → tests/test_inventory.py::test_reserve_all_apples → tests/test_report.py::test_opening_stock_levels</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 4 items
+
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E       AssertionError: assert 0 == 5
+E        +  where 0 = &lt;function available at 0x75db01095b20&gt;(&#39;apple&#39;)
+E        +    where &lt;function available at 0x75db01095b20&gt; = inventory.available
+
+tests/test_report.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_report.py::test_opening_stock_levels - AssertionError: asse...
+========================= 1 failed, 3 passed in 0.76s ==========================
+</pre></details><details id="E-0045"><summary><code>E-0045</code> bisect · exit 0 · 3.15s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_settings.py::test_default_price_format tests/test_settings.py::test_euro_store_uses_eur tests/test_report.py::test_opening_stock_levels</pre><div class="muted">order: tests/test_settings.py::test_default_price_format → tests/test_settings.py::test_euro_store_uses_eur → tests/test_report.py::test_opening_stock_levels</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 3 items
+
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_report.py::test_opening_stock_levels PASSED
+
+============================== 3 passed in 0.33s ===============================
+</pre></details><details id="E-0046"><summary><code>E-0046</code> bisect · exit 1 · 3.71s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_inventory.py::test_reserve_all_apples tests/test_report.py::test_opening_stock_levels</pre><div class="muted">order: tests/test_inventory.py::test_reserve_all_apples → tests/test_report.py::test_opening_stock_levels</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 2 items
+
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E       AssertionError: assert 0 == 5
+E        +  where 0 = &lt;function available at 0x77ed756a99e0&gt;(&#39;apple&#39;)
+E        +    where &lt;function available at 0x77ed756a99e0&gt; = inventory.available
+
+tests/test_report.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_report.py::test_opening_stock_levels - AssertionError: asse...
+========================= 1 failed, 1 passed in 0.99s ==========================
+</pre></details><details id="E-0047"><summary><code>E-0047</code> bisect · exit 0 · 2.84s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_report.py::test_opening_stock_levels</pre><div class="muted">order: tests/test_report.py::test_opening_stock_levels</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_report.py::test_opening_stock_levels PASSED
+
+============================== 1 passed in 0.33s ===============================
+</pre></details><details id="E-0048"><summary><code>E-0048</code> diagnose_repro · exit 1 · 3.08s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_inventory.py::test_reserve_all_apples tests/test_report.py::test_opening_stock_levels</pre><div class="muted">order: tests/test_inventory.py::test_reserve_all_apples → tests/test_report.py::test_opening_stock_levels</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 2 items
+
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E       AssertionError: assert 0 == 5
+E        +  where 0 = &lt;function available at 0x78b0c50899e0&gt;(&#39;apple&#39;)
+E        +    where &lt;function available at 0x78b0c50899e0&gt; = inventory.available
+
+tests/test_report.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_report.py::test_opening_stock_levels - AssertionError: asse...
+========================= 1 failed, 1 passed in 0.65s ==========================
+</pre></details><details id="E-0049"><summary><code>E-0049</code> probe_batch · exit 0 · 1.13s</summary>
+<pre>$ python /opt/inherit/probe.py shop.inventory available --batch [{&#34;args&#34;: [&#34;&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;abc&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;Hello, World!&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;apple&#34;], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;shop.inventory&#34;, &#34;function&#34;: &#34;available&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 7.607000043208245e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;STOCK&#34;: &#34;{&#39;apple&#39;: 5, &#39;pear&#39;: 3}&#34;}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;shop.inventory&#34;, &#34;function&#34;: &#34;available&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 5.40499991075194e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;STOCK&#34;: &#34;{&#39;apple&#39;: 5, &#39;pear&#39;: 3}&#34;}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;shop.inventory&#34;, &#34;function&#34;: &#34;available&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 4.002999958174769e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;STOCK&#34;: &#34;{&#39;apple&#39;: 5, &#39;pear&#39;: 3}&#34;}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 3, &#34;module&#34;: &#34;shop.inventory&#34;, &#34;function&#34;: &#34;available&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;5&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 5.905000080019818e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;STOCK&#34;: &#34;{&#39;apple&#39;: 5, &#39;pear&#39;: 3}&#34;}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0050"><summary><code>E-0050</code> probe_batch · exit 0 · 1.16s</summary>
+<pre>$ python /opt/inherit/probe.py shop.inventory available --batch [{&#34;args&#34;: [&#34;&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;abc&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;Hello, World!&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;apple&#34;], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;shop.inventory&#34;, &#34;function&#34;: &#34;available&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 6.905999953232822e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;STOCK&#34;: &#34;{&#39;apple&#39;: 5, &#39;pear&#39;: 3}&#34;}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;shop.inventory&#34;, &#34;function&#34;: &#34;available&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 4.303999958210625e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;STOCK&#34;: &#34;{&#39;apple&#39;: 5, &#39;pear&#39;: 3}&#34;}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;shop.inventory&#34;, &#34;function&#34;: &#34;available&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 4.4040000375389354e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;STOCK&#34;: &#34;{&#39;apple&#39;: 5, &#39;pear&#39;: 3}&#34;}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 3, &#34;module&#34;: &#34;shop.inventory&#34;, &#34;function&#34;: &#34;available&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;5&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 4.605000071933318e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;STOCK&#34;: &#34;{&#39;apple&#39;: 5, &#39;pear&#39;: 3}&#34;}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0051"><summary><code>E-0051</code> probe_batch · exit 0 · 1.28s</summary>
+<pre>$ python /opt/inherit/probe.py shop.inventory reserve --batch [{&#34;args&#34;: [&#34;&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;abc&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;Hello, World!&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;apple&#34;], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;shop.inventory&#34;, &#34;function&#34;: &#34;reserve&#34;, &#34;status&#34;: &#34;raised&#34;, &#34;exc_type&#34;: &#34;OutOfStock&#34;, &#34;exc_message&#34;: &#34;&#34;, &#34;duration&#34;: 1.0309999993296515e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;STOCK&#34;: &#34;{&#39;apple&#39;: 5, &#39;pear&#39;: 3}&#34;}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;shop.inventory&#34;, &#34;function&#34;: &#34;reserve&#34;, &#34;status&#34;: &#34;raised&#34;, &#34;exc_type&#34;: &#34;OutOfStock&#34;, &#34;exc_message&#34;: &#34;abc&#34;, &#34;duration&#34;: 9.909000027619186e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;STOCK&#34;: &#34;{&#39;apple&#39;: 5, &#39;pear&#39;: 3}&#34;}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;shop.inventory&#34;, &#34;function&#34;: &#34;reserve&#34;, &#34;status&#34;: &#34;raised&#34;, &#34;exc_type&#34;: &#34;OutOfStock&#34;, &#34;exc_message&#34;: &#34;Hello, World!&#34;, &#34;duration&#34;: 4.4040000375389354e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;STOCK&#34;: &#34;{&#39;apple&#39;: 5, &#39;pear&#39;: 3}&#34;}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 3, &#34;module&#34;: &#34;shop.inventory&#34;, &#34;function&#34;: &#34;reserve&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;4&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 6.6059999426215654e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;STOCK&#34;: &#34;{&#39;apple&#39;: 5, &#39;pear&#39;: 3}&#34;}, &#34;mutated&#34;: [&#34;STOCK&#34;], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0052"><summary><code>E-0052</code> probe_batch · exit 0 · 1.26s</summary>
+<pre>$ python /opt/inherit/probe.py shop.inventory reserve --batch [{&#34;args&#34;: [&#34;&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;abc&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;Hello, World!&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;apple&#34;], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;shop.inventory&#34;, &#34;function&#34;: &#34;reserve&#34;, &#34;status&#34;: &#34;raised&#34;, &#34;exc_type&#34;: &#34;OutOfStock&#34;, &#34;exc_message&#34;: &#34;&#34;, &#34;duration&#34;: 9.909000027619186e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;STOCK&#34;: &#34;{&#39;apple&#39;: 5, &#39;pear&#39;: 3}&#34;}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;shop.inventory&#34;, &#34;function&#34;: &#34;reserve&#34;, &#34;status&#34;: &#34;raised&#34;, &#34;exc_type&#34;: &#34;OutOfStock&#34;, &#34;exc_message&#34;: &#34;abc&#34;, &#34;duration&#34;: 5.805000000691507e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;STOCK&#34;: &#34;{&#39;apple&#39;: 5, &#39;pear&#39;: 3}&#34;}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;shop.inventory&#34;, &#34;function&#34;: &#34;reserve&#34;, &#34;status&#34;: &#34;raised&#34;, &#34;exc_type&#34;: &#34;OutOfStock&#34;, &#34;exc_message&#34;: &#34;Hello, World!&#34;, &#34;duration&#34;: 5.104999900140683e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;STOCK&#34;: &#34;{&#39;apple&#39;: 5, &#39;pear&#39;: 3}&#34;}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 3, &#34;module&#34;: &#34;shop.inventory&#34;, &#34;function&#34;: &#34;reserve&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;4&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 5.805999990116106e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;STOCK&#34;: &#34;{&#39;apple&#39;: 5, &#39;pear&#39;: 3}&#34;}, &#34;mutated&#34;: [&#34;STOCK&#34;], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0053"><summary><code>E-0053</code> probe_batch · exit 0 · 1.31s</summary>
+<pre>$ python /opt/inherit/probe.py shop.pricing bulk_discount --batch [{&#34;args&#34;: [0, 0.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [0, 2.5], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [1, 10.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [10, 0.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [10, 2.5], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [11, 10.0], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;shop.pricing&#34;, &#34;function&#34;: &#34;bulk_discount&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 9.17840000056458e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;shop.pricing&#34;, &#34;function&#34;: &#34;bulk_discount&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 8.007000019460975e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;shop.pricing&#34;, &#34;function&#34;: &#34;bulk_discount&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;10.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 6.806999977015948e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 3, &#34;module&#34;: &#34;shop.pricing&#34;, &#34;function&#34;: &#34;bulk_discount&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 7.5069999638799345e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 4, &#34;module&#34;: &#34;shop.pricing&#34;, &#34;function&#34;: &#34;bulk_discount&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;25.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 7.007000021985732e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 5, &#34;module&#34;: &#34;shop.pricing&#34;, &#34;function&#34;: &#34;bulk_discount&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;99.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 8.70799999574956e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0054"><summary><code>E-0054</code> probe_batch · exit 0 · 1.16s</summary>
+<pre>$ python /opt/inherit/probe.py shop.pricing bulk_discount --batch [{&#34;args&#34;: [0, 0.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [0, 2.5], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [1, 10.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [10, 0.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [10, 2.5], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [11, 10.0], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;shop.pricing&#34;, &#34;function&#34;: &#34;bulk_discount&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 1.9818000055238372e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;shop.pricing&#34;, &#34;function&#34;: &#34;bulk_discount&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 7.806999974491191e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;shop.pricing&#34;, &#34;function&#34;: &#34;bulk_discount&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;10.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 5.105000013827521e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 3, &#34;module&#34;: &#34;shop.pricing&#34;, &#34;function&#34;: &#34;bulk_discount&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 5.5049999900802504e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 4, &#34;module&#34;: &#34;shop.pricing&#34;, &#34;function&#34;: &#34;bulk_discount&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;25.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 4.104000026927679e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 5, &#34;module&#34;: &#34;shop.pricing&#34;, &#34;function&#34;: &#34;bulk_discount&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;99.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 3.7039999369881116e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0055"><summary><code>E-0055</code> probe_batch · exit 0 · 1.2s</summary>
+<pre>$ python /opt/inherit/probe.py shop.pricing with_tax --batch [{&#34;args&#34;: [0.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [10.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [2.5], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;shop.pricing&#34;, &#34;function&#34;: &#34;with_tax&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 3.361300002779899e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;shop.pricing&#34;, &#34;function&#34;: &#34;with_tax&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;12.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 1.0803999998643121e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;shop.pricing&#34;, &#34;function&#34;: &#34;with_tax&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;3.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 6.803000019317551e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0056"><summary><code>E-0056</code> probe_batch · exit 0 · 1.33s</summary>
+<pre>$ python /opt/inherit/probe.py shop.pricing with_tax --batch [{&#34;args&#34;: [0.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [10.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [2.5], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;shop.pricing&#34;, &#34;function&#34;: &#34;with_tax&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 1.8606999901749077e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;shop.pricing&#34;, &#34;function&#34;: &#34;with_tax&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;12.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 9.403999911228311e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;shop.pricing&#34;, &#34;function&#34;: &#34;with_tax&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;3.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 8.202999993045523e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0057"><summary><code>E-0057</code> probe_batch · exit 0 · 1.37s</summary>
+<pre>$ python /opt/inherit/probe.py shop.settings currency --batch [{&#34;args&#34;: [], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;shop.settings&#34;, &#34;function&#34;: &#34;currency&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;USD&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 2.871100002721505e-05, &#34;env_reads&#34;: {&#34;SHOP_CURRENCY&#34;: null}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0058"><summary><code>E-0058</code> probe_batch · exit 0 · 1.14s</summary>
+<pre>$ python /opt/inherit/probe.py shop.settings currency --batch [{&#34;args&#34;: [], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;shop.settings&#34;, &#34;function&#34;: &#34;currency&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;USD&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 2.7610000074673735e-05, &#34;env_reads&#34;: {&#34;SHOP_CURRENCY&#34;: null}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0059"><summary><code>E-0059</code> probe_batch · exit 0 · 1.37s</summary>
+<pre>$ python /opt/inherit/probe.py shop.settings format_price --batch [{&#34;args&#34;: [0.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [10.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [2.5], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;shop.settings&#34;, &#34;function&#34;: &#34;format_price&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;0.00 USD&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 2.1707999962927715e-05, &#34;env_reads&#34;: {&#34;SHOP_CURRENCY&#34;: null}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;shop.settings&#34;, &#34;function&#34;: &#34;format_price&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;10.00 USD&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 9.602999966773496e-06, &#34;env_reads&#34;: {&#34;SHOP_CURRENCY&#34;: null}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;shop.settings&#34;, &#34;function&#34;: &#34;format_price&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;2.50 USD&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 2.240800006347854e-05, &#34;env_reads&#34;: {&#34;SHOP_CURRENCY&#34;: null}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0060"><summary><code>E-0060</code> probe_batch · exit 0 · 1.18s</summary>
+<pre>$ python /opt/inherit/probe.py shop.settings format_price --batch [{&#34;args&#34;: [0.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [10.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [2.5], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;shop.settings&#34;, &#34;function&#34;: &#34;format_price&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;0.00 USD&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 5.321900005128555e-05, &#34;env_reads&#34;: {&#34;SHOP_CURRENCY&#34;: null}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;shop.settings&#34;, &#34;function&#34;: &#34;format_price&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;10.00 USD&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 1.8606999901749077e-05, &#34;env_reads&#34;: {&#34;SHOP_CURRENCY&#34;: null}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;shop.settings&#34;, &#34;function&#34;: &#34;format_price&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;2.50 USD&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 2.0307999989199743e-05, &#34;env_reads&#34;: {&#34;SHOP_CURRENCY&#34;: null}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0061"><summary><code>E-0061</code> probe_batch · exit 0 · 1.26s</summary>
+<pre>$ python /opt/inherit/probe.py shop.text slugify --batch [{&#34;args&#34;: [&#34;&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;abc&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;Hello, World!&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;apple&#34;], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;slugify&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 9.397999974680715e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;slugify&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;abc&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 1.4096000086283311e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;slugify&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;hello-world&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 1.5895000046839414e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 3, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;slugify&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;apple&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 5.898000040360785e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0062"><summary><code>E-0062</code> probe_batch · exit 0 · 1.36s</summary>
+<pre>$ python /opt/inherit/probe.py shop.text slugify --batch [{&#34;args&#34;: [&#34;&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;abc&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;Hello, World!&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;apple&#34;], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;slugify&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 3.199100001438637e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;slugify&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;abc&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 1.5996000001905486e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;slugify&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;hello-world&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 1.7795000076148426e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 3, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;slugify&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;apple&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 1.1297000014565128e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0063"><summary><code>E-0063</code> probe_batch · exit 0 · 1.18s</summary>
+<pre>$ python /opt/inherit/probe.py shop.text truncate --batch [{&#34;args&#34;: [&#34;&#34;, 0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;&#34;, 11], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;abc&#34;, 1], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;abc&#34;, -1], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;Hello, World!&#34;, 10], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;apple&#34;, 0], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;truncate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 6.397999982254987e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;truncate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 2.799000071718183e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;truncate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;a...&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 3.9990000004763715e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 3, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;truncate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;...&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 2.3989999817786156e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 4, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;truncate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;Hello, ...&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 2.399999971203215e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 5, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;truncate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;ap...&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 3.5889999935534433e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0064"><summary><code>E-0064</code> probe_batch · exit 0 · 1.36s</summary>
+<pre>$ python /opt/inherit/probe.py shop.text truncate --batch [{&#34;args&#34;: [&#34;&#34;, 0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;&#34;, 11], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;abc&#34;, 1], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;abc&#34;, -1], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;Hello, World!&#34;, 10], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;apple&#34;, 0], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;truncate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 8.096999977169617e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;truncate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 3.698999989865115e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;truncate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;a...&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 4.7989999529818306e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 3, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;truncate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;...&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 6.198000050972041e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 4, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;truncate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;Hello, ...&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 5.697999995391001e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 5, &#34;module&#34;: &#34;shop.text&#34;, &#34;function&#34;: &#34;truncate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;&#39;ap...&#39;&#34;, &#34;type&#34;: &#34;str&#34;, &#34;duration&#34;: 4.199000045446155e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0065"><summary><code>E-0065</code> gate_baseline · exit 1 · 3.34s · seed 500</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=500</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=500
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E       AssertionError: assert 0 == 5
+E        +  where 0 = &lt;function available at 0x7b2d04596340&gt;(&#39;apple&#39;)
+E        +    where &lt;function available at 0x7b2d04596340&gt; = inventory.available
+
+tests/test_report.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_report.py::test_opening_stock_levels - As</pre></details><details id="E-0066"><summary><code>E-0066</code> gate_baseline · exit 1 · 3.09s · seed 501</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=501</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=501
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_text.py::test_slugify PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+
+=================================== FAILURES ===================================
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E       AssertionError: assert 0 == 5
+E        +  where 0 = &lt;function available at 0x700585032340&gt;(&#39;apple&#39;)
+E        +    where &lt;function available at 0x700585032340&gt; = inventory.available
+
+tests/test_report.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_report.py::test_opening_stock_levels - As</pre></details><details id="E-0067"><summary><code>E-0067</code> gate_baseline · exit 1 · 3.87s · seed 502</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=502</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=502
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_settings.py::test_default_price_format FAILED
+tests/test_report.py::test_opening_stock_levels FAILED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+
+=================================== FAILURES ===================================
+__________________________ test_default_price_format ___________________________
+
+    def test_default_price_format():
+&gt;       assert settings.format_price(3) == &#34;3.00 USD&#34;
+E       AssertionError: assert &#39;3.00 EUR&#39; == &#39;3.00 USD&#39;
+E         
+E         - 3.00 USD
+E         ?       ^^
+E         + 3.00 EUR
+E         ?      + ^
+
+tests/test_settings.py:12: AssertionError
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E </pre></details><details id="E-0068"><summary><code>E-0068</code> gate_baseline · exit 1 · 4.15s · seed 503</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=503</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=503
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+
+=================================== FAILURES ===================================
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E       AssertionError: assert 0 == 5
+E        +  where 0 = &lt;function available at 0x74a40632a340&gt;(&#39;apple&#39;)
+E        +    where &lt;function available at 0x74a40632a340&gt; = inventory.available
+
+tests/test_report.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_report.py::test_opening_stock_levels - As</pre></details><details id="E-0069"><summary><code>E-0069</code> gate_baseline · exit 1 · 2.99s · seed 504</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=504</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=504
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_slugify PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_opening_stock_levels ___________________________
+
+    def test_opening_stock_levels():
+&gt;       assert inventory.available(&#34;apple&#34;) == 5
+E       AssertionError: assert 0 == 5
+E        +  where 0 = &lt;function available at 0x775dcadb2340&gt;(&#39;apple&#39;)
+E        +    where &lt;function available at 0x775dcadb2340&gt; = inventory.available
+
+tests/test_report.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_report.py::test_opening_stock_levels - As</pre></details><details id="E-0070"><summary><code>E-0070</code> gate_generated · exit 1 · 4.31s · seed 500</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=500</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=500
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 42 items
+
+tests/test_inherit_characterization.py::test_shop_inventory_reserve_case_2 PASSED
+tests/test_inherit_characterization.py::test_shop_text_truncate_case_2 PASSED
+tests/test_inherit_characterization.py::test_shop_text_truncate_case_6 PASSED
+tests/test_inherit_characterization.py::test_shop_settings_format_price_case_2 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_bulk_discount_case_6 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_bulk_discount_case_2 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_available_case_2 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_with_tax_case_2 PASSED
+tests/test_inherit_characterization.py::test_shop_text_slugify_case_4 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_available_case_3 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_with_tax_case_3 PASSED
+tests/test_inherit_characterization.py::test_shop_text_slugify_case_1 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_bulk_discount_case_3 PASSED
+tests/test_inherit_characterization.py::test_shop_settings_format_price_case_3 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_reserve_case_3 PASSED</pre></details><details id="E-0071"><summary><code>E-0071</code> gate_generated · exit 1 · 3.77s · seed 501</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=501</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=501
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 42 items
+
+tests/test_text.py::test_slugify PASSED
+tests/test_text.py::test_truncate_short_text_unchanged PASSED
+tests/test_text.py::test_truncate_long_text PASSED
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_inherit_characterization.py::test_shop_settings_format_price_case_3 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_available_case_3 PASSED
+tests/test_inherit_characterization.py::test_shop_text_slugify_case_3 PASSED
+tests/test_inherit_characterization.py::test_shop_text_truncate_case_4 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_with_tax_case_1 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_reserve_case_4 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_bulk_discount_case_3 PASSED
+tests/test_inherit_characterization.py::test_</pre></details><details id="E-0072"><summary><code>E-0072</code> gate_generated · exit 1 · 3.34s · seed 502</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=502</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=502
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 42 items
+
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_settings.py::test_default_price_format FAILED
+tests/test_report.py::test_opening_stock_levels FAILED
+tests/test_inherit_characterization.py::test_shop_pricing_bulk_discount_case_4 PASSED
+tests/test_inherit_characterization.py::test_shop_text_slugify_case_3 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_reserve_case_3 PASSED
+tests/test_inherit_characterization.py::test_shop_settings_currency_case_1 PASSED
+tests/test_inherit_characterization.py::test_shop_text_truncate_case_6 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_available_case_1 PASSED
+tests/test_inherit_characterization.py::test_shop_text_truncate_case_2 PASSED
+tests/test_inherit_characterization.py::test_shop_text_truncate_case_3 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_available_case_4 PASSED
+tests/test_inherit_characterization.py::test_shop_settings_format_price_case_1 PASSED
+tests/test_inherit_characterization.py::test_shop_text_slugify_case_2 PA</pre></details><details id="E-0073"><summary><code>E-0073</code> gate_generated · exit 1 · 3.35s · seed 503</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=503</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=503
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 42 items
+
+tests/test_pricing.py::test_small_order_has_no_discount PASSED
+tests/test_pricing.py::test_tax_default_rate PASSED
+tests/test_inventory.py::test_reserve_all_apples PASSED
+tests/test_inventory.py::test_out_of_stock_raises PASSED
+tests/test_inventory.py::test_unknown_item_is_unavailable PASSED
+tests/test_report.py::test_opening_stock_levels FAILED
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_with_tax_case_3 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_available_case_4 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_reserve_case_1 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_bulk_discount_case_1 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_bulk_discount_case_5 PASSED
+tests/test_inherit_characterization.py::test_shop_text_slugify_case_4 PASSED
+tests/test_inherit_characterization.py::test_shop_text_truncate_case_4 PASSED
+tests/test_inherit_characterization.py::test_shop_settings_format_price_case_1 PASSED
+tests/test_inherit_characterization.py::test_shop_text_truncate_case_1 PASSED
+tests/test_inherit_characterizatio</pre></details><details id="E-0074"><summary><code>E-0074</code> gate_generated · exit 1 · 3.59s · seed 504</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=504</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=504
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 42 items
+
+tests/test_settings.py::test_default_price_format PASSED
+tests/test_settings.py::test_euro_store_uses_eur PASSED
+tests/test_inherit_characterization.py::test_shop_text_slugify_case_2 PASSED
+tests/test_inherit_characterization.py::test_shop_settings_format_price_case_3 PASSED
+tests/test_inherit_characterization.py::test_shop_text_truncate_case_3 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_with_tax_case_3 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_available_case_4 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_reserve_case_1 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_bulk_discount_case_3 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_bulk_discount_case_2 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_bulk_discount_case_6 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_available_case_1 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_reserve_case_4 PASSED
+tests/test_inherit_characterization.py::test_shop_text_truncate_case_2 PASSED
+tests/test_inherit_characterization.py::test_shop_text_truncate_case_6 PASSED
+tests/test_inherit_characterization.py::test_shop_pr</pre></details><details id="E-0075"><summary><code>E-0075</code> gate_generated_first · exit 1 · 3.46s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_inherit_characterization.py .</pre><div class="muted">order: tests/test_inherit_characterization.py → .</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 42 items
+
+tests/test_inherit_characterization.py::test_shop_inventory_available_case_1 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_available_case_2 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_available_case_3 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_available_case_4 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_reserve_case_1 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_reserve_case_2 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_reserve_case_3 PASSED
+tests/test_inherit_characterization.py::test_shop_inventory_reserve_case_4 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_bulk_discount_case_1 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_bulk_discount_case_2 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_bulk_discount_case_3 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_bulk_discount_case_4 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_bulk_discount_case_5 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_bulk_discount_case_6 PASSED
+tests/test_inherit_characterization.py::test_shop_pricing_with_tax_case_1 PASSED
+tests/test_inherit_cha</pre></details><details id="E-0076"><summary><code>E-0076</code> characterization_validation · exit 0 · 3.09s</summary>
+<pre>$ python -m pytest -q -p no:cacheprovider -p no:randomly tests/test_inherit_characterization.py</pre>
+<pre>...............................                                          [100%]
+31 passed in 0.77s
+</pre></details>
+</section>
+</main>
+<script>
+// open the evidence entry a link points at
+function openHash(){var el=document.getElementById(location.hash.slice(1));if(el&&el.tagName==="DETAILS"){el.open=true;el.scrollIntoView()}}
+window.addEventListener("hashchange",openHash);openHash();
+</script>
+</body></html>

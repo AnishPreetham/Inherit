@@ -1,0 +1,725 @@
+{
+  "repo": "vault",
+  "generated_at": "2026-10-28T12:35:47+00:00",
+  "seconds": 91.6,
+  "backends": {
+    "llm": "mock",
+    "sandbox": "docker"
+  },
+  "models": {
+    "reasoner": "mock",
+    "worker": "mock"
+  },
+  "stability": {
+    "runs": 20,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "tests_total": 3,
+    "unstable": [],
+    "always_failing": [],
+    "stable_observed": 3,
+    "per_test": [
+      {
+        "test": "tests/test_strings.py::test_mask_keeps_last_four",
+        "passed": 20,
+        "failed": 0
+      },
+      {
+        "test": "tests/test_strings.py::test_short_secret_fully_masked",
+        "passed": 20,
+        "failed": 0
+      },
+      {
+        "test": "tests/test_strings.py::test_fingerprint_is_stable",
+        "passed": 20,
+        "failed": 0
+      }
+    ],
+    "run_matrix": [
+      {
+        "seed": 1,
+        "evidence_id": "E-0003",
+        "failed": []
+      },
+      {
+        "seed": 2,
+        "evidence_id": "E-0004",
+        "failed": []
+      },
+      {
+        "seed": 3,
+        "evidence_id": "E-0005",
+        "failed": []
+      },
+      {
+        "seed": 4,
+        "evidence_id": "E-0006",
+        "failed": []
+      },
+      {
+        "seed": 5,
+        "evidence_id": "E-0007",
+        "failed": []
+      },
+      {
+        "seed": 6,
+        "evidence_id": "E-0008",
+        "failed": []
+      },
+      {
+        "seed": 7,
+        "evidence_id": "E-0009",
+        "failed": []
+      },
+      {
+        "seed": 8,
+        "evidence_id": "E-0010",
+        "failed": []
+      },
+      {
+        "seed": 9,
+        "evidence_id": "E-0011",
+        "failed": []
+      },
+      {
+        "seed": 10,
+        "evidence_id": "E-0012",
+        "failed": []
+      },
+      {
+        "seed": 11,
+        "evidence_id": "E-0013",
+        "failed": []
+      },
+      {
+        "seed": 12,
+        "evidence_id": "E-0014",
+        "failed": []
+      },
+      {
+        "seed": 13,
+        "evidence_id": "E-0015",
+        "failed": []
+      },
+      {
+        "seed": 14,
+        "evidence_id": "E-0016",
+        "failed": []
+      },
+      {
+        "seed": 15,
+        "evidence_id": "E-0017",
+        "failed": []
+      },
+      {
+        "seed": 16,
+        "evidence_id": "E-0018",
+        "failed": []
+      },
+      {
+        "seed": 17,
+        "evidence_id": "E-0019",
+        "failed": []
+      },
+      {
+        "seed": 18,
+        "evidence_id": "E-0020",
+        "failed": []
+      },
+      {
+        "seed": 19,
+        "evidence_id": "E-0021",
+        "failed": []
+      },
+      {
+        "seed": 20,
+        "evidence_id": "E-0022",
+        "failed": []
+      }
+    ]
+  },
+  "environment": {
+    "sources": [
+      "requirements.txt"
+    ],
+    "requirements": [
+      "pycrypto==2.6.1"
+    ],
+    "skipped": [
+      "-e . (requirements.txt: not installable from prebuilt wheels)"
+    ],
+    "install_status": "failed",
+    "install_evidence": "E-0001",
+    "install_error": "ERROR: Could not find a version that satisfies the requirement pycrypto==2.6.1 (from versions: none) ERROR: No matching distribution found for pycrypto==2.6.1",
+    "missing_modules": [
+      "Crypto"
+    ],
+    "collection_errors": []
+  },
+  "investigations": {
+    "limit": 10,
+    "investigated": 0,
+    "unstable": 0
+  },
+  "repairs": [],
+  "behavior": {
+    "functions_total": 3,
+    "functions_with_pins": 2,
+    "pinned": 4,
+    "flagged_for_review": [
+      {
+        "function": "vault.strings.mask",
+        "test": "test_vault_strings_mask_case_1",
+        "outcome": {
+          "index": 0,
+          "module": "vault.strings",
+          "function": "mask",
+          "status": "raised",
+          "exc_type": "TypeError",
+          "exc_message": "object of type 'int' has no len()",
+          "duration": 2.940600006695604e-05,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0025",
+          "E-0026"
+        ]
+      },
+      {
+        "function": "vault.strings.fingerprint",
+        "test": "test_vault_strings_fingerprint_case_1",
+        "outcome": {
+          "index": 0,
+          "module": "vault.strings",
+          "function": "fingerprint",
+          "status": "raised",
+          "exc_type": "AttributeError",
+          "exc_message": "'int' object has no attribute 'encode'",
+          "duration": 1.3902999853598885e-05,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0027",
+          "E-0028"
+        ]
+      }
+    ],
+    "nondeterministic_excluded": 0,
+    "stateful_isolated": 0,
+    "stateful_excluded": 0,
+    "generated_tests_dropped": [],
+    "gate_runs": 6,
+    "failed_functions": {
+      "vault.cipher.encrypt": "No module named 'Crypto'"
+    },
+    "validation_passed": true,
+    "validation_evidence": "E-0040"
+  },
+  "docs": {
+    "observed": 4,
+    "inferred": 0,
+    "downgraded": []
+  },
+  "uncertainties": [
+    "This run used the offline mock model, not NVIDIA Nemotron: inputs were heuristic and no real diagnosis was attempted.",
+    "Tests could not import Crypto. Failures in those files reflect the environment, not the code's reliability.",
+    "Dependency installation failed, so some code could not be imported: ERROR: Could not find a version that satisfies the requirement pycrypto==2.6.1 (from versions: none) ERROR: No matching distribution found for pycrypto==2.6.1",
+    "Stability results cover 20 shuffled runs (seeds 1-20) in one sandbox environment. Tests with no observed failures may still fail under other orders, timing, operating systems or load.",
+    "Characterization tests pin what the code does today, which may include bugs. Review them before treating them as a specification.",
+    "vault.strings.mask raises TypeError for 1 recorded input(s); confirm this is intended.",
+    "vault.strings.fingerprint raises AttributeError for 1 recorded input(s); confirm this is intended.",
+    "vault.cipher.encrypt: no behavior recorded (No module named 'Crypto').",
+    "1 requirement line(s) were not installed (only prebuilt wheels from the package index are supported)."
+  ],
+  "model_usage": [
+    {
+      "role": "reasoner",
+      "model": "mock-reasoner",
+      "calls": 3,
+      "ok_calls": 3,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "avg_latency": 0.0
+    },
+    {
+      "role": "worker",
+      "model": "mock-worker",
+      "calls": 3,
+      "ok_calls": 3,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "avg_latency": 0.0
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-0001",
+      "kind": "install_dependencies",
+      "command": "pip install --only-binary=:all: pycrypto==2.6.1",
+      "exit_code": 1,
+      "duration": 4.42,
+      "seed": null,
+      "order": null,
+      "stdout": "",
+      "stderr": "ERROR: Could not find a version that satisfies the requirement pycrypto==2.6.1 (from versions: none)\nERROR: No matching distribution found for pycrypto==2.6.1\n"
+    },
+    {
+      "id": "E-0002",
+      "kind": "collect",
+      "command": "python -m pytest -p no:cacheprovider -p no:randomly --collect-only -q",
+      "exit_code": 2,
+      "duration": 3.17,
+      "seed": null,
+      "order": null,
+      "stdout": "tests/test_strings.py::test_mask_keeps_last_four\ntests/test_strings.py::test_short_secret_fully_masked\ntests/test_strings.py::test_fingerprint_is_stable\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n3 tests collected, 1 error in 0.91s\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0003",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=1",
+      "exit_code": 1,
+      "duration": 2.77,
+      "seed": 1,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=1\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.51s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0004",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=2",
+      "exit_code": 1,
+      "duration": 2.33,
+      "seed": 2,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=2\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_mask_keeps_last_four PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_short_secret_fully_masked PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.38s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0005",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=3",
+      "exit_code": 1,
+      "duration": 2.4,
+      "seed": 3,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=3\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.42s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0006",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=4",
+      "exit_code": 1,
+      "duration": 2.08,
+      "seed": 4,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=4\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\ntests/test_strings.py::test_short_secret_fully_masked PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.40s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0007",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=5",
+      "exit_code": 1,
+      "duration": 2.19,
+      "seed": 5,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=5\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\ntests/test_strings.py::test_short_secret_fully_masked PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.43s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0008",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=6",
+      "exit_code": 1,
+      "duration": 2.14,
+      "seed": 6,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=6\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_mask_keeps_last_four PASSED\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.43s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0009",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=7",
+      "exit_code": 1,
+      "duration": 2.34,
+      "seed": 7,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=7\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_mask_keeps_last_four PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_short_secret_fully_masked PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.44s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0010",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=8",
+      "exit_code": 1,
+      "duration": 2.21,
+      "seed": 8,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=8\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.38s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0011",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=9",
+      "exit_code": 1,
+      "duration": 2.25,
+      "seed": 9,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=9\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_mask_keeps_last_four PASSED\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.44s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0012",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=10",
+      "exit_code": 1,
+      "duration": 2.37,
+      "seed": 10,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=10\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.45s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0013",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=11",
+      "exit_code": 1,
+      "duration": 2.12,
+      "seed": 11,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=11\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_mask_keeps_last_four PASSED\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.44s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0014",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=12",
+      "exit_code": 1,
+      "duration": 2.15,
+      "seed": 12,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=12\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.39s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0015",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=13",
+      "exit_code": 1,
+      "duration": 2.33,
+      "seed": 13,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=13\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.45s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0016",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=14",
+      "exit_code": 1,
+      "duration": 2.23,
+      "seed": 14,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=14\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.43s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0017",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=15",
+      "exit_code": 1,
+      "duration": 2.81,
+      "seed": 15,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=15\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.54s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0018",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=16",
+      "exit_code": 1,
+      "duration": 2.82,
+      "seed": 16,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=16\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.43s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0019",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=17",
+      "exit_code": 1,
+      "duration": 2.27,
+      "seed": 17,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=17\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.42s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0020",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=18",
+      "exit_code": 1,
+      "duration": 2.18,
+      "seed": 18,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=18\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_mask_keeps_last_four PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_short_secret_fully_masked PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.39s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0021",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=19",
+      "exit_code": 1,
+      "duration": 2.16,
+      "seed": 19,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=19\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.41s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0022",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=20",
+      "exit_code": 1,
+      "duration": 2.42,
+      "seed": 20,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=20\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\ntests/test_strings.py::test_short_secret_fully_masked PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.42s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0023",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py vault.cipher encrypt --batch [{\"args\": [\"\", 1], \"kwargs\": {}}, {\"args\": [\"\", \"a\"], \"kwargs\": {}}, {\"args\": [\"abc\", 1], \"kwargs\": {}}, {\"args\": [\"abc\", \"a\"], \"kwargs\": {}}, {\"args\": [\"Hello, World!\", 1], \"kwargs\": {}}, {\"args\": [\"Hello, World!\", \"a\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.01,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"vault.cipher\", \"function\": \"encrypt\", \"status\": \"import_error\", \"exc_type\": \"ModuleNotFoundError\", \"exc_message\": \"No module named 'Crypto'\"}\nINHERIT_PROBE {\"index\": 1, \"module\": \"vault.cipher\", \"function\": \"encrypt\", \"status\": \"import_error\", \"exc_type\": \"ModuleNotFoundError\", \"exc_message\": \"No module named 'Crypto'\"}\nINHERIT_PROBE {\"index\": 2, \"module\": \"vault.cipher\", \"function\": \"encrypt\", \"status\": \"import_error\", \"exc_type\": \"ModuleNotFoundError\", \"exc_message\": \"No module named 'Crypto'\"}\nINHERIT_PROBE {\"index\": 3, \"module\": \"vault.cipher\", \"function\": \"encrypt\", \"status\": \"import_error\", \"exc_type\": \"ModuleNotFoundError\", \"exc_message\": \"No module named 'Crypto'\"}\nINHERIT_PROBE {\"index\": 4, \"module\": \"vault.cipher\", \"function\": \"encrypt\", \"status\": \"import_error\", \"exc_type\": \"ModuleNotFoundError\", \"exc_message\": \"No module named 'Crypto'\"}\nINHERIT_PROBE {\"index\": 5, \"module\": \"vault.cipher\", \"function\": \"encrypt\", \"status\": \"import_error\", \"exc_type\": \"ModuleNotFoundError\", \"exc_message\": \"No module named 'Crypto'\"}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0024",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py vault.cipher encrypt --batch [{\"args\": [\"\", 1], \"kwargs\": {}}, {\"args\": [\"\", \"a\"], \"kwargs\": {}}, {\"args\": [\"abc\", 1], \"kwargs\": {}}, {\"args\": [\"abc\", \"a\"], \"kwargs\": {}}, {\"args\": [\"Hello, World!\", 1], \"kwargs\": {}}, {\"args\": [\"Hello, World!\", \"a\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.02,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"vault.cipher\", \"function\": \"encrypt\", \"status\": \"import_error\", \"exc_type\": \"ModuleNotFoundError\", \"exc_message\": \"No module named 'Crypto'\"}\nINHERIT_PROBE {\"index\": 1, \"module\": \"vault.cipher\", \"function\": \"encrypt\", \"status\": \"import_error\", \"exc_type\": \"ModuleNotFoundError\", \"exc_message\": \"No module named 'Crypto'\"}\nINHERIT_PROBE {\"index\": 2, \"module\": \"vault.cipher\", \"function\": \"encrypt\", \"status\": \"import_error\", \"exc_type\": \"ModuleNotFoundError\", \"exc_message\": \"No module named 'Crypto'\"}\nINHERIT_PROBE {\"index\": 3, \"module\": \"vault.cipher\", \"function\": \"encrypt\", \"status\": \"import_error\", \"exc_type\": \"ModuleNotFoundError\", \"exc_message\": \"No module named 'Crypto'\"}\nINHERIT_PROBE {\"index\": 4, \"module\": \"vault.cipher\", \"function\": \"encrypt\", \"status\": \"import_error\", \"exc_type\": \"ModuleNotFoundError\", \"exc_message\": \"No module named 'Crypto'\"}\nINHERIT_PROBE {\"index\": 5, \"module\": \"vault.cipher\", \"function\": \"encrypt\", \"status\": \"import_error\", \"exc_type\": \"ModuleNotFoundError\", \"exc_message\": \"No module named 'Crypto'\"}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0025",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py vault.strings mask --batch [{\"args\": [1], \"kwargs\": {}}, {\"args\": [\"a\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.02,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"vault.strings\", \"function\": \"mask\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"object of type 'int' has no len()\", \"duration\": 2.940600006695604e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"vault.strings\", \"function\": \"mask\", \"status\": \"returned\", \"repr\": \"'*'\", \"type\": \"str\", \"duration\": 7.301000096049393e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0026",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py vault.strings mask --batch [{\"args\": [1], \"kwargs\": {}}, {\"args\": [\"a\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.19,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"vault.strings\", \"function\": \"mask\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"object of type 'int' has no len()\", \"duration\": 3.740800002560718e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"vault.strings\", \"function\": \"mask\", \"status\": \"returned\", \"repr\": \"'*'\", \"type\": \"str\", \"duration\": 5.700999963664799e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0027",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py vault.strings fingerprint --batch [{\"args\": [1], \"kwargs\": {}}, {\"args\": [\"a\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.08,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"vault.strings\", \"function\": \"fingerprint\", \"status\": \"raised\", \"exc_type\": \"AttributeError\", \"exc_message\": \"'int' object has no attribute 'encode'\", \"duration\": 1.3902999853598885e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"vault.strings\", \"function\": \"fingerprint\", \"status\": \"returned\", \"repr\": \"'ca978112ca1b'\", \"type\": \"str\", \"duration\": 3.3307000194326974e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0028",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py vault.strings fingerprint --batch [{\"args\": [1], \"kwargs\": {}}, {\"args\": [\"a\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.01,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"vault.strings\", \"function\": \"fingerprint\", \"status\": \"raised\", \"exc_type\": \"AttributeError\", \"exc_message\": \"'int' object has no attribute 'encode'\", \"duration\": 1.4902999964760966e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"vault.strings\", \"function\": \"fingerprint\", \"status\": \"returned\", \"repr\": \"'ca978112ca1b'\", \"type\": \"str\", \"duration\": 2.860600011445058e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0029",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=500",
+      "exit_code": 1,
+      "duration": 2.14,
+      "seed": 500,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=500\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_mask_keeps_last_four PASSED\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.40s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0030",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=501",
+      "exit_code": 1,
+      "duration": 2.11,
+      "seed": 501,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=501\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.39s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0031",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=502",
+      "exit_code": 1,
+      "duration": 2.12,
+      "seed": 502,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=502\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\ntests/test_strings.py::test_short_secret_fully_masked PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.43s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0032",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=503",
+      "exit_code": 1,
+      "duration": 1.96,
+      "seed": 503,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=503\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.37s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0033",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=504",
+      "exit_code": 1,
+      "duration": 2.21,
+      "seed": 504,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=504\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 3 items / 1 error\n\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ============================\nERROR tests/test_cipher.py\n========================== 3 passed, 1 error in 0.44s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0034",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=500",
+      "exit_code": 1,
+      "duration": 2.5,
+      "seed": 500,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=500\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 7 items / 1 error\n\ntests/test_inherit_characterization.py::test_vault_strings_mask_case_2 PASSED\ntests/test_inherit_characterization.py::test_vault_strings_fingerprint_case_1 PASSED\ntests/test_inherit_characterization.py::test_vault_strings_mask_case_1 PASSED\ntests/test_inherit_characterization.py::test_vault_strings_fingerprint_case_2 PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n==========================",
+      "stderr": ""
+    },
+    {
+      "id": "E-0035",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=501",
+      "exit_code": 1,
+      "duration": 2.84,
+      "seed": 501,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=501\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 7 items / 1 error\n\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_inherit_characterization.py::test_vault_strings_mask_case_1 PASSED\ntests/test_inherit_characterization.py::test_vault_strings_fingerprint_case_1 PASSED\ntests/test_inherit_characterization.py::test_vault_strings_fingerprint_case_2 PASSED\ntests/test_inherit_characterization.py::test_vault_strings_mask_case_2 PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n==========================",
+      "stderr": ""
+    },
+    {
+      "id": "E-0036",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=502",
+      "exit_code": 1,
+      "duration": 3.35,
+      "seed": 502,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=502\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 7 items / 1 error\n\ntests/test_inherit_characterization.py::test_vault_strings_mask_case_2 PASSED\ntests/test_inherit_characterization.py::test_vault_strings_fingerprint_case_1 PASSED\ntests/test_inherit_characterization.py::test_vault_strings_mask_case_1 PASSED\ntests/test_inherit_characterization.py::test_vault_strings_fingerprint_case_2 PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\ntests/test_strings.py::test_short_secret_fully_masked PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n==========================",
+      "stderr": ""
+    },
+    {
+      "id": "E-0037",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=503",
+      "exit_code": 1,
+      "duration": 3.35,
+      "seed": 503,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=503\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 7 items / 1 error\n\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\ntests/test_inherit_characterization.py::test_vault_strings_fingerprint_case_1 PASSED\ntests/test_inherit_characterization.py::test_vault_strings_mask_case_1 PASSED\ntests/test_inherit_characterization.py::test_vault_strings_fingerprint_case_2 PASSED\ntests/test_inherit_characterization.py::test_vault_strings_mask_case_2 PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n==========================",
+      "stderr": ""
+    },
+    {
+      "id": "E-0038",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=504",
+      "exit_code": 1,
+      "duration": 2.6,
+      "seed": 504,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=504\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 7 items / 1 error\n\ntests/test_inherit_characterization.py::test_vault_strings_fingerprint_case_1 PASSED\ntests/test_inherit_characterization.py::test_vault_strings_mask_case_2 PASSED\ntests/test_inherit_characterization.py::test_vault_strings_fingerprint_case_2 PASSED\ntests/test_inherit_characterization.py::test_vault_strings_mask_case_1 PASSED\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n==========================",
+      "stderr": ""
+    },
+    {
+      "id": "E-0039",
+      "kind": "gate_generated_first",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_inherit_characterization.py .",
+      "exit_code": 1,
+      "duration": 2.25,
+      "seed": null,
+      "order": [
+        "tests/test_inherit_characterization.py",
+        "."
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 7 items / 1 error\n\ntests/test_inherit_characterization.py::test_vault_strings_mask_case_1 PASSED\ntests/test_inherit_characterization.py::test_vault_strings_mask_case_2 PASSED\ntests/test_inherit_characterization.py::test_vault_strings_fingerprint_case_1 PASSED\ntests/test_inherit_characterization.py::test_vault_strings_fingerprint_case_2 PASSED\ntests/test_strings.py::test_mask_keeps_last_four PASSED\ntests/test_strings.py::test_short_secret_fully_masked PASSED\ntests/test_strings.py::test_fingerprint_is_stable PASSED\n\n==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_cipher.py _____________________\nImportError while importing test module '/work/tests/test_cipher.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cipher.py:1: in <module>\n    from vault.cipher import encrypt\nvault/cipher.py:1: in <module>\n    from Crypto.Cipher import AES\nE   ModuleNotFoundError: No module named 'Crypto'\n=========================== short test summary info ========================",
+      "stderr": ""
+    },
+    {
+      "id": "E-0040",
+      "kind": "characterization_validation",
+      "command": "python -m pytest -q -p no:cacheprovider -p no:randomly tests/test_inherit_characterization.py",
+      "exit_code": 0,
+      "duration": 2.03,
+      "seed": null,
+      "order": null,
+      "stdout": "....                                                                     [100%]\n4 passed in 0.20s\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,1435 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inherit Report</title>
+<style>
+:root{--bg:#fbfbfa;--card:#fff;--fg:#1d1d1f;--muted:#5f6368;--line:#e3e3e0;--ok:#1a7f37;--warn:#9a6700;--bad:#cf222e;--accent:#76b900;--code:#f3f3f1}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111214;--card:#1a1b1e;--fg:#e8e8e6;--muted:#a0a3a8;--line:#2c2e33;--ok:#3fb950;--warn:#d29922;--bad:#f85149;--code:#22242a}}
+:root[data-theme="dark"]{--bg:#111214;--card:#1a1b1e;--fg:#e8e8e6;--muted:#a0a3a8;--line:#2c2e33;--ok:#3fb950;--warn:#d29922;--bad:#f85149;--code:#22242a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1040px;margin:0 auto;padding:32px 16px 64px}
+h1{font-size:26px;margin:0 0 4px}h2{font-size:18px;margin:0 0 12px}.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:16px}
+.stat b{display:block;font-size:24px}.stat span{color:var(--muted);font-size:13px}
+.pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid currentColor}
+.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+code,pre{font-family:ui-monospace,Consolas,monospace;font-size:12.5px}pre{background:var(--code);padding:10px;border-radius:6px;overflow-x:auto;white-space:pre-wrap;word-break:break-word;margin:6px 0}
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:2px}
+ul{padding-left:20px;margin:6px 0}details summary{cursor:pointer}.scroll{overflow-x:auto}
+</style></head><body><main>
+<h1>Inherit reliability report</h1>
+<div class="muted"><code>plugins</code> · 2026-10-28T12:29:40+00:00 · 181.9s · sandbox: docker · models: mock / mock</div>
+<p class="muted">Each dimension is reported separately. There is deliberately no single trust score: a suite can be stable but shallow, or broad but flaky.</p>
+
+<div class="grid">
+<div class="card stat"><b>2</b><span>unstable tests in 20 shuffled runs</span></div>
+<div class="card stat"><b>2</b><span>behaviors pinned across 2/4 functions</span></div>
+<div class="card stat"><b>0/2</b><span>repairs verified by re-running</span></div>
+<div class="card stat"><b>6</b><span>open uncertainties</span></div>
+</div>
+
+<section class="card"><h2>Stability</h2>
+<p class="muted">4 tests, 20 runs, seeds 1–20. 2 tests had no observed failures (not proof of determinism).</p>
+<div class="scroll"><table><tr><th>Test</th><th>Failed</th><th>Classification</th><th>Polluter(s)</th><th>Evidence</th></tr>
+<tr><td><code>tests/test_loader.py::test_two_plugins_loaded</code></td><td>8/20</td><td>depends_on_earlier_test<br><span class="muted">fails when run alone; passes only after 1 specific earlier test(s) ran, so it relies on setup it does not do itself</span></td>
+<td><code>tests/test_loader.py::test_load_reads_config</code><br></td><td><a href="#E-0022">E-0022</a> <a href="#E-0023">E-0023</a> <a href="#E-0024">E-0024</a> <a href="#E-0025">E-0025</a> <a href="#E-0026">E-0026</a> <a href="#E-0027">E-0027</a> <a href="#E-0028">E-0028</a> <a href="#E-0029">E-0029</a> <a href="#E-0030">E-0030</a> </td></tr><tr><td><code>tests/test_registry.py::test_registry_starts_empty</code></td><td>8/20</td><td>order_dependent<br><span class="muted">fails only after running 1 specific earlier test(s)</span></td>
+<td><code>tests/test_registry.py::test_register_adds_plugin</code><br></td><td><a href="#E-0032">E-0032</a> <a href="#E-0033">E-0033</a> <a href="#E-0034">E-0034</a> <a href="#E-0035">E-0035</a> <a href="#E-0036">E-0036</a> <a href="#E-0037">E-0037</a> <a href="#E-0038">E-0038</a> <a href="#E-0039">E-0039</a> <a href="#E-0040">E-0040</a> <a href="#E-0041">E-0041</a> <a href="#E-0042">E-0042</a> </td></tr></table></div>
+
+
+</section>
+
+<section class="card"><h2>Repairs</h2>
+<div style="margin-bottom:14px">
+<span class="pill warn">no_patch</span> <code>tests/test_loader.py::test_two_plugins_loaded</code>
+<p><b>Diagnosis</b> <span class="muted">(model-generated: unknown, low confidence)</span><br>Offline mock model: no diagnosis. Configure Nebius Token Factory.</p>
+<p><b>Verification</b><br>no patch proposed</p>
+
+<details><summary>0 verification runs</summary></details>
+</div><div style="margin-bottom:14px">
+<span class="pill warn">no_patch</span> <code>tests/test_registry.py::test_registry_starts_empty</code>
+<p><b>Diagnosis</b> <span class="muted">(model-generated: unknown, low confidence)</span><br>Offline mock model: no diagnosis. Configure Nebius Token Factory.</p>
+<p><b>Verification</b><br>no patch proposed</p>
+
+<details><summary>0 verification runs</summary></details>
+</div>
+</section>
+
+<section class="card"><h2>Behavior coverage</h2>
+<table>
+<tr><td>Functions with pinned behavior</td><td>2 / 4</td></tr>
+<tr><td>Behaviors pinned as tests</td><td>2</td></tr>
+<tr><td>State-changing calls pinned with isolation</td><td>1</td></tr>
+<tr><td>Excluded: non-deterministic output</td><td>0</td></tr>
+<tr><td>Excluded: state that could not be isolated</td><td>0</td></tr>
+<tr><td>Generated tests dropped by the 6-run gate</td><td><code>test_plugkit_registry_register_case_1</code><br><code>test_plugkit_registry_register_case_2</code><br><code>test_plugkit_registry_register_case_3</code><br><code>test_plugkit_registry_register_case_4</code><br><code>test_plugkit_registry_registered_case_1</code><br></td></tr>
+<tr><td>Generated suite passes on unmodified code</td><td><span class="pill ok">yes</span> <a href="#E-0063">E-0063</a></td></tr>
+</table>
+
+</section>
+
+<section class="card"><h2>Documentation</h2>
+<p>2 observed statements (each cites recorded runs, checked for provenance) · 0 inferred statements (unverified) · 0 downgraded by the validator. See <code>docs.md</code>.</p>
+
+</section>
+
+<section class="card"><h2>Open uncertainties</h2><ul><li>This run used the offline mock model, not NVIDIA Nemotron: inputs were heuristic and no real diagnosis was attempted.</li><li>Stability results cover 20 shuffled runs (seeds 1-20) in one sandbox environment. Tests with no observed failures may still fail under other orders, timing, operating systems or load.</li><li>Characterization tests pin what the code does today, which may include bugs. Review them before treating them as a specification.</li><li>tests/test_loader.py::test_two_plugins_loaded: fails when run alone; passes only after 1 specific earlier test(s) ran, so it relies on setup it does not do itself.</li><li>Repair for tests/test_loader.py::test_two_plugins_loaded is no_patch: no patch proposed</li><li>Repair for tests/test_registry.py::test_registry_starts_empty is no_patch: no patch proposed</li></ul></section>
+
+<section class="card"><h2>Model usage (NVIDIA Nemotron via Nebius Token Factory)</h2>
+<div class="scroll"><table><tr><th>Role</th><th>Model</th><th>Calls</th><th>OK</th><th>Prompt tok</th><th>Completion tok</th><th>Avg latency</th></tr>
+<tr><td>reasoner</td><td><code>mock-reasoner</code></td><td>6</td><td>6</td><td>0</td><td>0</td><td>0.0s</td></tr><tr><td>worker</td><td><code>mock-worker</code></td><td>4</td><td>4</td><td>0</td><td>0</td><td>0.0s</td></tr></table></div>
+
+</section>
+
+<section class="card"><h2>Evidence (63 recorded runs)</h2>
+<details id="E-0001"><summary><code>E-0001</code> collect · exit 0 · 2.43s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -p no:randomly --collect-only -q</pre>
+<pre>tests/test_loader.py::test_load_reads_config
+tests/test_loader.py::test_two_plugins_loaded
+tests/test_registry.py::test_registry_starts_empty
+tests/test_registry.py::test_register_adds_plugin
+
+4 tests collected in 0.24s
+</pre></details><details id="E-0002"><summary><code>E-0002</code> suite_random · exit 0 · 2.32s · seed 1</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=1</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=1
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_registry.py::test_registry_starts_empty PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+
+============================== 4 passed in 0.31s ===============================
+</pre></details><details id="E-0003"><summary><code>E-0003</code> suite_random · exit 0 · 2.34s · seed 2</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=2</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=2
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+tests/test_registry.py::test_registry_starts_empty PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+
+============================== 4 passed in 0.30s ===============================
+</pre></details><details id="E-0004"><summary><code>E-0004</code> suite_random · exit 1 · 2.41s · seed 3</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=3</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=3
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_registry_starts_empty __________________________
+
+    def test_registry_starts_empty():
+&gt;       assert registered() == []
+E       AssertionError: assert [&#39;xml&#39;] == []
+E         
+E         Left contains one more item: &#39;xml&#39;
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E         - []
+E         + [
+E         +     &#39;xml&#39;,
+E         + ]
+
+tests/test_registry.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_registry.py::test_registry_starts_empty - AssertionError: a...
+========================= 1 failed, 3 passed in 0.41s ==========================
+</pre></details><details id="E-0005"><summary><code>E-0005</code> suite_random · exit 1 · 3.64s · seed 4</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=4</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=4
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+tests/test_loader.py::test_two_plugins_loaded FAILED
+tests/test_loader.py::test_load_reads_config PASSED
+
+=================================== FAILURES ===================================
+__________________________ test_registry_starts_empty __________________________
+
+    def test_registry_starts_empty():
+&gt;       assert registered() == []
+E       AssertionError: assert [&#39;xml&#39;] == []
+E         
+E         Left contains one more item: &#39;xml&#39;
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E         - []
+E         + [
+E         +     &#39;xml&#39;,
+E         + ]
+
+tests/test_registry.py:5: AssertionError
+___________________________ test_two_plugins_loaded ____________________________
+
+    def test_two_plugins_loaded():
+&gt;       assert loader.loaded_count() == 2
+E       assert 0 == 2
+E        +  where 0 = &lt;function loaded_count at 0x731619450180&gt;()
+E        +    where &lt;function loaded_count at 0x731619450180&gt; = loader.loaded_count
+
+tests/test_loader.py:9: AssertionError
+=========================== short test summary info =======================</pre></details><details id="E-0006"><summary><code>E-0006</code> suite_random · exit 1 · 3.09s · seed 5</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=5</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=5
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_loader.py::test_two_plugins_loaded FAILED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+
+=================================== FAILURES ===================================
+___________________________ test_two_plugins_loaded ____________________________
+
+    def test_two_plugins_loaded():
+&gt;       assert loader.loaded_count() == 2
+E       assert 0 == 2
+E        +  where 0 = &lt;function loaded_count at 0x7bf6f47fc180&gt;()
+E        +    where &lt;function loaded_count at 0x7bf6f47fc180&gt; = loader.loaded_count
+
+tests/test_loader.py:9: AssertionError
+__________________________ test_registry_starts_empty __________________________
+
+    def test_registry_starts_empty():
+&gt;       assert registered() == []
+E       AssertionError: assert [&#39;xml&#39;] == []
+E         
+E         Left contains one more item: &#39;xml&#39;
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E         - []
+E         + [
+E         +     &#39;xml&#39;,
+E         + ]
+
+tests/test_registry.py:5: AssertionError
+=========================== short test summary info =======================</pre></details><details id="E-0007"><summary><code>E-0007</code> suite_random · exit 1 · 2.55s · seed 6</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=6</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=6
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_loader.py::test_two_plugins_loaded FAILED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_registry.py::test_registry_starts_empty PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+
+=================================== FAILURES ===================================
+___________________________ test_two_plugins_loaded ____________________________
+
+    def test_two_plugins_loaded():
+&gt;       assert loader.loaded_count() == 2
+E       assert 0 == 2
+E        +  where 0 = &lt;function loaded_count at 0x7cdcb92fc180&gt;()
+E        +    where &lt;function loaded_count at 0x7cdcb92fc180&gt; = loader.loaded_count
+
+tests/test_loader.py:9: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_loader.py::test_two_plugins_loaded - assert 0 == 2
+========================= 1 failed, 3 passed in 0.40s ==========================
+</pre></details><details id="E-0008"><summary><code>E-0008</code> suite_random · exit 1 · 2.49s · seed 7</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=7</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=7
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+
+=================================== FAILURES ===================================
+__________________________ test_registry_starts_empty __________________________
+
+    def test_registry_starts_empty():
+&gt;       assert registered() == []
+E       AssertionError: assert [&#39;xml&#39;] == []
+E         
+E         Left contains one more item: &#39;xml&#39;
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E         - []
+E         + [
+E         +     &#39;xml&#39;,
+E         + ]
+
+tests/test_registry.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_registry.py::test_registry_starts_empty - AssertionError: a...
+========================= 1 failed, 3 passed in 0.43s ==========================
+</pre></details><details id="E-0009"><summary><code>E-0009</code> suite_random · exit 0 · 2.28s · seed 8</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=8</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=8
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+tests/test_registry.py::test_registry_starts_empty PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+
+============================== 4 passed in 0.27s ===============================
+</pre></details><details id="E-0010"><summary><code>E-0010</code> suite_random · exit 0 · 2.37s · seed 9</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=9</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=9
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_registry.py::test_registry_starts_empty PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+
+============================== 4 passed in 0.29s ===============================
+</pre></details><details id="E-0011"><summary><code>E-0011</code> suite_random · exit 0 · 2.15s · seed 10</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=10</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=10
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_registry.py::test_registry_starts_empty PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+
+============================== 4 passed in 0.29s ===============================
+</pre></details><details id="E-0012"><summary><code>E-0012</code> suite_random · exit 0 · 3.89s · seed 11</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=11</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=11
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+tests/test_registry.py::test_registry_starts_empty PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+
+============================== 4 passed in 0.52s ===============================
+</pre></details><details id="E-0013"><summary><code>E-0013</code> suite_random · exit 1 · 3.12s · seed 12</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=12</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=12
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_registry_starts_empty __________________________
+
+    def test_registry_starts_empty():
+&gt;       assert registered() == []
+E       AssertionError: assert [&#39;xml&#39;] == []
+E         
+E         Left contains one more item: &#39;xml&#39;
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E         - []
+E         + [
+E         +     &#39;xml&#39;,
+E         + ]
+
+tests/test_registry.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_registry.py::test_registry_starts_empty - AssertionError: a...
+========================= 1 failed, 3 passed in 0.64s ==========================
+</pre></details><details id="E-0014"><summary><code>E-0014</code> suite_random · exit 1 · 3.02s · seed 13</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=13</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=13
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+tests/test_loader.py::test_two_plugins_loaded FAILED
+tests/test_loader.py::test_load_reads_config PASSED
+
+=================================== FAILURES ===================================
+__________________________ test_registry_starts_empty __________________________
+
+    def test_registry_starts_empty():
+&gt;       assert registered() == []
+E       AssertionError: assert [&#39;xml&#39;] == []
+E         
+E         Left contains one more item: &#39;xml&#39;
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E         - []
+E         + [
+E         +     &#39;xml&#39;,
+E         + ]
+
+tests/test_registry.py:5: AssertionError
+___________________________ test_two_plugins_loaded ____________________________
+
+    def test_two_plugins_loaded():
+&gt;       assert loader.loaded_count() == 2
+E       assert 0 == 2
+E        +  where 0 = &lt;function loaded_count at 0x7b76a19a0180&gt;()
+E        +    where &lt;function loaded_count at 0x7b76a19a0180&gt; = loader.loaded_count
+
+tests/test_loader.py:9: AssertionError
+=========================== short test summary info ======================</pre></details><details id="E-0015"><summary><code>E-0015</code> suite_random · exit 0 · 2.54s · seed 14</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=14</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=14
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+tests/test_registry.py::test_registry_starts_empty PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+
+============================== 4 passed in 0.32s ===============================
+</pre></details><details id="E-0016"><summary><code>E-0016</code> suite_random · exit 1 · 2.77s · seed 15</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=15</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=15
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_loader.py::test_two_plugins_loaded FAILED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_registry.py::test_registry_starts_empty PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+
+=================================== FAILURES ===================================
+___________________________ test_two_plugins_loaded ____________________________
+
+    def test_two_plugins_loaded():
+&gt;       assert loader.loaded_count() == 2
+E       assert 0 == 2
+E        +  where 0 = &lt;function loaded_count at 0x79129c8f8180&gt;()
+E        +    where &lt;function loaded_count at 0x79129c8f8180&gt; = loader.loaded_count
+
+tests/test_loader.py:9: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_loader.py::test_two_plugins_loaded - assert 0 == 2
+========================= 1 failed, 3 passed in 0.47s ==========================
+</pre></details><details id="E-0017"><summary><code>E-0017</code> suite_random · exit 1 · 3.36s · seed 16</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=16</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=16
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+tests/test_loader.py::test_two_plugins_loaded FAILED
+tests/test_loader.py::test_load_reads_config PASSED
+
+=================================== FAILURES ===================================
+__________________________ test_registry_starts_empty __________________________
+
+    def test_registry_starts_empty():
+&gt;       assert registered() == []
+E       AssertionError: assert [&#39;xml&#39;] == []
+E         
+E         Left contains one more item: &#39;xml&#39;
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E         - []
+E         + [
+E         +     &#39;xml&#39;,
+E         + ]
+
+tests/test_registry.py:5: AssertionError
+___________________________ test_two_plugins_loaded ____________________________
+
+    def test_two_plugins_loaded():
+&gt;       assert loader.loaded_count() == 2
+E       assert 0 == 2
+E        +  where 0 = &lt;function loaded_count at 0x72873208c180&gt;()
+E        +    where &lt;function loaded_count at 0x72873208c180&gt; = loader.loaded_count
+
+tests/test_loader.py:9: AssertionError
+=========================== short test summary info ======================</pre></details><details id="E-0018"><summary><code>E-0018</code> suite_random · exit 1 · 2.57s · seed 17</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=17</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=17
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_loader.py::test_two_plugins_loaded FAILED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+
+=================================== FAILURES ===================================
+___________________________ test_two_plugins_loaded ____________________________
+
+    def test_two_plugins_loaded():
+&gt;       assert loader.loaded_count() == 2
+E       assert 0 == 2
+E        +  where 0 = &lt;function loaded_count at 0x7e3186978180&gt;()
+E        +    where &lt;function loaded_count at 0x7e3186978180&gt; = loader.loaded_count
+
+tests/test_loader.py:9: AssertionError
+__________________________ test_registry_starts_empty __________________________
+
+    def test_registry_starts_empty():
+&gt;       assert registered() == []
+E       AssertionError: assert [&#39;xml&#39;] == []
+E         
+E         Left contains one more item: &#39;xml&#39;
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E         - []
+E         + [
+E         +     &#39;xml&#39;,
+E         + ]
+
+tests/test_registry.py:5: AssertionError
+=========================== short test summary info ======================</pre></details><details id="E-0019"><summary><code>E-0019</code> suite_random · exit 0 · 2.33s · seed 18</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=18</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=18
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_registry.py::test_registry_starts_empty PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+
+============================== 4 passed in 0.28s ===============================
+</pre></details><details id="E-0020"><summary><code>E-0020</code> suite_random · exit 1 · 2.49s · seed 19</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=19</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=19
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_loader.py::test_two_plugins_loaded FAILED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_registry.py::test_registry_starts_empty PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+
+=================================== FAILURES ===================================
+___________________________ test_two_plugins_loaded ____________________________
+
+    def test_two_plugins_loaded():
+&gt;       assert loader.loaded_count() == 2
+E       assert 0 == 2
+E        +  where 0 = &lt;function loaded_count at 0x754c3014c180&gt;()
+E        +    where &lt;function loaded_count at 0x754c3014c180&gt; = loader.loaded_count
+
+tests/test_loader.py:9: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_loader.py::test_two_plugins_loaded - assert 0 == 2
+========================= 1 failed, 3 passed in 0.41s ==========================
+</pre></details><details id="E-0021"><summary><code>E-0021</code> suite_random · exit 0 · 2.52s · seed 20</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=20</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=20
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_registry.py::test_registry_starts_empty PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+
+============================== 4 passed in 0.31s ===============================
+</pre></details><details id="E-0022"><summary><code>E-0022</code> isolation · exit 1 · 2.16s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_loader.py::test_two_plugins_loaded</pre><div class="muted">order: tests/test_loader.py::test_two_plugins_loaded</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 1 item
+
+tests/test_loader.py::test_two_plugins_loaded FAILED
+
+=================================== FAILURES ===================================
+___________________________ test_two_plugins_loaded ____________________________
+
+    def test_two_plugins_loaded():
+&gt;       assert loader.loaded_count() == 2
+E       assert 0 == 2
+E        +  where 0 = &lt;function loaded_count at 0x7e7bc97f3600&gt;()
+E        +    where &lt;function loaded_count at 0x7e7bc97f3600&gt; = loader.loaded_count
+
+tests/test_loader.py:9: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_loader.py::test_two_plugins_loaded - assert 0 == 2
+============================== 1 failed in 0.28s ===============================
+</pre></details><details id="E-0023"><summary><code>E-0023</code> isolation · exit 1 · 2.46s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_loader.py::test_two_plugins_loaded</pre><div class="muted">order: tests/test_loader.py::test_two_plugins_loaded</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 1 item
+
+tests/test_loader.py::test_two_plugins_loaded FAILED
+
+=================================== FAILURES ===================================
+___________________________ test_two_plugins_loaded ____________________________
+
+    def test_two_plugins_loaded():
+&gt;       assert loader.loaded_count() == 2
+E       assert 0 == 2
+E        +  where 0 = &lt;function loaded_count at 0x7751f67d7600&gt;()
+E        +    where &lt;function loaded_count at 0x7751f67d7600&gt; = loader.loaded_count
+
+tests/test_loader.py:9: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_loader.py::test_two_plugins_loaded - assert 0 == 2
+============================== 1 failed in 0.36s ===============================
+</pre></details><details id="E-0024"><summary><code>E-0024</code> isolation · exit 1 · 2.4s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_loader.py::test_two_plugins_loaded</pre><div class="muted">order: tests/test_loader.py::test_two_plugins_loaded</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 1 item
+
+tests/test_loader.py::test_two_plugins_loaded FAILED
+
+=================================== FAILURES ===================================
+___________________________ test_two_plugins_loaded ____________________________
+
+    def test_two_plugins_loaded():
+&gt;       assert loader.loaded_count() == 2
+E       assert 0 == 2
+E        +  where 0 = &lt;function loaded_count at 0x7298cc77f600&gt;()
+E        +    where &lt;function loaded_count at 0x7298cc77f600&gt; = loader.loaded_count
+
+tests/test_loader.py:9: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_loader.py::test_two_plugins_loaded - assert 0 == 2
+============================== 1 failed in 0.36s ===============================
+</pre></details><details id="E-0025"><summary><code>E-0025</code> isolation · exit 1 · 2.67s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_loader.py::test_two_plugins_loaded</pre><div class="muted">order: tests/test_loader.py::test_two_plugins_loaded</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 1 item
+
+tests/test_loader.py::test_two_plugins_loaded FAILED
+
+=================================== FAILURES ===================================
+___________________________ test_two_plugins_loaded ____________________________
+
+    def test_two_plugins_loaded():
+&gt;       assert loader.loaded_count() == 2
+E       assert 0 == 2
+E        +  where 0 = &lt;function loaded_count at 0x70eb8703f600&gt;()
+E        +    where &lt;function loaded_count at 0x70eb8703f600&gt; = loader.loaded_count
+
+tests/test_loader.py:9: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_loader.py::test_two_plugins_loaded - assert 0 == 2
+============================== 1 failed in 0.37s ===============================
+</pre></details><details id="E-0026"><summary><code>E-0026</code> isolation · exit 1 · 2.62s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_loader.py::test_two_plugins_loaded</pre><div class="muted">order: tests/test_loader.py::test_two_plugins_loaded</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 1 item
+
+tests/test_loader.py::test_two_plugins_loaded FAILED
+
+=================================== FAILURES ===================================
+___________________________ test_two_plugins_loaded ____________________________
+
+    def test_two_plugins_loaded():
+&gt;       assert loader.loaded_count() == 2
+E       assert 0 == 2
+E        +  where 0 = &lt;function loaded_count at 0x7b9d61233600&gt;()
+E        +    where &lt;function loaded_count at 0x7b9d61233600&gt; = loader.loaded_count
+
+tests/test_loader.py:9: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_loader.py::test_two_plugins_loaded - assert 0 == 2
+============================== 1 failed in 0.37s ===============================
+</pre></details><details id="E-0027"><summary><code>E-0027</code> bisect_setup · exit 0 · 2.54s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_registry.py::test_registry_starts_empty tests/test_registry.py::test_register_adds_plugin tests/test_loader.py::test_load_reads_config tests/test_loader.py::test_two_plugins_loaded</pre><div class="muted">order: tests/test_registry.py::test_registry_starts_empty → tests/test_registry.py::test_register_adds_plugin → tests/test_loader.py::test_load_reads_config → tests/test_loader.py::test_two_plugins_loaded</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 4 items
+
+tests/test_registry.py::test_registry_starts_empty PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+
+============================== 4 passed in 0.29s ===============================
+</pre></details><details id="E-0028"><summary><code>E-0028</code> bisect_setup · exit 1 · 2.75s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_registry.py::test_registry_starts_empty tests/test_registry.py::test_register_adds_plugin tests/test_loader.py::test_two_plugins_loaded</pre><div class="muted">order: tests/test_registry.py::test_registry_starts_empty → tests/test_registry.py::test_register_adds_plugin → tests/test_loader.py::test_two_plugins_loaded</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 3 items
+
+tests/test_registry.py::test_registry_starts_empty PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_loader.py::test_two_plugins_loaded FAILED
+
+=================================== FAILURES ===================================
+___________________________ test_two_plugins_loaded ____________________________
+
+    def test_two_plugins_loaded():
+&gt;       assert loader.loaded_count() == 2
+E       assert 0 == 2
+E        +  where 0 = &lt;function loaded_count at 0x7071cfea7d80&gt;()
+E        +    where &lt;function loaded_count at 0x7071cfea7d80&gt; = loader.loaded_count
+
+tests/test_loader.py:9: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_loader.py::test_two_plugins_loaded - assert 0 == 2
+========================= 1 failed, 2 passed in 0.49s ==========================
+</pre></details><details id="E-0029"><summary><code>E-0029</code> bisect_setup · exit 0 · 2.18s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_loader.py::test_load_reads_config tests/test_loader.py::test_two_plugins_loaded</pre><div class="muted">order: tests/test_loader.py::test_load_reads_config → tests/test_loader.py::test_two_plugins_loaded</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 2 items
+
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+
+============================== 2 passed in 0.22s ===============================
+</pre></details><details id="E-0030"><summary><code>E-0030</code> bisect_setup · exit 1 · 2.23s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_loader.py::test_two_plugins_loaded</pre><div class="muted">order: tests/test_loader.py::test_two_plugins_loaded</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 1 item
+
+tests/test_loader.py::test_two_plugins_loaded FAILED
+
+=================================== FAILURES ===================================
+___________________________ test_two_plugins_loaded ____________________________
+
+    def test_two_plugins_loaded():
+&gt;       assert loader.loaded_count() == 2
+E       assert 0 == 2
+E        +  where 0 = &lt;function loaded_count at 0x773cfbebb600&gt;()
+E        +    where &lt;function loaded_count at 0x773cfbebb600&gt; = loader.loaded_count
+
+tests/test_loader.py:9: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_loader.py::test_two_plugins_loaded - assert 0 == 2
+============================== 1 failed in 0.33s ===============================
+</pre></details><details id="E-0031"><summary><code>E-0031</code> diagnose_repro · exit 1 · 2.38s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_loader.py::test_two_plugins_loaded</pre><div class="muted">order: tests/test_loader.py::test_two_plugins_loaded</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 1 item
+
+tests/test_loader.py::test_two_plugins_loaded FAILED
+
+=================================== FAILURES ===================================
+___________________________ test_two_plugins_loaded ____________________________
+
+    def test_two_plugins_loaded():
+&gt;       assert loader.loaded_count() == 2
+E       assert 0 == 2
+E        +  where 0 = &lt;function loaded_count at 0x7e07cfdb3600&gt;()
+E        +    where &lt;function loaded_count at 0x7e07cfdb3600&gt; = loader.loaded_count
+
+tests/test_loader.py:9: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_loader.py::test_two_plugins_loaded - assert 0 == 2
+============================== 1 failed in 0.33s ===============================
+</pre></details><details id="E-0032"><summary><code>E-0032</code> isolation · exit 0 · 2.27s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_registry.py::test_registry_starts_empty</pre><div class="muted">order: tests/test_registry.py::test_registry_starts_empty</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 1 item
+
+tests/test_registry.py::test_registry_starts_empty PASSED
+
+============================== 1 passed in 0.18s ===============================
+</pre></details><details id="E-0033"><summary><code>E-0033</code> isolation · exit 0 · 2.34s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_registry.py::test_registry_starts_empty</pre><div class="muted">order: tests/test_registry.py::test_registry_starts_empty</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 1 item
+
+tests/test_registry.py::test_registry_starts_empty PASSED
+
+============================== 1 passed in 0.18s ===============================
+</pre></details><details id="E-0034"><summary><code>E-0034</code> isolation · exit 0 · 2.04s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_registry.py::test_registry_starts_empty</pre><div class="muted">order: tests/test_registry.py::test_registry_starts_empty</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 1 item
+
+tests/test_registry.py::test_registry_starts_empty PASSED
+
+============================== 1 passed in 0.17s ===============================
+</pre></details><details id="E-0035"><summary><code>E-0035</code> isolation · exit 0 · 2.27s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_registry.py::test_registry_starts_empty</pre><div class="muted">order: tests/test_registry.py::test_registry_starts_empty</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 1 item
+
+tests/test_registry.py::test_registry_starts_empty PASSED
+
+============================== 1 passed in 0.25s ===============================
+</pre></details><details id="E-0036"><summary><code>E-0036</code> isolation · exit 0 · 2.12s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_registry.py::test_registry_starts_empty</pre><div class="muted">order: tests/test_registry.py::test_registry_starts_empty</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 1 item
+
+tests/test_registry.py::test_registry_starts_empty PASSED
+
+============================== 1 passed in 0.17s ===============================
+</pre></details><details id="E-0037"><summary><code>E-0037</code> replay_order · exit 1 · 2.51s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_loader.py::test_load_reads_config tests/test_loader.py::test_two_plugins_loaded tests/test_registry.py::test_register_adds_plugin tests/test_registry.py::test_registry_starts_empty</pre><div class="muted">order: tests/test_loader.py::test_load_reads_config → tests/test_loader.py::test_two_plugins_loaded → tests/test_registry.py::test_register_adds_plugin → tests/test_registry.py::test_registry_starts_empty</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 4 items
+
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_registry_starts_empty __________________________
+
+    def test_registry_starts_empty():
+&gt;       assert registered() == []
+E       AssertionError: assert [&#39;xml&#39;] == []
+E         
+E         Left contains one more item: &#39;xml&#39;
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E         - []
+E         + [
+E         +     &#39;xml&#39;,
+E         + ]
+
+tests/test_registry.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_registry.py::test_registry_starts_empty - AssertionError: a...
+========================= 1 failed, 3 passed in 0.47s ==========================
+</pre></details><details id="E-0038"><summary><code>E-0038</code> replay_order · exit 1 · 2.43s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_loader.py::test_load_reads_config tests/test_loader.py::test_two_plugins_loaded tests/test_registry.py::test_register_adds_plugin tests/test_registry.py::test_registry_starts_empty</pre><div class="muted">order: tests/test_loader.py::test_load_reads_config → tests/test_loader.py::test_two_plugins_loaded → tests/test_registry.py::test_register_adds_plugin → tests/test_registry.py::test_registry_starts_empty</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 4 items
+
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_registry_starts_empty __________________________
+
+    def test_registry_starts_empty():
+&gt;       assert registered() == []
+E       AssertionError: assert [&#39;xml&#39;] == []
+E         
+E         Left contains one more item: &#39;xml&#39;
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E         - []
+E         + [
+E         +     &#39;xml&#39;,
+E         + ]
+
+tests/test_registry.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_registry.py::test_registry_starts_empty - AssertionError: a...
+========================= 1 failed, 3 passed in 0.42s ==========================
+</pre></details><details id="E-0039"><summary><code>E-0039</code> bisect · exit 1 · 2.37s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_loader.py::test_load_reads_config tests/test_loader.py::test_two_plugins_loaded tests/test_registry.py::test_register_adds_plugin tests/test_registry.py::test_registry_starts_empty</pre><div class="muted">order: tests/test_loader.py::test_load_reads_config → tests/test_loader.py::test_two_plugins_loaded → tests/test_registry.py::test_register_adds_plugin → tests/test_registry.py::test_registry_starts_empty</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 4 items
+
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_registry_starts_empty __________________________
+
+    def test_registry_starts_empty():
+&gt;       assert registered() == []
+E       AssertionError: assert [&#39;xml&#39;] == []
+E         
+E         Left contains one more item: &#39;xml&#39;
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E         - []
+E         + [
+E         +     &#39;xml&#39;,
+E         + ]
+
+tests/test_registry.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_registry.py::test_registry_starts_empty - AssertionError: a...
+========================= 1 failed, 3 passed in 0.41s ==========================
+</pre></details><details id="E-0040"><summary><code>E-0040</code> bisect · exit 0 · 2.37s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_loader.py::test_load_reads_config tests/test_loader.py::test_two_plugins_loaded tests/test_registry.py::test_registry_starts_empty</pre><div class="muted">order: tests/test_loader.py::test_load_reads_config → tests/test_loader.py::test_two_plugins_loaded → tests/test_registry.py::test_registry_starts_empty</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 3 items
+
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+tests/test_registry.py::test_registry_starts_empty PASSED
+
+============================== 3 passed in 0.33s ===============================
+</pre></details><details id="E-0041"><summary><code>E-0041</code> bisect · exit 1 · 3.11s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_registry.py::test_register_adds_plugin tests/test_registry.py::test_registry_starts_empty</pre><div class="muted">order: tests/test_registry.py::test_register_adds_plugin → tests/test_registry.py::test_registry_starts_empty</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 2 items
+
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_registry_starts_empty __________________________
+
+    def test_registry_starts_empty():
+&gt;       assert registered() == []
+E       AssertionError: assert [&#39;xml&#39;] == []
+E         
+E         Left contains one more item: &#39;xml&#39;
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E         - []
+E         + [
+E         +     &#39;xml&#39;,
+E         + ]
+
+tests/test_registry.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_registry.py::test_registry_starts_empty - AssertionError: a...
+========================= 1 failed, 1 passed in 0.34s ==========================
+</pre></details><details id="E-0042"><summary><code>E-0042</code> bisect · exit 0 · 2.15s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_registry.py::test_registry_starts_empty</pre><div class="muted">order: tests/test_registry.py::test_registry_starts_empty</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 1 item
+
+tests/test_registry.py::test_registry_starts_empty PASSED
+
+============================== 1 passed in 0.18s ===============================
+</pre></details><details id="E-0043"><summary><code>E-0043</code> diagnose_repro · exit 1 · 3.79s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_registry.py::test_register_adds_plugin tests/test_registry.py::test_registry_starts_empty</pre><div class="muted">order: tests/test_registry.py::test_register_adds_plugin → tests/test_registry.py::test_registry_starts_empty</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 2 items
+
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_registry_starts_empty __________________________
+
+    def test_registry_starts_empty():
+&gt;       assert registered() == []
+E       AssertionError: assert [&#39;xml&#39;] == []
+E         
+E         Left contains one more item: &#39;xml&#39;
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E         - []
+E         + [
+E         +     &#39;xml&#39;,
+E         + ]
+
+tests/test_registry.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_registry.py::test_registry_starts_empty - AssertionError: a...
+========================= 1 failed, 1 passed in 1.45s ==========================
+</pre></details><details id="E-0044"><summary><code>E-0044</code> probe_batch · exit 0 · 1.18s</summary>
+<pre>$ python /opt/inherit/probe.py plugkit.loader load_config --batch [{&#34;args&#34;: [], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;plugkit.loader&#34;, &#34;function&#34;: &#34;load_config&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;2&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 1.4301999954113853e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;LOADED&#34;: &#34;[]&#34;}, &#34;mutated&#34;: [&#34;LOADED&#34;], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0045"><summary><code>E-0045</code> probe_batch · exit 0 · 1.77s</summary>
+<pre>$ python /opt/inherit/probe.py plugkit.loader load_config --batch [{&#34;args&#34;: [], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;plugkit.loader&#34;, &#34;function&#34;: &#34;load_config&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;2&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 2.9104999839546508e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;LOADED&#34;: &#34;[]&#34;}, &#34;mutated&#34;: [&#34;LOADED&#34;], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0046"><summary><code>E-0046</code> probe_batch · exit 0 · 2.34s</summary>
+<pre>$ python /opt/inherit/probe.py plugkit.loader loaded_count --batch [{&#34;args&#34;: [], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;plugkit.loader&#34;, &#34;function&#34;: &#34;loaded_count&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 5.601000111710164e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;LOADED&#34;: &#34;[]&#34;}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0047"><summary><code>E-0047</code> probe_batch · exit 0 · 3.06s</summary>
+<pre>$ python /opt/inherit/probe.py plugkit.loader loaded_count --batch [{&#34;args&#34;: [], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;plugkit.loader&#34;, &#34;function&#34;: &#34;loaded_count&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 8.600999990449054e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;LOADED&#34;: &#34;[]&#34;}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0048"><summary><code>E-0048</code> probe_batch · exit 0 · 2.03s</summary>
+<pre>$ python /opt/inherit/probe.py plugkit.registry register --batch [{&#34;args&#34;: [&#34;&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;abc&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;Hello, World!&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;apple&#34;], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;plugkit.registry&#34;, &#34;function&#34;: &#34;register&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;1&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 1.370199993289134e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;plugkit.registry&#34;, &#34;function&#34;: &#34;register&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;2&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 7.002000074862735e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;plugkit.registry&#34;, &#34;function&#34;: &#34;register&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;3&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 5.501000032381853e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 3, &#34;module&#34;: &#34;plugkit.registry&#34;, &#34;function&#34;: &#34;register&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;4&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 4.801000159204705e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0049"><summary><code>E-0049</code> probe_batch · exit 0 · 2.2s</summary>
+<pre>$ python /opt/inherit/probe.py plugkit.registry register --batch [{&#34;args&#34;: [&#34;&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;abc&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;Hello, World!&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;apple&#34;], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;plugkit.registry&#34;, &#34;function&#34;: &#34;register&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;1&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 1.1201999996046652e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;plugkit.registry&#34;, &#34;function&#34;: &#34;register&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;2&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 6.600999995498569e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;plugkit.registry&#34;, &#34;function&#34;: &#34;register&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;3&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 6.300999984887312e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 3, &#34;module&#34;: &#34;plugkit.registry&#34;, &#34;function&#34;: &#34;register&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;4&#34;, &#34;type&#34;: &#34;int&#34;, &#34;duration&#34;: 6.500999916170258e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0050"><summary><code>E-0050</code> probe_batch · exit 0 · 3.45s</summary>
+<pre>$ python /opt/inherit/probe.py plugkit.registry registered --batch [{&#34;args&#34;: [], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;plugkit.registry&#34;, &#34;function&#34;: &#34;registered&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;[]&#34;, &#34;type&#34;: &#34;list&#34;, &#34;duration&#34;: 1.1101000154667418e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0051"><summary><code>E-0051</code> probe_batch · exit 0 · 3.74s</summary>
+<pre>$ python /opt/inherit/probe.py plugkit.registry registered --batch [{&#34;args&#34;: [], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;plugkit.registry&#34;, &#34;function&#34;: &#34;registered&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;[]&#34;, &#34;type&#34;: &#34;list&#34;, &#34;duration&#34;: 1.1100999927293742e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0052"><summary><code>E-0052</code> gate_baseline · exit 0 · 6.87s · seed 500</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=500</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=500
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+tests/test_registry.py::test_registry_starts_empty PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+
+============================== 4 passed in 0.75s ===============================
+</pre></details><details id="E-0053"><summary><code>E-0053</code> gate_baseline · exit 0 · 7.15s · seed 501</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=501</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=501
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_registry.py::test_registry_starts_empty PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+
+============================== 4 passed in 0.81s ===============================
+</pre></details><details id="E-0054"><summary><code>E-0054</code> gate_baseline · exit 1 · 3.54s · seed 502</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=502</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=502
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+
+=================================== FAILURES ===================================
+__________________________ test_registry_starts_empty __________________________
+
+    def test_registry_starts_empty():
+&gt;       assert registered() == []
+E       AssertionError: assert [&#39;xml&#39;] == []
+E         
+E         Left contains one more item: &#39;xml&#39;
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E         - []
+E         + [
+E         +     &#39;xml&#39;,
+E         + ]
+
+tests/test_registry.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_registry.py::test_registry_starts_empty - AssertionError: a...
+========================= 1 failed, 3 passed in 0.53s ==========================
+</pre></details><details id="E-0055"><summary><code>E-0055</code> gate_baseline · exit 1 · 2.78s · seed 503</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=503</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=503
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+tests/test_loader.py::test_two_plugins_loaded FAILED
+tests/test_loader.py::test_load_reads_config PASSED
+
+=================================== FAILURES ===================================
+__________________________ test_registry_starts_empty __________________________
+
+    def test_registry_starts_empty():
+&gt;       assert registered() == []
+E       AssertionError: assert [&#39;xml&#39;] == []
+E         
+E         Left contains one more item: &#39;xml&#39;
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E         - []
+E         + [
+E         +     &#39;xml&#39;,
+E         + ]
+
+tests/test_registry.py:5: AssertionError
+___________________________ test_two_plugins_loaded ____________________________
+
+    def test_two_plugins_loaded():
+&gt;       assert loader.loaded_count() == 2
+E       assert 0 == 2
+E        +  where 0 = &lt;function loaded_count at 0x7b550bb68180&gt;()
+E        +    where &lt;function loaded_count at 0x7b550bb68180&gt; = loader.loaded_count
+
+tests/test_loader.py:9: AssertionError
+=========================== short test summary info =====================</pre></details><details id="E-0056"><summary><code>E-0056</code> gate_baseline · exit 0 · 3.18s · seed 504</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=504</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=504
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 4 items
+
+tests/test_registry.py::test_registry_starts_empty PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+
+============================== 4 passed in 0.40s ===============================
+</pre></details><details id="E-0057"><summary><code>E-0057</code> gate_generated · exit 1 · 3.29s · seed 500</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=500</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=500
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_inherit_characterization.py::test_plugkit_loader_load_config_case_1 PASSED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_3 FAILED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_2 PASSED
+tests/test_inherit_characterization.py::test_plugkit_loader_loaded_count_case_1 PASSED
+tests/test_inherit_characterization.py::test_plugkit_registry_registered_case_1 FAILED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_4 FAILED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_1 FAILED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+tests/test_registry.py::test_register_adds_plugin PASSED
+
+=================================== FAILURES ===================================
+____________________ test_plugkit_registry_register_case_3 _____________________
+
+    def test_plugkit_registry_register_case_3():  # evidence: E-0048, E-0049
+&gt;       assert plugkit.registry.register(&#39;Hello, World!&#39;) == 3
+E       AssertionError: assert 1 == 3
+E        +  where 1 = &lt;func</pre></details><details id="E-0058"><summary><code>E-0058</code> gate_generated · exit 1 · 3.15s · seed 501</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=501</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=501
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_registry.py::test_registry_starts_empty PASSED
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_3 FAILED
+tests/test_inherit_characterization.py::test_plugkit_registry_registered_case_1 FAILED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_2 FAILED
+tests/test_inherit_characterization.py::test_plugkit_loader_load_config_case_1 PASSED
+tests/test_inherit_characterization.py::test_plugkit_loader_loaded_count_case_1 PASSED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_4 PASSED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_1 FAILED
+
+=================================== FAILURES ===================================
+____________________ test_plugkit_registry_register_case_3 _____________________
+
+    def test_plugkit_registry_register_case_3():  # evidence: E-0048, E-0049
+&gt;       assert plugkit.registry.register(&#39;Hello, World!&#39;) == 3
+E       AssertionError: assert 2 == 3
+E        +  where 2 = &lt;func</pre></details><details id="E-0059"><summary><code>E-0059</code> gate_generated · exit 1 · 3.6s · seed 502</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=502</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=502
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_3 FAILED
+tests/test_inherit_characterization.py::test_plugkit_loader_loaded_count_case_1 PASSED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_2 PASSED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_4 FAILED
+tests/test_inherit_characterization.py::test_plugkit_registry_registered_case_1 FAILED
+tests/test_inherit_characterization.py::test_plugkit_loader_load_config_case_1 PASSED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_1 FAILED
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+
+=================================== FAILURES ===================================
+____________________ test_plugkit_registry_register_case_3 _____________________
+
+    def test_plugkit_registry_register_case_3():  # evidence: E-0048, E-0049
+&gt;       assert plugkit.registry.register(&#39;Hello, World!&#39;) == 3
+E       AssertionError: assert 1 == 3
+E        +  where 1 = &lt;func</pre></details><details id="E-0060"><summary><code>E-0060</code> gate_generated · exit 1 · 3.57s · seed 503</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=503</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=503
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+tests/test_inherit_characterization.py::test_plugkit_registry_registered_case_1 FAILED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_3 FAILED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_2 FAILED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_4 PASSED
+tests/test_inherit_characterization.py::test_plugkit_loader_load_config_case_1 PASSED
+tests/test_inherit_characterization.py::test_plugkit_loader_loaded_count_case_1 PASSED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_1 FAILED
+tests/test_loader.py::test_two_plugins_loaded FAILED
+tests/test_loader.py::test_load_reads_config PASSED
+
+=================================== FAILURES ===================================
+__________________________ test_registry_starts_empty __________________________
+
+    def test_registry_starts_empty():
+&gt;       assert registered() == []
+E       AssertionError: assert [&#39;xml&#39;] == []
+E         
+E         Left contains one more item: &#39;xml&#39;
+E         
+E         Full diff: </pre></details><details id="E-0061"><summary><code>E-0061</code> gate_generated · exit 1 · 3.49s · seed 504</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=504</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=504
+rootdir: /work
+configfile: pyproject.toml
+testpaths: tests
+plugins: randomly-5.0.0
+collecting ... collected 11 items
+
+tests/test_inherit_characterization.py::test_plugkit_registry_registered_case_1 PASSED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_2 FAILED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_3 FAILED
+tests/test_inherit_characterization.py::test_plugkit_loader_load_config_case_1 PASSED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_1 FAILED
+tests/test_inherit_characterization.py::test_plugkit_loader_loaded_count_case_1 PASSED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_4 PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+tests/test_registry.py::test_register_adds_plugin PASSED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+
+=================================== FAILURES ===================================
+____________________ test_plugkit_registry_register_case_2 _____________________
+
+    def test_plugkit_registry_register_case_2():  # evidence: E-0048, E-0049
+&gt;       assert plugkit.registry.register(&#39;abc&#39;) == 2
+E       AssertionError: assert 1 == 2
+E        +  where 1 = &lt;function regis</pre></details><details id="E-0062"><summary><code>E-0062</code> gate_generated_first · exit 1 · 4.93s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_inherit_characterization.py .</pre><div class="muted">order: tests/test_inherit_characterization.py → .</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+configfile: pyproject.toml
+collecting ... collected 11 items
+
+tests/test_inherit_characterization.py::test_plugkit_loader_load_config_case_1 PASSED
+tests/test_inherit_characterization.py::test_plugkit_loader_loaded_count_case_1 PASSED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_1 PASSED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_2 PASSED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_3 PASSED
+tests/test_inherit_characterization.py::test_plugkit_registry_register_case_4 PASSED
+tests/test_inherit_characterization.py::test_plugkit_registry_registered_case_1 FAILED
+tests/test_loader.py::test_load_reads_config PASSED
+tests/test_loader.py::test_two_plugins_loaded PASSED
+tests/test_registry.py::test_registry_starts_empty FAILED
+tests/test_registry.py::test_register_adds_plugin PASSED
+
+=================================== FAILURES ===================================
+___________________ test_plugkit_registry_registered_case_1 ____________________
+
+    def test_plugkit_registry_registered_case_1():  # evidence: E-0050, E-0051
+&gt;       assert plugkit.registry.registered() == []
+E       AssertionError: assert [&#39;&#39;, &#39;abc&#39;, &#39;...ld!&#39;, &#39;apple&#39;] == []
+E         
+E         Left contains 4 more items, first extra item: &#39;&#39;
+E   </pre></details><details id="E-0063"><summary><code>E-0063</code> characterization_validation · exit 0 · 2.52s</summary>
+<pre>$ python -m pytest -q -p no:cacheprovider -p no:randomly tests/test_inherit_characterization.py</pre>
+<pre>..                                                                       [100%]
+2 passed in 0.26s
+</pre></details>
+</section>
+</main>
+<script>
+// open the evidence entry a link points at
+function openHash(){var el=document.getElementById(location.hash.slice(1));if(el&&el.tagName==="DETAILS"){el.open=true;el.scrollIntoView()}}
+window.addEventListener("hashchange",openHash);openHash();
+</script>
+</body></html>

@@ -1,0 +1,10 @@
+{
+  "id": "textkit",
+  "title": "Textkit: a healthy project",
+  "summary": "Well-isolated text utilities with independent tests. Inherit finds no unstable tests and says so carefully: no failures observed under the recorded seeds, which is not proof of determinism. Behavior is still characterized and documented.",
+  "shows": ["honest negative result", "characterization and evidence-linked docs on stable code"],
+  "expect": {
+    "unstable": [],
+    "always_failing": []
+  }
+}

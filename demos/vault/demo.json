@@ -1,0 +1,12 @@
+{
+  "id": "vault",
+  "title": "Vault: a broken environment, reported honestly",
+  "summary": "A secrets helper that depends on an old crypto library with no prebuilt wheels, plus an editable install line. Inherit refuses to build packages from source, so the cipher module cannot be imported. The report says exactly that instead of calling the tests broken or flaky; the pure string helpers are still analyzed.",
+  "shows": ["dependency with no wheel: install fails safely", "skipped editable install line", "missing module reported as an environment problem", "other tests keep running despite a collection error"],
+  "needs_network": true,
+  "expect": {
+    "install_status": "failed",
+    "missing_modules": ["Crypto"],
+    "unstable": []
+  }
+}

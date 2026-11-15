@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inherit</title>
+<meta name="description" content="Evidence-driven onboarding and reliability triage for legacy Python code, powered by NVIDIA Nemotron on Nebius Token Factory.">
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="logo" href="#/">Inherit<span>.</span></a>
+    <nav>
+      <a href="#/">Overview</a>
+      <a href="#/how">How it works</a>
+      <a href="#/demos">Demos</a>
+      <a href="#/try">Try it</a>
+    </nav>
+    <div class="chips" id="chips"></div>
+  </div>
+</header>
+
+<!-- ============================== HOME ============================== -->
+<div id="viewHome">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Coding &amp; Agentic Engineering · NVIDIA Nemotron on Nebius Token Factory</p>
+      <h1>Know what you can trust in code you inherited.</h1>
+      <p class="sub">Inherit is an agent that runs an unfamiliar Python repository in a sandbox, finds the tests that fail
+        intermittently and the exact test that causes it, checks repairs by re-running them, and documents behavior
+        only from what it actually observed. Everything it reports links to a recorded run.</p>
+      <div class="cta">
+        <a class="btn primary" href="#/demos">Browse the demos</a>
+        <a class="btn" href="#/results/sample" id="ctaSample" hidden>View a sample report</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <h2>The problem</h2>
+    <div class="cards3">
+      <div class="card"><h3>Inherited code, no map</h3><p>Authors have moved on, documentation is thin, and nobody is sure what the code really does.</p></div>
+      <div class="card"><h3>Tests you can't trust</h3><p>Some tests fail only sometimes. A red build might be a bug or just noise, so people re-run CI until it's green.</p></div>
+      <div class="card"><h3>Plausible isn't proven</h3><p>AI tools write tests and docs that look right but were never checked against the running program.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="how">
+    <h2>How it works</h2>
+    <p class="muted">Eight stages. Repository code only ever runs inside an isolated container with no network access.</p>
+    <ol class="steps" id="steps"></ol>
+  </section>
+
+  <section class="wrap section">
+    <h2>Principles</h2>
+    <div class="cards3">
+      <div class="card"><h3>Evidence over plausibility</h3><p>Every test, claim and repair is backed by a recorded execution with an ID you can open. Model explanations are labeled as model-generated.</p></div>
+      <div class="card"><h3>No single trust score</h3><p>Stability, behavior coverage, repairs and documentation are reported separately. A suite can be stable but shallow, or broad but flaky.</p></div>
+      <div class="card"><h3>Limits stated plainly</h3><p>"Passed 20/20" means no failures under the recorded seeds and environment, not "always deterministic." Open uncertainties are listed in every report.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <h2>Built with</h2>
+    <div class="cards3">
+      <div class="card"><h3>NVIDIA Nemotron, large</h3><p>The <b>reasoner</b>: diagnoses why a test is order-dependent, proposes a targeted patch, and writes documentation from recorded observations.</p></div>
+      <div class="card"><h3>NVIDIA Nemotron, small</h3><p>The <b>worker</b>: high-volume, latency-sensitive calls such as proposing inputs to probe each function.</p></div>
+      <div class="card"><h3>Nebius Token Factory</h3><p>OpenAI-compatible inference for both roles. Each report shows call counts, tokens and latency per model.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="demos">
+    <h2>Demo projects</h2>
+    <p class="muted">Seven small projects, each built to show a different part of Inherit. Open a pre-computed report instantly, or run the analysis live.</p>
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <section class="wrap section" id="try">
+    <h2>Try it</h2>
+    <div class="trygrid">
+      <div class="card">
+        <form id="form">
+          <label class="opt"><input type="radio" name="source" value="demo" checked>
+            <span><b>A bundled demo project</b><small>pick one; the gallery above describes each</small></span></label>
+          <div class="row"><select name="demo" id="demoSel" aria-label="Demo project"></select>
+            <p class="small muted" id="demoDesc" style="margin:6px 0 0"></p></div>
+          <p class="note small" id="publicNote" hidden>This public demo analyzes the bundled demo repository only.
+            To analyze your own code with full container isolation, run Inherit yourself (see the README).</p>
+          <label class="opt" id="zipOpt"><input type="radio" name="source" value="zip">
+            <span><b>Upload a zip</b><small>a Python project that uses pytest, up to 10 MB. Requirements from
+              requirements*.txt or pyproject.toml are installed from prebuilt wheels; the code itself runs offline.</small></span></label>
+          <div class="row" id="zipRow" hidden><input type="file" name="upload" accept=".zip"></div>
+          <label class="opt" id="pathOpt" hidden><input type="radio" name="source" value="path">
+            <span><b>Local path</b><small>enabled on this machine only</small></span></label>
+          <div class="row" id="pathRow" hidden><input type="text" name="path" placeholder="C:\path\to\repo"></div>
+          <div class="row"><label for="runs" class="lbl">Shuffled stability runs</label>
+            <input type="number" id="runs" name="runs" value="20" min="3" max="50"></div>
+          <button class="btn primary wide" id="go" type="submit">Start analysis</button>
+          <div class="err" id="formErr"></div>
+          <p class="muted small">The demo takes about 1–2 minutes. One analysis runs at a time.</p>
+        </form>
+      </div>
+      <div class="card" id="progress">
+        <h3>Progress</h3>
+        <ul class="timeline" id="timeline"></ul>
+        <div class="log" id="log" aria-live="polite"><span class="muted">Start an analysis to see live progress.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="wrap foot muted small">Inherit · MIT licensed · Built for the Nebius x NVIDIA Global AI Hackathon</footer>
+</div>
+
+<!-- ============================== RESULTS ============================== -->
+<div id="viewResults" hidden>
+  <div class="wrap section">
+    <div class="reshead">
+      <div>
+        <p class="eyebrow" id="resKind">Report</p>
+        <h1 id="resTitle">Reliability report</h1>
+        <p class="muted small" id="resMeta"></p>
+      </div>
+      <div class="downloads" id="downloads"></div>
+    </div>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div id="panel"></div>
+  </div>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

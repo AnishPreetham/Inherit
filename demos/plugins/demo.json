@@ -1,0 +1,14 @@
+{
+  "id": "plugins",
+  "title": "Plugins: hidden setup and a class-level leak",
+  "summary": "A plugin framework in src/ layout. One test only passes if another test loaded the config first, and plugin registration leaks through a class attribute that module-level tracking cannot see.",
+  "shows": ["src/ layout", "test that relies on another test's setup, traced to the state-setter", "class-attribute polluter", "gate bisects and drops a generated test that would leak state"],
+  "expect": {
+    "order_dependent": {
+      "tests/test_registry.py::test_registry_starts_empty": ["tests/test_registry.py::test_register_adds_plugin"]
+    },
+    "depends_on_earlier_test": {
+      "tests/test_loader.py::test_two_plugins_loaded": ["tests/test_loader.py::test_load_reads_config"]
+    }
+  }
+}

@@ -1,0 +1,1283 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inherit Report</title>
+<style>
+:root{--bg:#fbfbfa;--card:#fff;--fg:#1d1d1f;--muted:#5f6368;--line:#e3e3e0;--ok:#1a7f37;--warn:#9a6700;--bad:#cf222e;--accent:#76b900;--code:#f3f3f1}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111214;--card:#1a1b1e;--fg:#e8e8e6;--muted:#a0a3a8;--line:#2c2e33;--ok:#3fb950;--warn:#d29922;--bad:#f85149;--code:#22242a}}
+:root[data-theme="dark"]{--bg:#111214;--card:#1a1b1e;--fg:#e8e8e6;--muted:#a0a3a8;--line:#2c2e33;--ok:#3fb950;--warn:#d29922;--bad:#f85149;--code:#22242a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1040px;margin:0 auto;padding:32px 16px 64px}
+h1{font-size:26px;margin:0 0 4px}h2{font-size:18px;margin:0 0 12px}.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:16px}
+.stat b{display:block;font-size:24px}.stat span{color:var(--muted);font-size:13px}
+.pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid currentColor}
+.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+code,pre{font-family:ui-monospace,Consolas,monospace;font-size:12.5px}pre{background:var(--code);padding:10px;border-radius:6px;overflow-x:auto;white-space:pre-wrap;word-break:break-word;margin:6px 0}
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:2px}
+ul{padding-left:20px;margin:6px 0}details summary{cursor:pointer}.scroll{overflow-x:auto}
+</style></head><body><main>
+<h1>Inherit reliability report</h1>
+<div class="muted"><code>ledger</code> · 2026-10-28T12:26:38+00:00 · 143.3s · sandbox: docker · models: mock / mock</div>
+<p class="muted">Each dimension is reported separately. There is deliberately no single trust score: a suite can be stable but shallow, or broad but flaky.</p>
+
+<div class="grid">
+<div class="card stat"><b>2</b><span>unstable tests in 20 shuffled runs</span></div>
+<div class="card stat"><b>22</b><span>behaviors pinned across 5/5 functions</span></div>
+<div class="card stat"><b>0/1</b><span>repairs verified by re-running</span></div>
+<div class="card stat"><b>5</b><span>open uncertainties</span></div>
+</div>
+
+<section class="card"><h2>Stability</h2>
+<p class="muted">6 tests, 20 runs, seeds 1–20. 4 tests had no observed failures (not proof of determinism).</p>
+<div class="scroll"><table><tr><th>Test</th><th>Failed</th><th>Classification</th><th>Polluter(s)</th><th>Evidence</th></tr>
+<tr><td><code>tests/test_convert.py::test_convert_euros</code></td><td>10/20</td><td>order_dependent<br><span class="muted">fails only after running 1 specific earlier test(s)</span></td>
+<td><code>tests/test_promo.py::test_promo_rate_halves_price</code><br></td><td><a href="#E-0022">E-0022</a> <a href="#E-0023">E-0023</a> <a href="#E-0024">E-0024</a> <a href="#E-0025">E-0025</a> <a href="#E-0026">E-0026</a> <a href="#E-0027">E-0027</a> <a href="#E-0028">E-0028</a> <a href="#E-0029">E-0029</a> <a href="#E-0030">E-0030</a> <a href="#E-0031">E-0031</a> <a href="#E-0032">E-0032</a> </td></tr><tr><td><code>tests/test_fees.py::test_fee_stays_small</code></td><td>9/20</td><td>nondeterministic<br><span class="muted">failed in 4 of 5 runs even when run alone, so the cause is inside the test or code (randomness, time, I/O), not ordering</span></td>
+<td></td><td><a href="#E-0034">E-0034</a> <a href="#E-0035">E-0035</a> <a href="#E-0036">E-0036</a> <a href="#E-0037">E-0037</a> <a href="#E-0038">E-0038</a> </td></tr></table></div>
+
+
+</section>
+
+<section class="card"><h2>Repairs</h2>
+<div style="margin-bottom:14px">
+<span class="pill warn">no_patch</span> <code>tests/test_convert.py::test_convert_euros</code>
+<p><b>Diagnosis</b> <span class="muted">(model-generated: unknown, low confidence)</span><br>Offline mock model: no diagnosis. Configure Nebius Token Factory.</p>
+<p><b>Verification</b><br>no patch proposed</p>
+
+<details><summary>0 verification runs</summary></details>
+</div>
+</section>
+
+<section class="card"><h2>Behavior coverage</h2>
+<table>
+<tr><td>Functions with pinned behavior</td><td>5 / 5</td></tr>
+<tr><td>Behaviors pinned as tests</td><td>22</td></tr>
+<tr><td>State-changing calls pinned with isolation</td><td>16</td></tr>
+<tr><td>Excluded: non-deterministic output</td><td>0</td></tr>
+<tr><td>Excluded: state that could not be isolated</td><td>0</td></tr>
+<tr><td>Generated tests dropped by the 6-run gate</td><td>0</td></tr>
+<tr><td>Generated suite passes on unmodified code</td><td><span class="pill ok">yes</span> <a href="#E-0060">E-0060</a></td></tr>
+</table>
+
+</section>
+
+<section class="card"><h2>Documentation</h2>
+<p>22 observed statements (each cites recorded runs, checked for provenance) · 0 inferred statements (unverified) · 0 downgraded by the validator. See <code>docs.md</code>.</p>
+
+</section>
+
+<section class="card"><h2>Open uncertainties</h2><ul><li>This run used the offline mock model, not NVIDIA Nemotron: inputs were heuristic and no real diagnosis was attempted.</li><li>Stability results cover 20 shuffled runs (seeds 1-20) in one sandbox environment. Tests with no observed failures may still fail under other orders, timing, operating systems or load.</li><li>Characterization tests pin what the code does today, which may include bugs. Review them before treating them as a specification.</li><li>tests/test_fees.py::test_fee_stays_small: failed in 4 of 5 runs even when run alone, so the cause is inside the test or code (randomness, time, I/O), not ordering.</li><li>Repair for tests/test_convert.py::test_convert_euros is no_patch: no patch proposed</li></ul></section>
+
+<section class="card"><h2>Model usage (NVIDIA Nemotron via Nebius Token Factory)</h2>
+<div class="scroll"><table><tr><th>Role</th><th>Model</th><th>Calls</th><th>OK</th><th>Prompt tok</th><th>Completion tok</th><th>Avg latency</th></tr>
+<tr><td>reasoner</td><td><code>mock-reasoner</code></td><td>6</td><td>6</td><td>0</td><td>0</td><td>0.0s</td></tr><tr><td>worker</td><td><code>mock-worker</code></td><td>5</td><td>5</td><td>0</td><td>0</td><td>0.0s</td></tr></table></div>
+
+</section>
+
+<section class="card"><h2>Evidence (60 recorded runs)</h2>
+<details id="E-0001"><summary><code>E-0001</code> collect · exit 0 · 3.55s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -p no:randomly --collect-only -q</pre>
+<pre>tests/test_convert.py::test_convert_euros
+tests/test_convert.py::test_convert_dollars_is_identity
+tests/test_convert.py::test_unknown_currency_defaults_to_one
+tests/test_fees.py::test_fee_stays_small
+tests/test_fees.py::test_total_includes_fee
+tests/test_promo.py::test_promo_rate_halves_price
+
+6 tests collected in 0.47s
+</pre></details><details id="E-0002"><summary><code>E-0002</code> suite_random · exit 1 · 3.15s · seed 1</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=1</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=1
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_fees.py::test_fee_stays_small PASSED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_convert.py::test_convert_euros FAILED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+
+=================================== FAILURES ===================================
+______________________________ test_convert_euros ______________________________
+
+    def test_convert_euros():
+&gt;       assert convert(100, &#34;EUR&#34;) == 90.0
+E       AssertionError: assert 45.0 == 90.0
+E        +  where 45.0 = convert(100, &#39;EUR&#39;)
+
+tests/test_convert.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_convert.py::test_convert_euros - AssertionError: assert 45....
+========================= 1 failed, 5 passed in 0.67s ==========================
+</pre></details><details id="E-0003"><summary><code>E-0003</code> suite_random · exit 1 · 2.82s · seed 2</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=2</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=2
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_fees.py::test_fee_stays_small PASSED
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_convert.py::test_convert_euros FAILED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+
+=================================== FAILURES ===================================
+______________________________ test_convert_euros ______________________________
+
+    def test_convert_euros():
+&gt;       assert convert(100, &#34;EUR&#34;) == 90.0
+E       AssertionError: assert 45.0 == 90.0
+E        +  where 45.0 = convert(100, &#39;EUR&#39;)
+
+tests/test_convert.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_convert.py::test_convert_euros - AssertionError: assert 45....
+========================= 1 failed, 5 passed in 0.52s ==========================
+</pre></details><details id="E-0004"><summary><code>E-0004</code> suite_random · exit 1 · 2.42s · seed 3</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=3</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=3
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_convert.py::test_convert_euros PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_fees.py::test_fee_stays_small FAILED
+tests/test_fees.py::test_total_includes_fee PASSED
+
+=================================== FAILURES ===================================
+_____________________________ test_fee_stays_small _____________________________
+
+    def test_fee_stays_small():
+        amount = random.randint(1, 1000)
+&gt;       assert processing_fee(amount) &lt; 1.5
+E       assert 1.63 &lt; 1.5
+E        +  where 1.63 = processing_fee(544)
+
+tests/test_fees.py:8: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_fees.py::test_fee_stays_small - assert 1.63 &lt; 1.5
+========================= 1 failed, 5 passed in 0.47s ==========================
+</pre></details><details id="E-0005"><summary><code>E-0005</code> suite_random · exit 1 · 2.33s · seed 4</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=4</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=4
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_fees.py::test_fee_stays_small FAILED
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_convert_euros FAILED
+
+=================================== FAILURES ===================================
+_____________________________ test_fee_stays_small _____________________________
+
+    def test_fee_stays_small():
+        amount = random.randint(1, 1000)
+&gt;       assert processing_fee(amount) &lt; 1.5
+E       assert 2.15 &lt; 1.5
+E        +  where 2.15 = processing_fee(715)
+
+tests/test_fees.py:8: AssertionError
+______________________________ test_convert_euros ______________________________
+
+    def test_convert_euros():
+&gt;       assert convert(100, &#34;EUR&#34;) == 90.0
+E       AssertionError: assert 45.0 == 90.0
+E        +  where 45.0 = convert(100, &#39;EUR&#39;)
+
+tests/test_convert.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_fees.py::test_fee_stays_small - assert 2.15 &lt; 1.5
+FAILED tests/test_convert.py::test_convert_euros - AssertionError: assert 45</pre></details><details id="E-0006"><summary><code>E-0006</code> suite_random · exit 0 · 2.09s · seed 5</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=5</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=5
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_fees.py::test_fee_stays_small PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_euros PASSED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+
+============================== 6 passed in 0.35s ===============================
+</pre></details><details id="E-0007"><summary><code>E-0007</code> suite_random · exit 1 · 2.47s · seed 6</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=6</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=6
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_euros PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_fees.py::test_fee_stays_small FAILED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+
+=================================== FAILURES ===================================
+_____________________________ test_fee_stays_small _____________________________
+
+    def test_fee_stays_small():
+        amount = random.randint(1, 1000)
+&gt;       assert processing_fee(amount) &lt; 1.5
+E       assert 2.44 &lt; 1.5
+E        +  where 2.44 = processing_fee(814)
+
+tests/test_fees.py:8: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_fees.py::test_fee_stays_small - assert 2.44 &lt; 1.5
+========================= 1 failed, 5 passed in 0.62s ==========================
+</pre></details><details id="E-0008"><summary><code>E-0008</code> suite_random · exit 1 · 2.39s · seed 7</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=7</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=7
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_convert.py::test_convert_euros FAILED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_fees.py::test_fee_stays_small FAILED
+tests/test_fees.py::test_total_includes_fee PASSED
+
+=================================== FAILURES ===================================
+______________________________ test_convert_euros ______________________________
+
+    def test_convert_euros():
+&gt;       assert convert(100, &#34;EUR&#34;) == 90.0
+E       AssertionError: assert 45.0 == 90.0
+E        +  where 45.0 = convert(100, &#39;EUR&#39;)
+
+tests/test_convert.py:5: AssertionError
+_____________________________ test_fee_stays_small _____________________________
+
+    def test_fee_stays_small():
+        amount = random.randint(1, 1000)
+&gt;       assert processing_fee(amount) &lt; 1.5
+E       assert 2.89 &lt; 1.5
+E        +  where 2.89 = processing_fee(962)
+
+tests/test_fees.py:8: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_convert.py::test_convert_euros - AssertionError: assert 45....
+FAILED tests/test_fees.py::test_fee_stays_small - assert 2.89 &lt;</pre></details><details id="E-0009"><summary><code>E-0009</code> suite_random · exit 1 · 2.21s · seed 8</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=8</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=8
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_convert_euros FAILED
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_fees.py::test_fee_stays_small PASSED
+
+=================================== FAILURES ===================================
+______________________________ test_convert_euros ______________________________
+
+    def test_convert_euros():
+&gt;       assert convert(100, &#34;EUR&#34;) == 90.0
+E       AssertionError: assert 45.0 == 90.0
+E        +  where 45.0 = convert(100, &#39;EUR&#39;)
+
+tests/test_convert.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_convert.py::test_convert_euros - AssertionError: assert 45....
+========================= 1 failed, 5 passed in 0.49s ==========================
+</pre></details><details id="E-0010"><summary><code>E-0010</code> suite_random · exit 0 · 2.13s · seed 9</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=9</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=9
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_fees.py::test_fee_stays_small PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_euros PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+
+============================== 6 passed in 0.37s ===============================
+</pre></details><details id="E-0011"><summary><code>E-0011</code> suite_random · exit 1 · 2.83s · seed 10</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=10</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=10
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_euros PASSED
+tests/test_fees.py::test_fee_stays_small FAILED
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+
+=================================== FAILURES ===================================
+_____________________________ test_fee_stays_small _____________________________
+
+    def test_fee_stays_small():
+        amount = random.randint(1, 1000)
+&gt;       assert processing_fee(amount) &lt; 1.5
+E       assert 2.23 &lt; 1.5
+E        +  where 2.23 = processing_fee(743)
+
+tests/test_fees.py:8: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_fees.py::test_fee_stays_small - assert 2.23 &lt; 1.5
+========================= 1 failed, 5 passed in 0.72s ==========================
+</pre></details><details id="E-0012"><summary><code>E-0012</code> suite_random · exit 1 · 3.71s · seed 11</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=11</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=11
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_convert_euros FAILED
+tests/test_fees.py::test_fee_stays_small PASSED
+tests/test_fees.py::test_total_includes_fee PASSED
+
+=================================== FAILURES ===================================
+______________________________ test_convert_euros ______________________________
+
+    def test_convert_euros():
+&gt;       assert convert(100, &#34;EUR&#34;) == 90.0
+E       AssertionError: assert 45.0 == 90.0
+E        +  where 45.0 = convert(100, &#39;EUR&#39;)
+
+tests/test_convert.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_convert.py::test_convert_euros - AssertionError: assert 45....
+========================= 1 failed, 5 passed in 0.80s ==========================
+</pre></details><details id="E-0013"><summary><code>E-0013</code> suite_random · exit 1 · 3.09s · seed 12</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=12</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=12
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_euros PASSED
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_fees.py::test_fee_stays_small FAILED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+
+=================================== FAILURES ===================================
+_____________________________ test_fee_stays_small _____________________________
+
+    def test_fee_stays_small():
+        amount = random.randint(1, 1000)
+&gt;       assert processing_fee(amount) &lt; 1.5
+E       assert 2.82 &lt; 1.5
+E        +  where 2.82 = processing_fee(939)
+
+tests/test_fees.py:8: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_fees.py::test_fee_stays_small - assert 2.82 &lt; 1.5
+========================= 1 failed, 5 passed in 0.60s ==========================
+</pre></details><details id="E-0014"><summary><code>E-0014</code> suite_random · exit 1 · 3.19s · seed 13</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=13</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=13
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_convert_euros FAILED
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_fees.py::test_fee_stays_small PASSED
+
+=================================== FAILURES ===================================
+______________________________ test_convert_euros ______________________________
+
+    def test_convert_euros():
+&gt;       assert convert(100, &#34;EUR&#34;) == 90.0
+E       AssertionError: assert 45.0 == 90.0
+E        +  where 45.0 = convert(100, &#39;EUR&#39;)
+
+tests/test_convert.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_convert.py::test_convert_euros - AssertionError: assert 45....
+========================= 1 failed, 5 passed in 0.71s ==========================
+</pre></details><details id="E-0015"><summary><code>E-0015</code> suite_random · exit 1 · 3.1s · seed 14</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=14</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=14
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_fees.py::test_fee_stays_small PASSED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_convert.py::test_convert_euros FAILED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+
+=================================== FAILURES ===================================
+______________________________ test_convert_euros ______________________________
+
+    def test_convert_euros():
+&gt;       assert convert(100, &#34;EUR&#34;) == 90.0
+E       AssertionError: assert 45.0 == 90.0
+E        +  where 45.0 = convert(100, &#39;EUR&#39;)
+
+tests/test_convert.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_convert.py::test_convert_euros - AssertionError: assert 45....
+========================= 1 failed, 5 passed in 0.81s ==========================
+</pre></details><details id="E-0016"><summary><code>E-0016</code> suite_random · exit 1 · 3.05s · seed 15</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=15</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=15
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_convert_euros PASSED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_fees.py::test_fee_stays_small FAILED
+tests/test_fees.py::test_total_includes_fee PASSED
+
+=================================== FAILURES ===================================
+_____________________________ test_fee_stays_small _____________________________
+
+    def test_fee_stays_small():
+        amount = random.randint(1, 1000)
+&gt;       assert processing_fee(amount) &lt; 1.5
+E       assert 2.0 &lt; 1.5
+E        +  where 2.0 = processing_fee(667)
+
+tests/test_fees.py:8: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_fees.py::test_fee_stays_small - assert 2.0 &lt; 1.5
+========================= 1 failed, 5 passed in 0.62s ==========================
+</pre></details><details id="E-0017"><summary><code>E-0017</code> suite_random · exit 1 · 2.75s · seed 16</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=16</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=16
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_convert.py::test_convert_euros PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_fees.py::test_fee_stays_small FAILED
+tests/test_fees.py::test_total_includes_fee PASSED
+
+=================================== FAILURES ===================================
+_____________________________ test_fee_stays_small _____________________________
+
+    def test_fee_stays_small():
+        amount = random.randint(1, 1000)
+&gt;       assert processing_fee(amount) &lt; 1.5
+E       assert 1.71 &lt; 1.5
+E        +  where 1.71 = processing_fee(571)
+
+tests/test_fees.py:8: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_fees.py::test_fee_stays_small - assert 1.71 &lt; 1.5
+========================= 1 failed, 5 passed in 0.58s ==========================
+</pre></details><details id="E-0018"><summary><code>E-0018</code> suite_random · exit 1 · 2.59s · seed 17</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=17</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=17
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_fees.py::test_fee_stays_small FAILED
+tests/test_convert.py::test_convert_euros PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+
+=================================== FAILURES ===================================
+_____________________________ test_fee_stays_small _____________________________
+
+    def test_fee_stays_small():
+        amount = random.randint(1, 1000)
+&gt;       assert processing_fee(amount) &lt; 1.5
+E       assert 2.33 &lt; 1.5
+E        +  where 2.33 = processing_fee(778)
+
+tests/test_fees.py:8: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_fees.py::test_fee_stays_small - assert 2.33 &lt; 1.5
+========================= 1 failed, 5 passed in 0.59s ==========================
+</pre></details><details id="E-0019"><summary><code>E-0019</code> suite_random · exit 1 · 2.29s · seed 18</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=18</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=18
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_fees.py::test_fee_stays_small PASSED
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_euros FAILED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+
+=================================== FAILURES ===================================
+______________________________ test_convert_euros ______________________________
+
+    def test_convert_euros():
+&gt;       assert convert(100, &#34;EUR&#34;) == 90.0
+E       AssertionError: assert 45.0 == 90.0
+E        +  where 45.0 = convert(100, &#39;EUR&#39;)
+
+tests/test_convert.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_convert.py::test_convert_euros - AssertionError: assert 45....
+========================= 1 failed, 5 passed in 0.46s ==========================
+</pre></details><details id="E-0020"><summary><code>E-0020</code> suite_random · exit 1 · 2.43s · seed 19</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=19</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=19
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_convert.py::test_convert_euros FAILED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_fees.py::test_fee_stays_small PASSED
+tests/test_fees.py::test_total_includes_fee PASSED
+
+=================================== FAILURES ===================================
+______________________________ test_convert_euros ______________________________
+
+    def test_convert_euros():
+&gt;       assert convert(100, &#34;EUR&#34;) == 90.0
+E       AssertionError: assert 45.0 == 90.0
+E        +  where 45.0 = convert(100, &#39;EUR&#39;)
+
+tests/test_convert.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_convert.py::test_convert_euros - AssertionError: assert 45....
+========================= 1 failed, 5 passed in 0.62s ==========================
+</pre></details><details id="E-0021"><summary><code>E-0021</code> suite_random · exit 0 · 2.42s · seed 20</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=20</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=20
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_euros PASSED
+tests/test_fees.py::test_fee_stays_small PASSED
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+
+============================== 6 passed in 0.43s ===============================
+</pre></details><details id="E-0022"><summary><code>E-0022</code> isolation · exit 0 · 2.61s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_convert.py::test_convert_euros</pre><div class="muted">order: tests/test_convert.py::test_convert_euros</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_convert.py::test_convert_euros PASSED
+
+============================== 1 passed in 0.27s ===============================
+</pre></details><details id="E-0023"><summary><code>E-0023</code> isolation · exit 0 · 2.89s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_convert.py::test_convert_euros</pre><div class="muted">order: tests/test_convert.py::test_convert_euros</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_convert.py::test_convert_euros PASSED
+
+============================== 1 passed in 0.23s ===============================
+</pre></details><details id="E-0024"><summary><code>E-0024</code> isolation · exit 0 · 2.49s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_convert.py::test_convert_euros</pre><div class="muted">order: tests/test_convert.py::test_convert_euros</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_convert.py::test_convert_euros PASSED
+
+============================== 1 passed in 0.24s ===============================
+</pre></details><details id="E-0025"><summary><code>E-0025</code> isolation · exit 0 · 3.12s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_convert.py::test_convert_euros</pre><div class="muted">order: tests/test_convert.py::test_convert_euros</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_convert.py::test_convert_euros PASSED
+
+============================== 1 passed in 0.49s ===============================
+</pre></details><details id="E-0026"><summary><code>E-0026</code> isolation · exit 0 · 2.76s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_convert.py::test_convert_euros</pre><div class="muted">order: tests/test_convert.py::test_convert_euros</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_convert.py::test_convert_euros PASSED
+
+============================== 1 passed in 0.21s ===============================
+</pre></details><details id="E-0027"><summary><code>E-0027</code> replay_order · exit 1 · 3.44s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_fees.py::test_total_includes_fee tests/test_fees.py::test_fee_stays_small tests/test_promo.py::test_promo_rate_halves_price tests/test_convert.py::test_convert_euros</pre><div class="muted">order: tests/test_fees.py::test_total_includes_fee → tests/test_fees.py::test_fee_stays_small → tests/test_promo.py::test_promo_rate_halves_price → tests/test_convert.py::test_convert_euros</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 4 items
+
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_fees.py::test_fee_stays_small PASSED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_convert.py::test_convert_euros FAILED
+
+=================================== FAILURES ===================================
+______________________________ test_convert_euros ______________________________
+
+    def test_convert_euros():
+&gt;       assert convert(100, &#34;EUR&#34;) == 90.0
+E       AssertionError: assert 45.0 == 90.0
+E        +  where 45.0 = convert(100, &#39;EUR&#39;)
+
+tests/test_convert.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_convert.py::test_convert_euros - AssertionError: assert 45....
+========================= 1 failed, 3 passed in 0.61s ==========================
+</pre></details><details id="E-0028"><summary><code>E-0028</code> replay_order · exit 1 · 2.82s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_fees.py::test_total_includes_fee tests/test_fees.py::test_fee_stays_small tests/test_promo.py::test_promo_rate_halves_price tests/test_convert.py::test_convert_euros</pre><div class="muted">order: tests/test_fees.py::test_total_includes_fee → tests/test_fees.py::test_fee_stays_small → tests/test_promo.py::test_promo_rate_halves_price → tests/test_convert.py::test_convert_euros</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 4 items
+
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_fees.py::test_fee_stays_small FAILED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_convert.py::test_convert_euros FAILED
+
+=================================== FAILURES ===================================
+_____________________________ test_fee_stays_small _____________________________
+
+    def test_fee_stays_small():
+        amount = random.randint(1, 1000)
+&gt;       assert processing_fee(amount) &lt; 1.5
+E       assert 2.93 &lt; 1.5
+E        +  where 2.93 = processing_fee(978)
+
+tests/test_fees.py:8: AssertionError
+______________________________ test_convert_euros ______________________________
+
+    def test_convert_euros():
+&gt;       assert convert(100, &#34;EUR&#34;) == 90.0
+E       AssertionError: assert 45.0 == 90.0
+E        +  where 45.0 = convert(100, &#39;EUR&#39;)
+
+tests/test_convert.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_fees.py::test_fee_stays_small - assert 2.93 &lt; 1.5
+FAILED tests/test_convert.py::test_convert_euros - AssertionError: assert 45....
+========================= 2 failed, 2 passed in 0.54s ==========================
+</pre></details><details id="E-0029"><summary><code>E-0029</code> bisect · exit 1 · 2.82s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_fees.py::test_total_includes_fee tests/test_fees.py::test_fee_stays_small tests/test_promo.py::test_promo_rate_halves_price tests/test_convert.py::test_convert_euros</pre><div class="muted">order: tests/test_fees.py::test_total_includes_fee → tests/test_fees.py::test_fee_stays_small → tests/test_promo.py::test_promo_rate_halves_price → tests/test_convert.py::test_convert_euros</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 4 items
+
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_fees.py::test_fee_stays_small PASSED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_convert.py::test_convert_euros FAILED
+
+=================================== FAILURES ===================================
+______________________________ test_convert_euros ______________________________
+
+    def test_convert_euros():
+&gt;       assert convert(100, &#34;EUR&#34;) == 90.0
+E       AssertionError: assert 45.0 == 90.0
+E        +  where 45.0 = convert(100, &#39;EUR&#39;)
+
+tests/test_convert.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_convert.py::test_convert_euros - AssertionError: assert 45....
+========================= 1 failed, 3 passed in 0.50s ==========================
+</pre></details><details id="E-0030"><summary><code>E-0030</code> bisect · exit 0 · 2.45s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_fees.py::test_total_includes_fee tests/test_fees.py::test_fee_stays_small tests/test_convert.py::test_convert_euros</pre><div class="muted">order: tests/test_fees.py::test_total_includes_fee → tests/test_fees.py::test_fee_stays_small → tests/test_convert.py::test_convert_euros</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 3 items
+
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_fees.py::test_fee_stays_small PASSED
+tests/test_convert.py::test_convert_euros PASSED
+
+============================== 3 passed in 0.32s ===============================
+</pre></details><details id="E-0031"><summary><code>E-0031</code> bisect · exit 1 · 2.92s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_promo.py::test_promo_rate_halves_price tests/test_convert.py::test_convert_euros</pre><div class="muted">order: tests/test_promo.py::test_promo_rate_halves_price → tests/test_convert.py::test_convert_euros</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 2 items
+
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_convert.py::test_convert_euros FAILED
+
+=================================== FAILURES ===================================
+______________________________ test_convert_euros ______________________________
+
+    def test_convert_euros():
+&gt;       assert convert(100, &#34;EUR&#34;) == 90.0
+E       AssertionError: assert 45.0 == 90.0
+E        +  where 45.0 = convert(100, &#39;EUR&#39;)
+
+tests/test_convert.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_convert.py::test_convert_euros - AssertionError: assert 45....
+========================= 1 failed, 1 passed in 0.47s ==========================
+</pre></details><details id="E-0032"><summary><code>E-0032</code> bisect · exit 0 · 2.1s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_convert.py::test_convert_euros</pre><div class="muted">order: tests/test_convert.py::test_convert_euros</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_convert.py::test_convert_euros PASSED
+
+============================== 1 passed in 0.22s ===============================
+</pre></details><details id="E-0033"><summary><code>E-0033</code> diagnose_repro · exit 1 · 2.42s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_promo.py::test_promo_rate_halves_price tests/test_convert.py::test_convert_euros</pre><div class="muted">order: tests/test_promo.py::test_promo_rate_halves_price → tests/test_convert.py::test_convert_euros</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 2 items
+
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_convert.py::test_convert_euros FAILED
+
+=================================== FAILURES ===================================
+______________________________ test_convert_euros ______________________________
+
+    def test_convert_euros():
+&gt;       assert convert(100, &#34;EUR&#34;) == 90.0
+E       AssertionError: assert 45.0 == 90.0
+E        +  where 45.0 = convert(100, &#39;EUR&#39;)
+
+tests/test_convert.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_convert.py::test_convert_euros - AssertionError: assert 45....
+========================= 1 failed, 1 passed in 0.42s ==========================
+</pre></details><details id="E-0034"><summary><code>E-0034</code> isolation · exit 1 · 2.37s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_fees.py::test_fee_stays_small</pre><div class="muted">order: tests/test_fees.py::test_fee_stays_small</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_fees.py::test_fee_stays_small FAILED
+
+=================================== FAILURES ===================================
+_____________________________ test_fee_stays_small _____________________________
+
+    def test_fee_stays_small():
+        amount = random.randint(1, 1000)
+&gt;       assert processing_fee(amount) &lt; 1.5
+E       assert 2.98 &lt; 1.5
+E        +  where 2.98 = processing_fee(994)
+
+tests/test_fees.py:8: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_fees.py::test_fee_stays_small - assert 2.98 &lt; 1.5
+============================== 1 failed in 0.34s ===============================
+</pre></details><details id="E-0035"><summary><code>E-0035</code> isolation · exit 1 · 2.21s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_fees.py::test_fee_stays_small</pre><div class="muted">order: tests/test_fees.py::test_fee_stays_small</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_fees.py::test_fee_stays_small FAILED
+
+=================================== FAILURES ===================================
+_____________________________ test_fee_stays_small _____________________________
+
+    def test_fee_stays_small():
+        amount = random.randint(1, 1000)
+&gt;       assert processing_fee(amount) &lt; 1.5
+E       assert 2.31 &lt; 1.5
+E        +  where 2.31 = processing_fee(769)
+
+tests/test_fees.py:8: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_fees.py::test_fee_stays_small - assert 2.31 &lt; 1.5
+============================== 1 failed in 0.30s ===============================
+</pre></details><details id="E-0036"><summary><code>E-0036</code> isolation · exit 0 · 2.12s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_fees.py::test_fee_stays_small</pre><div class="muted">order: tests/test_fees.py::test_fee_stays_small</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_fees.py::test_fee_stays_small PASSED
+
+============================== 1 passed in 0.21s ===============================
+</pre></details><details id="E-0037"><summary><code>E-0037</code> isolation · exit 1 · 2.02s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_fees.py::test_fee_stays_small</pre><div class="muted">order: tests/test_fees.py::test_fee_stays_small</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_fees.py::test_fee_stays_small FAILED
+
+=================================== FAILURES ===================================
+_____________________________ test_fee_stays_small _____________________________
+
+    def test_fee_stays_small():
+        amount = random.randint(1, 1000)
+&gt;       assert processing_fee(amount) &lt; 1.5
+E       assert 1.88 &lt; 1.5
+E        +  where 1.88 = processing_fee(625)
+
+tests/test_fees.py:8: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_fees.py::test_fee_stays_small - assert 1.88 &lt; 1.5
+============================== 1 failed in 0.26s ===============================
+</pre></details><details id="E-0038"><summary><code>E-0038</code> isolation · exit 1 · 2.03s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_fees.py::test_fee_stays_small</pre><div class="muted">order: tests/test_fees.py::test_fee_stays_small</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 1 item
+
+tests/test_fees.py::test_fee_stays_small FAILED
+
+=================================== FAILURES ===================================
+_____________________________ test_fee_stays_small _____________________________
+
+    def test_fee_stays_small():
+        amount = random.randint(1, 1000)
+&gt;       assert processing_fee(amount) &lt; 1.5
+E       assert 2.16 &lt; 1.5
+E        +  where 2.16 = processing_fee(721)
+
+tests/test_fees.py:8: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_fees.py::test_fee_stays_small - assert 2.16 &lt; 1.5
+============================== 1 failed in 0.34s ===============================
+</pre></details><details id="E-0039"><summary><code>E-0039</code> probe_batch · exit 0 · 1.26s</summary>
+<pre>$ python /opt/inherit/probe.py ledger.fees processing_fee --batch [{&#34;args&#34;: [0.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [10.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [2.5], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;ledger.fees&#34;, &#34;function&#34;: &#34;processing_fee&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 3.3605999988139956e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;ledger.fees&#34;, &#34;function&#34;: &#34;processing_fee&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.03&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 1.060099998539954e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;ledger.fees&#34;, &#34;function&#34;: &#34;processing_fee&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.01&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 9.001999956126383e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0040"><summary><code>E-0040</code> probe_batch · exit 0 · 1.57s</summary>
+<pre>$ python /opt/inherit/probe.py ledger.fees processing_fee --batch [{&#34;args&#34;: [0.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [10.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [2.5], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;ledger.fees&#34;, &#34;function&#34;: &#34;processing_fee&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 1.7103000004681235e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;ledger.fees&#34;, &#34;function&#34;: &#34;processing_fee&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.03&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 6.901000006109825e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;ledger.fees&#34;, &#34;function&#34;: &#34;processing_fee&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.01&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 6.702000064251479e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0041"><summary><code>E-0041</code> probe_batch · exit 0 · 1.17s</summary>
+<pre>$ python /opt/inherit/probe.py ledger.fees total_with_fee --batch [{&#34;args&#34;: [0.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [10.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [2.5], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;ledger.fees&#34;, &#34;function&#34;: &#34;total_with_fee&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 3.740700003618258e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;ledger.fees&#34;, &#34;function&#34;: &#34;total_with_fee&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;10.03&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 1.1401999927329598e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;ledger.fees&#34;, &#34;function&#34;: &#34;total_with_fee&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;2.51&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 1.2101999914193584e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0042"><summary><code>E-0042</code> probe_batch · exit 0 · 1.08s</summary>
+<pre>$ python /opt/inherit/probe.py ledger.fees total_with_fee --batch [{&#34;args&#34;: [0.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [10.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [2.5], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;ledger.fees&#34;, &#34;function&#34;: &#34;total_with_fee&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 1.7203000084009545e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;ledger.fees&#34;, &#34;function&#34;: &#34;total_with_fee&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;10.03&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 8.701999945515126e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;ledger.fees&#34;, &#34;function&#34;: &#34;total_with_fee&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;2.51&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 6.901000006109825e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {}, &#34;mutated&#34;: [], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0043"><summary><code>E-0043</code> probe_batch · exit 0 · 1.01s</summary>
+<pre>$ python /opt/inherit/probe.py ledger.rates exchange_rate --batch [{&#34;args&#34;: [&#34;&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;abc&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;Hello, World!&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;apple&#34;], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;exchange_rate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;1.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 7.701000072302122e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;exchange_rate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;1.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 6.600999995498569e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;exchange_rate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;1.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 3.7010000824011513e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 3, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;exchange_rate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;1.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 2.7999999474559445e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0044"><summary><code>E-0044</code> probe_batch · exit 0 · 0.98s</summary>
+<pre>$ python /opt/inherit/probe.py ledger.rates exchange_rate --batch [{&#34;args&#34;: [&#34;&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;abc&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;Hello, World!&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;apple&#34;], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;exchange_rate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;1.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 7.201000016721082e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;exchange_rate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;1.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 3.7009999687143136e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;exchange_rate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;1.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 6.801000040468352e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 3, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;exchange_rate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;1.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 4.90100001115934e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+</pre></details><details id="E-0045"><summary><code>E-0045</code> probe_batch · exit 0 · 1.07s</summary>
+<pre>$ python /opt/inherit/probe.py ledger.rates override_rate --batch [{&#34;args&#34;: [&#34;&#34;, 0.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;&#34;, 2.5], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;abc&#34;, 10.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;Hello, World!&#34;, 0.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;Hello, World!&#34;, 2.5], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;apple&#34;, 10.0], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;override_rate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;None&#34;, &#34;type&#34;: &#34;NoneType&#34;, &#34;duration&#34;: 5.700999963664799e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;override_rate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;None&#34;, &#34;type&#34;: &#34;NoneType&#34;, &#34;duration&#34;: 4.90100001115934e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;override_rate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;None&#34;, &#34;type&#34;: &#34;NoneType&#34;, &#34;duration&#34;: 4.700999966189556e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 3, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;override_rate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;None&#34;, &#34;type&#34;: &#34;NoneType&#34;, &#34;duration&#34;: 3.8010000480426243e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 4, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;override_rate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;Non</pre></details><details id="E-0046"><summary><code>E-0046</code> probe_batch · exit 0 · 0.96s</summary>
+<pre>$ python /opt/inherit/probe.py ledger.rates override_rate --batch [{&#34;args&#34;: [&#34;&#34;, 0.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;&#34;, 2.5], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;abc&#34;, 10.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;Hello, World!&#34;, 0.0], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;Hello, World!&#34;, 2.5], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [&#34;apple&#34;, 10.0], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;override_rate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;None&#34;, &#34;type&#34;: &#34;NoneType&#34;, &#34;duration&#34;: 5.800999929306272e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;override_rate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;None&#34;, &#34;type&#34;: &#34;NoneType&#34;, &#34;duration&#34;: 3.300999992461584e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;override_rate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;None&#34;, &#34;type&#34;: &#34;NoneType&#34;, &#34;duration&#34;: 3.400999958103057e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 3, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;override_rate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;None&#34;, &#34;type&#34;: &#34;NoneType&#34;, &#34;duration&#34;: 3.8009999343557865e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 4, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;override_rate&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;No</pre></details><details id="E-0047"><summary><code>E-0047</code> probe_batch · exit 0 · 1.02s</summary>
+<pre>$ python /opt/inherit/probe.py ledger.rates convert --batch [{&#34;args&#34;: [0.0, &#34;&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [0.0, &#34;Hello, World!&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [10.0, &#34;&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [10.0, &#34;Hello, World!&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [2.5, &#34;&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [2.5, &#34;Hello, World!&#34;], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;convert&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 1.2002000062238949e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;convert&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 6.300999984887312e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;convert&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;10.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 9.101999921767856e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 3, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;convert&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;10.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 8.402000048590708e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 4, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;convert&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;2.5&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 7.701000072</pre></details><details id="E-0048"><summary><code>E-0048</code> probe_batch · exit 0 · 1.15s</summary>
+<pre>$ python /opt/inherit/probe.py ledger.rates convert --batch [{&#34;args&#34;: [0.0, &#34;&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [0.0, &#34;Hello, World!&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [10.0, &#34;&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [10.0, &#34;Hello, World!&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [2.5, &#34;&#34;], &#34;kwargs&#34;: {}}, {&#34;args&#34;: [2.5, &#34;Hello, World!&#34;], &#34;kwargs&#34;: {}}]</pre>
+<pre>INHERIT_PROBE {&#34;index&#34;: 0, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;convert&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 1.690300007339829e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 1, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;convert&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;0.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 1.030200007789972e-05, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 2, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;convert&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;10.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 9.80200002231868e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 3, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;convert&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;10.0&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 9.901999987960153e-06, &#34;env_reads&#34;: {}, &#34;state_before&#34;: {&#34;_DEFAULT_RATES&#34;: &#34;{&#39;USD&#39;: 1.0, &#39;EUR&#39;: 0.9, &#39;GBP&#39;: 0.8, &#39;JPY&#39;: 150.0}&#34;, &#34;_CACHE&#34;: &#34;{}&#34;}, &#34;mutated&#34;: [&#34;_CACHE&#34;], &#34;restore_failed&#34;: false}
+INHERIT_PROBE {&#34;index&#34;: 4, &#34;module&#34;: &#34;ledger.rates&#34;, &#34;function&#34;: &#34;convert&#34;, &#34;status&#34;: &#34;returned&#34;, &#34;repr&#34;: &#34;2.5&#34;, &#34;type&#34;: &#34;float&#34;, &#34;duration&#34;: 7.70100007230</pre></details><details id="E-0049"><summary><code>E-0049</code> gate_baseline · exit 0 · 2.29s · seed 500</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=500</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=500
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_fees.py::test_fee_stays_small PASSED
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_euros PASSED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+
+============================== 6 passed in 0.43s ===============================
+</pre></details><details id="E-0050"><summary><code>E-0050</code> gate_baseline · exit 1 · 2.19s · seed 501</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=501</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=501
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_fees.py::test_fee_stays_small FAILED
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_euros FAILED
+
+=================================== FAILURES ===================================
+_____________________________ test_fee_stays_small _____________________________
+
+    def test_fee_stays_small():
+        amount = random.randint(1, 1000)
+&gt;       assert processing_fee(amount) &lt; 1.5
+E       assert 2.33 &lt; 1.5
+E        +  where 2.33 = processing_fee(778)
+
+tests/test_fees.py:8: AssertionError
+______________________________ test_convert_euros ______________________________
+
+    def test_convert_euros():
+&gt;       assert convert(100, &#34;EUR&#34;) == 90.0
+E       AssertionError: assert 45.0 == 90.0
+E        +  where 45.0 = convert(100, &#39;EUR&#39;)
+
+tests/test_convert.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_fees.py::test_fee_stays_small - assert 2.33 &lt; 1.5
+FAILED tests/test_convert.py::test_convert_euros - AssertionError: assert </pre></details><details id="E-0051"><summary><code>E-0051</code> gate_baseline · exit 1 · 2.27s · seed 502</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=502</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=502
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_convert_euros FAILED
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_fees.py::test_fee_stays_small PASSED
+
+=================================== FAILURES ===================================
+______________________________ test_convert_euros ______________________________
+
+    def test_convert_euros():
+&gt;       assert convert(100, &#34;EUR&#34;) == 90.0
+E       AssertionError: assert 45.0 == 90.0
+E        +  where 45.0 = convert(100, &#39;EUR&#39;)
+
+tests/test_convert.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_convert.py::test_convert_euros - AssertionError: assert 45....
+========================= 1 failed, 5 passed in 0.51s ==========================
+</pre></details><details id="E-0052"><summary><code>E-0052</code> gate_baseline · exit 1 · 2.19s · seed 503</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=503</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=503
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_fees.py::test_fee_stays_small PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_euros FAILED
+
+=================================== FAILURES ===================================
+______________________________ test_convert_euros ______________________________
+
+    def test_convert_euros():
+&gt;       assert convert(100, &#34;EUR&#34;) == 90.0
+E       AssertionError: assert 45.0 == 90.0
+E        +  where 45.0 = convert(100, &#39;EUR&#39;)
+
+tests/test_convert.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_convert.py::test_convert_euros - AssertionError: assert 45....
+========================= 1 failed, 5 passed in 0.49s ==========================
+</pre></details><details id="E-0053"><summary><code>E-0053</code> gate_baseline · exit 1 · 2.26s · seed 504</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=504</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=504
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 6 items
+
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_fees.py::test_fee_stays_small PASSED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_convert.py::test_convert_euros FAILED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+
+=================================== FAILURES ===================================
+______________________________ test_convert_euros ______________________________
+
+    def test_convert_euros():
+&gt;       assert convert(100, &#34;EUR&#34;) == 90.0
+E       AssertionError: assert 45.0 == 90.0
+E        +  where 45.0 = convert(100, &#39;EUR&#39;)
+
+tests/test_convert.py:5: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_convert.py::test_convert_euros - AssertionError: assert 45....
+========================= 1 failed, 5 passed in 0.49s ==========================
+</pre></details><details id="E-0054"><summary><code>E-0054</code> gate_generated · exit 0 · 2.22s · seed 500</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=500</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=500
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 28 items
+
+tests/test_inherit_characterization.py::test_ledger_rates_exchange_rate_case_2 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_convert_case_3 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_processing_fee_case_3 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_override_rate_case_4 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_total_with_fee_case_2 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_total_with_fee_case_3 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_override_rate_case_1 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_override_rate_case_5 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_convert_case_6 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_convert_case_2 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_processing_fee_case_2 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_exchange_rate_case_3 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_convert_case_4 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_exchange_rate_case_1 PASSED
+tests/test_inherit_characterization.py::test_ledger_f</pre></details><details id="E-0055"><summary><code>E-0055</code> gate_generated · exit 1 · 2.54s · seed 501</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=501</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=501
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 28 items
+
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_fees.py::test_fee_stays_small FAILED
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_euros FAILED
+tests/test_inherit_characterization.py::test_ledger_rates_convert_case_1 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_processing_fee_case_2 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_convert_case_5 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_exchange_rate_case_3 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_total_with_fee_case_3 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_override_rate_case_5 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_override_rate_case_1 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_override_rate_case_4 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_total_with_fee_case_2 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_exchange_rate_case_2 PASSED
+tests/test_inherit_characterization.py::test_ledg</pre></details><details id="E-0056"><summary><code>E-0056</code> gate_generated · exit 1 · 2.33s · seed 502</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=502</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=502
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 28 items
+
+tests/test_inherit_characterization.py::test_ledger_rates_override_rate_case_2 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_override_rate_case_6 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_processing_fee_case_1 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_convert_case_3 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_exchange_rate_case_4 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_convert_case_6 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_convert_case_2 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_exchange_rate_case_1 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_override_rate_case_3 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_total_with_fee_case_1 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_override_rate_case_1 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_override_rate_case_5 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_total_with_fee_case_3 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_exchange_rate_case_3 PASSED
+tests/test_inherit_characterization.py::test_le</pre></details><details id="E-0057"><summary><code>E-0057</code> gate_generated · exit 1 · 2.66s · seed 503</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=503</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=503
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 28 items
+
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_fees.py::test_fee_stays_small PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_convert.py::test_convert_euros FAILED
+tests/test_inherit_characterization.py::test_ledger_rates_override_rate_case_3 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_total_with_fee_case_1 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_convert_case_1 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_convert_case_5 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_exchange_rate_case_1 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_processing_fee_case_1 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_convert_case_4 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_exchange_rate_case_4 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_override_rate_case_6 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_override_rate_case_2 PASSED
+tests/test_inherit_characterization.py::test_ledger_fee</pre></details><details id="E-0058"><summary><code>E-0058</code> gate_generated · exit 1 · 2.52s · seed 504</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=504</pre>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+Using --randomly-seed=504
+rootdir: /work
+plugins: randomly-5.0.0
+collecting ... collected 28 items
+
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_fees.py::test_fee_stays_small PASSED
+tests/test_promo.py::test_promo_rate_halves_price PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_processing_fee_case_2 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_exchange_rate_case_3 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_convert_case_2 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_convert_case_6 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_total_with_fee_case_3 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_override_rate_case_5 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_override_rate_case_1 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_override_rate_case_4 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_convert_case_3 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_total_with_fee_case_2 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_exchange_rate_case_2 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_processing_fee_case_3 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_excha</pre></details><details id="E-0059"><summary><code>E-0059</code> gate_generated_first · exit 0 · 2.8s</summary>
+<pre>$ python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_inherit_characterization.py .</pre><div class="muted">order: tests/test_inherit_characterization.py → .</div>
+<pre>============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /work
+collecting ... collected 28 items
+
+tests/test_convert.py::test_convert_euros PASSED
+tests/test_convert.py::test_convert_dollars_is_identity PASSED
+tests/test_convert.py::test_unknown_currency_defaults_to_one PASSED
+tests/test_fees.py::test_fee_stays_small PASSED
+tests/test_fees.py::test_total_includes_fee PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_processing_fee_case_1 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_processing_fee_case_2 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_processing_fee_case_3 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_total_with_fee_case_1 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_total_with_fee_case_2 PASSED
+tests/test_inherit_characterization.py::test_ledger_fees_total_with_fee_case_3 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_exchange_rate_case_1 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_exchange_rate_case_2 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_exchange_rate_case_3 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_exchange_rate_case_4 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_override_rate_case_1 PASSED
+tests/test_inherit_characterization.py::test_ledger_rates_</pre></details><details id="E-0060"><summary><code>E-0060</code> characterization_validation · exit 0 · 2.38s</summary>
+<pre>$ python -m pytest -q -p no:cacheprovider -p no:randomly tests/test_inherit_characterization.py</pre>
+<pre>......................                                                   [100%]
+22 passed in 0.41s
+</pre></details>
+</section>
+</main>
+<script>
+// open the evidence entry a link points at
+function openHash(){var el=document.getElementById(location.hash.slice(1));if(el&&el.tagName==="DETAILS"){el.open=true;el.scrollIntoView()}}
+window.addEventListener("hashchange",openHash);openHash();
+</script>
+</body></html>

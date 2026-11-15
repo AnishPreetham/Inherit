@@ -1,0 +1,15 @@
+{
+  "id": "scheduler",
+  "title": "Scheduler: a failure that needs two culprits",
+  "summary": "A job scheduler. One test pauses it and another drains it; the status test fails only when both ran before it. There is also a genuine parsing bug that always fails.",
+  "shows": ["bisection finds a pair of polluters", "always-failing test reported as a real bug, not as flakiness"],
+  "expect": {
+    "order_dependent": {
+      "tests/test_status.py::test_status_reports_activity": [
+        "tests/test_control.py::test_pause_stops_new_jobs",
+        "tests/test_control.py::test_drain_finishes_queue"
+      ]
+    },
+    "always_failing": ["tests/test_parse.py::test_parse_hours_and_minutes"]
+  }
+}

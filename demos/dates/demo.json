@@ -1,0 +1,13 @@
+{
+  "id": "dates",
+  "title": "Dates: a real third-party dependency",
+  "summary": "A calendar helper built on python-dateutil. Inherit installs the dependency from a prebuilt wheel in the one networked step, then runs everything offline. One test switches the week start to Sunday and never switches it back.",
+  "shows": ["dependency installed from requirements.txt (wheel only)", "code under test uses the installed package offline", "settings-module polluter"],
+  "needs_network": true,
+  "expect": {
+    "install_status": "installed",
+    "order_dependent": {
+      "tests/test_weeks.py::test_week_starts_monday_by_default": ["tests/test_locale.py::test_us_calendar_starts_sunday"]
+    }
+  }
+}

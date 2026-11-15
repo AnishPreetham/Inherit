@@ -1,0 +1,12 @@
+{
+  "id": "shop",
+  "title": "Shop: shared stock and a leaked setting",
+  "summary": "A small store package. One test empties shared stock and another leaks an environment variable, so two tests fail only in certain orders.",
+  "shows": ["shared-state polluter", "environment-variable leak", "state and env isolation in generated tests", "off-by-one flagged for review"],
+  "expect": {
+    "order_dependent": {
+      "tests/test_report.py::test_opening_stock_levels": ["tests/test_inventory.py::test_reserve_all_apples"],
+      "tests/test_settings.py::test_default_price_format": ["tests/test_settings.py::test_euro_store_uses_eur"]
+    }
+  }
+}

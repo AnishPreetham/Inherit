@@ -1,0 +1,1244 @@
+{
+  "repo": "dates",
+  "generated_at": "2026-10-28T12:24:14+00:00",
+  "seconds": 146.0,
+  "backends": {
+    "llm": "mock",
+    "sandbox": "docker"
+  },
+  "models": {
+    "reasoner": "mock",
+    "worker": "mock"
+  },
+  "stability": {
+    "runs": 20,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "tests_total": 4,
+    "unstable": [
+      {
+        "test": "tests/test_weeks.py::test_week_starts_monday_by_default",
+        "fails": 9,
+        "runs": 20,
+        "classification": "order_dependent",
+        "polluters": [
+          "tests/test_locale.py::test_us_calendar_starts_sunday"
+        ],
+        "note": "fails only after running 1 specific earlier test(s)",
+        "evidence_ids": [
+          "E-0023",
+          "E-0024",
+          "E-0025",
+          "E-0026",
+          "E-0027",
+          "E-0028",
+          "E-0029",
+          "E-0030",
+          "E-0031",
+          "E-0032",
+          "E-0033"
+        ]
+      }
+    ],
+    "always_failing": [],
+    "stable_observed": 3,
+    "per_test": [
+      {
+        "test": "tests/test_locale.py::test_us_calendar_starts_sunday",
+        "passed": 20,
+        "failed": 0
+      },
+      {
+        "test": "tests/test_months.py::test_month_end_clamps_in_leap_year",
+        "passed": 20,
+        "failed": 0
+      },
+      {
+        "test": "tests/test_months.py::test_months_between",
+        "passed": 20,
+        "failed": 0
+      },
+      {
+        "test": "tests/test_weeks.py::test_week_starts_monday_by_default",
+        "passed": 11,
+        "failed": 9
+      }
+    ],
+    "run_matrix": [
+      {
+        "seed": 1,
+        "evidence_id": "E-0003",
+        "failed": []
+      },
+      {
+        "seed": 2,
+        "evidence_id": "E-0004",
+        "failed": []
+      },
+      {
+        "seed": 3,
+        "evidence_id": "E-0005",
+        "failed": [
+          "tests/test_weeks.py::test_week_starts_monday_by_default"
+        ]
+      },
+      {
+        "seed": 4,
+        "evidence_id": "E-0006",
+        "failed": [
+          "tests/test_weeks.py::test_week_starts_monday_by_default"
+        ]
+      },
+      {
+        "seed": 5,
+        "evidence_id": "E-0007",
+        "failed": []
+      },
+      {
+        "seed": 6,
+        "evidence_id": "E-0008",
+        "failed": []
+      },
+      {
+        "seed": 7,
+        "evidence_id": "E-0009",
+        "failed": []
+      },
+      {
+        "seed": 8,
+        "evidence_id": "E-0010",
+        "failed": []
+      },
+      {
+        "seed": 9,
+        "evidence_id": "E-0011",
+        "failed": [
+          "tests/test_weeks.py::test_week_starts_monday_by_default"
+        ]
+      },
+      {
+        "seed": 10,
+        "evidence_id": "E-0012",
+        "failed": [
+          "tests/test_weeks.py::test_week_starts_monday_by_default"
+        ]
+      },
+      {
+        "seed": 11,
+        "evidence_id": "E-0013",
+        "failed": []
+      },
+      {
+        "seed": 12,
+        "evidence_id": "E-0014",
+        "failed": [
+          "tests/test_weeks.py::test_week_starts_monday_by_default"
+        ]
+      },
+      {
+        "seed": 13,
+        "evidence_id": "E-0015",
+        "failed": []
+      },
+      {
+        "seed": 14,
+        "evidence_id": "E-0016",
+        "failed": [
+          "tests/test_weeks.py::test_week_starts_monday_by_default"
+        ]
+      },
+      {
+        "seed": 15,
+        "evidence_id": "E-0017",
+        "failed": []
+      },
+      {
+        "seed": 16,
+        "evidence_id": "E-0018",
+        "failed": []
+      },
+      {
+        "seed": 17,
+        "evidence_id": "E-0019",
+        "failed": [
+          "tests/test_weeks.py::test_week_starts_monday_by_default"
+        ]
+      },
+      {
+        "seed": 18,
+        "evidence_id": "E-0020",
+        "failed": [
+          "tests/test_weeks.py::test_week_starts_monday_by_default"
+        ]
+      },
+      {
+        "seed": 19,
+        "evidence_id": "E-0021",
+        "failed": []
+      },
+      {
+        "seed": 20,
+        "evidence_id": "E-0022",
+        "failed": [
+          "tests/test_weeks.py::test_week_starts_monday_by_default"
+        ]
+      }
+    ]
+  },
+  "environment": {
+    "sources": [
+      "requirements.txt"
+    ],
+    "requirements": [
+      "python-dateutil==2.9.0.post0"
+    ],
+    "skipped": [],
+    "install_status": "cached",
+    "install_evidence": "E-0001",
+    "install_error": "",
+    "missing_modules": [],
+    "collection_errors": []
+  },
+  "investigations": {
+    "limit": 10,
+    "investigated": 1,
+    "unstable": 1
+  },
+  "repairs": [
+    {
+      "victim": "tests/test_weeks.py::test_week_starts_monday_by_default",
+      "status": "no_patch",
+      "reason": "no patch proposed",
+      "cause": "unknown",
+      "explanation": "Offline mock model: no diagnosis. Configure Nebius Token Factory.",
+      "confidence": "low",
+      "diff": "",
+      "runs": 0,
+      "evidence_ids": []
+    }
+  ],
+  "behavior": {
+    "functions_total": 4,
+    "functions_with_pins": 4,
+    "pinned": 17,
+    "flagged_for_review": [
+      {
+        "function": "datekit.periods.add_months",
+        "test": "test_datekit_periods_add_months_case_1",
+        "outcome": {
+          "index": 0,
+          "module": "datekit.periods",
+          "function": "add_months",
+          "status": "raised",
+          "exc_type": "ValueError",
+          "exc_message": "invalid literal for int() with base 10: ''",
+          "duration": 0.00015862800000832067,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0035",
+          "E-0036"
+        ]
+      },
+      {
+        "function": "datekit.periods.add_months",
+        "test": "test_datekit_periods_add_months_case_2",
+        "outcome": {
+          "index": 1,
+          "module": "datekit.periods",
+          "function": "add_months",
+          "status": "raised",
+          "exc_type": "TypeError",
+          "exc_message": "'str' object cannot be interpreted as an integer",
+          "duration": 1.2201999993521895e-05,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0035",
+          "E-0036"
+        ]
+      },
+      {
+        "function": "datekit.periods.add_months",
+        "test": "test_datekit_periods_add_months_case_3",
+        "outcome": {
+          "index": 2,
+          "module": "datekit.periods",
+          "function": "add_months",
+          "status": "raised",
+          "exc_type": "TypeError",
+          "exc_message": "'str' object cannot be interpreted as an integer",
+          "duration": 1.4902999964760966e-05,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0035",
+          "E-0036"
+        ]
+      },
+      {
+        "function": "datekit.periods.add_months",
+        "test": "test_datekit_periods_add_months_case_4",
+        "outcome": {
+          "index": 3,
+          "module": "datekit.periods",
+          "function": "add_months",
+          "status": "raised",
+          "exc_type": "TypeError",
+          "exc_message": "'str' object cannot be interpreted as an integer",
+          "duration": 1.0102000032929936e-05,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0035",
+          "E-0036"
+        ]
+      },
+      {
+        "function": "datekit.periods.add_months",
+        "test": "test_datekit_periods_add_months_case_5",
+        "outcome": {
+          "index": 4,
+          "module": "datekit.periods",
+          "function": "add_months",
+          "status": "raised",
+          "exc_type": "TypeError",
+          "exc_message": "'str' object cannot be interpreted as an integer",
+          "duration": 9.30199996673764e-06,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0035",
+          "E-0036"
+        ]
+      },
+      {
+        "function": "datekit.periods.add_months",
+        "test": "test_datekit_periods_add_months_case_6",
+        "outcome": {
+          "index": 5,
+          "module": "datekit.periods",
+          "function": "add_months",
+          "status": "raised",
+          "exc_type": "TypeError",
+          "exc_message": "'str' object cannot be interpreted as an integer",
+          "duration": 6.901000006109825e-06,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0035",
+          "E-0036"
+        ]
+      },
+      {
+        "function": "datekit.periods.week_start",
+        "test": "test_datekit_periods_week_start_case_2",
+        "outcome": {
+          "index": 1,
+          "module": "datekit.periods",
+          "function": "week_start",
+          "status": "raised",
+          "exc_type": "TypeError",
+          "exc_message": "'str' object cannot be interpreted as an integer",
+          "duration": 1.2803000004169007e-05,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0037",
+          "E-0038"
+        ]
+      },
+      {
+        "function": "datekit.periods.week_start",
+        "test": "test_datekit_periods_week_start_case_3",
+        "outcome": {
+          "index": 2,
+          "module": "datekit.periods",
+          "function": "week_start",
+          "status": "raised",
+          "exc_type": "TypeError",
+          "exc_message": "'str' object cannot be interpreted as an integer",
+          "duration": 8.700999956090527e-06,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0037",
+          "E-0038"
+        ]
+      },
+      {
+        "function": "datekit.periods.week_start",
+        "test": "test_datekit_periods_week_start_case_4",
+        "outcome": {
+          "index": 3,
+          "module": "datekit.periods",
+          "function": "week_start",
+          "status": "raised",
+          "exc_type": "TypeError",
+          "exc_message": "'str' object cannot be interpreted as an integer",
+          "duration": 7.001000085438136e-06,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0037",
+          "E-0038"
+        ]
+      },
+      {
+        "function": "datekit.periods.week_start",
+        "test": "test_datekit_periods_week_start_case_5",
+        "outcome": {
+          "index": 4,
+          "module": "datekit.periods",
+          "function": "week_start",
+          "status": "raised",
+          "exc_type": "TypeError",
+          "exc_message": "'str' object cannot be interpreted as an integer",
+          "duration": 1.1502000006657909e-05,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0037",
+          "E-0038"
+        ]
+      },
+      {
+        "function": "datekit.periods.week_start",
+        "test": "test_datekit_periods_week_start_case_6",
+        "outcome": {
+          "index": 5,
+          "module": "datekit.periods",
+          "function": "week_start",
+          "status": "raised",
+          "exc_type": "TypeError",
+          "exc_message": "'str' object cannot be interpreted as an integer",
+          "duration": 9.302000080424477e-06,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0037",
+          "E-0038"
+        ]
+      },
+      {
+        "function": "datekit.periods.months_between",
+        "test": "test_datekit_periods_months_between_case_1",
+        "outcome": {
+          "index": 0,
+          "module": "datekit.periods",
+          "function": "months_between",
+          "status": "raised",
+          "exc_type": "TypeError",
+          "exc_message": "fromisoformat: argument must be str",
+          "duration": 1.2800999911632971e-05,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0039",
+          "E-0040"
+        ]
+      },
+      {
+        "function": "datekit.periods.months_between",
+        "test": "test_datekit_periods_months_between_case_2",
+        "outcome": {
+          "index": 1,
+          "module": "datekit.periods",
+          "function": "months_between",
+          "status": "raised",
+          "exc_type": "TypeError",
+          "exc_message": "fromisoformat: argument must be str",
+          "duration": 6.399999961104186e-06,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0039",
+          "E-0040"
+        ]
+      },
+      {
+        "function": "datekit.periods.months_between",
+        "test": "test_datekit_periods_months_between_case_3",
+        "outcome": {
+          "index": 2,
+          "module": "datekit.periods",
+          "function": "months_between",
+          "status": "raised",
+          "exc_type": "ValueError",
+          "exc_message": "Invalid isoformat string: 'a'",
+          "duration": 9.799999929782643e-06,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0039",
+          "E-0040"
+        ]
+      },
+      {
+        "function": "datekit.periods.months_between",
+        "test": "test_datekit_periods_months_between_case_4",
+        "outcome": {
+          "index": 3,
+          "module": "datekit.periods",
+          "function": "months_between",
+          "status": "raised",
+          "exc_type": "ValueError",
+          "exc_message": "Invalid isoformat string: 'a'",
+          "duration": 9.799999929782643e-06,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0039",
+          "E-0040"
+        ]
+      }
+    ],
+    "nondeterministic_excluded": 0,
+    "stateful_isolated": 2,
+    "stateful_excluded": 0,
+    "generated_tests_dropped": [
+      "test_datekit_periods_week_start_case_1"
+    ],
+    "gate_runs": 6,
+    "failed_functions": {},
+    "validation_passed": true,
+    "validation_evidence": "E-0054"
+  },
+  "docs": {
+    "observed": 17,
+    "inferred": 0,
+    "downgraded": []
+  },
+  "uncertainties": [
+    "This run used the offline mock model, not NVIDIA Nemotron: inputs were heuristic and no real diagnosis was attempted.",
+    "Stability results cover 20 shuffled runs (seeds 1-20) in one sandbox environment. Tests with no observed failures may still fail under other orders, timing, operating systems or load.",
+    "Characterization tests pin what the code does today, which may include bugs. Review them before treating them as a specification.",
+    "datekit.periods.add_months raises ValueError for 1 recorded input(s); confirm this is intended.",
+    "datekit.periods.add_months raises TypeError for 5 recorded input(s); confirm this is intended.",
+    "datekit.periods.week_start raises TypeError for 5 recorded input(s); confirm this is intended.",
+    "datekit.periods.months_between raises TypeError for 2 recorded input(s); confirm this is intended.",
+    "datekit.periods.months_between raises ValueError for 2 recorded input(s); confirm this is intended.",
+    "Repair for tests/test_weeks.py::test_week_starts_monday_by_default is no_patch: no patch proposed"
+  ],
+  "model_usage": [
+    {
+      "role": "reasoner",
+      "model": "mock-reasoner",
+      "calls": 5,
+      "ok_calls": 5,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "avg_latency": 0.0
+    },
+    {
+      "role": "worker",
+      "model": "mock-worker",
+      "calls": 4,
+      "ok_calls": 4,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "avg_latency": 0.0
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-0001",
+      "kind": "install_dependencies",
+      "command": "reuse cached dependencies",
+      "exit_code": 0,
+      "duration": 0,
+      "seed": null,
+      "order": null,
+      "stdout": "reused 1 requirement(s) installed earlier",
+      "stderr": ""
+    },
+    {
+      "id": "E-0002",
+      "kind": "collect",
+      "command": "python -m pytest -p no:cacheprovider -p no:randomly --collect-only -q",
+      "exit_code": 0,
+      "duration": 3.4,
+      "seed": null,
+      "order": null,
+      "stdout": "tests/test_locale.py::test_us_calendar_starts_sunday\ntests/test_months.py::test_month_end_clamps_in_leap_year\ntests/test_months.py::test_months_between\ntests/test_weeks.py::test_week_starts_monday_by_default\n\n4 tests collected in 0.79s\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0003",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=1",
+      "exit_code": 0,
+      "duration": 3.63,
+      "seed": 1,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=1\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_months.py::test_months_between PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\n\n============================== 4 passed in 0.79s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0004",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=2",
+      "exit_code": 0,
+      "duration": 3.32,
+      "seed": 2,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=2\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_months.py::test_months_between PASSED\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\n\n============================== 4 passed in 0.65s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0005",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=3",
+      "exit_code": 1,
+      "duration": 5.36,
+      "seed": 3,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=3\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_months.py::test_months_between PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default FAILED\n\n=================================== FAILURES ===================================\n______________________ test_week_starts_monday_by_default ______________________\n\n    def test_week_starts_monday_by_default():\n        # 2024-05-15 is a Wednesday\n>       assert week_start(2024, 5, 15) == \"2024-05-13\"\nE       AssertionError: assert '2024-05-12' == '2024-05-13'\nE         \nE         - 2024-05-13\nE         ?          ^\nE         + 2024-05-12\nE         ?          ^\n\ntests/test_weeks.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_weeks.py::test_week_starts_monday_by_default - AssertionErr...\n========================= 1 failed, 3 passed in 1.49s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0006",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=4",
+      "exit_code": 1,
+      "duration": 4.93,
+      "seed": 4,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=4\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default FAILED\ntests/test_months.py::test_months_between PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\n\n=================================== FAILURES ===================================\n______________________ test_week_starts_monday_by_default ______________________\n\n    def test_week_starts_monday_by_default():\n        # 2024-05-15 is a Wednesday\n>       assert week_start(2024, 5, 15) == \"2024-05-13\"\nE       AssertionError: assert '2024-05-12' == '2024-05-13'\nE         \nE         - 2024-05-13\nE         ?          ^\nE         + 2024-05-12\nE         ?          ^\n\ntests/test_weeks.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_weeks.py::test_week_starts_monday_by_default - AssertionErr...\n========================= 1 failed, 3 passed in 0.97s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0007",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=5",
+      "exit_code": 0,
+      "duration": 2.91,
+      "seed": 5,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=5\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_months.py::test_months_between PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\n\n============================== 4 passed in 0.48s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0008",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=6",
+      "exit_code": 0,
+      "duration": 2.64,
+      "seed": 6,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=6\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_months.py::test_months_between PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\n\n============================== 4 passed in 0.51s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0009",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=7",
+      "exit_code": 0,
+      "duration": 2.3,
+      "seed": 7,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=7\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_months.py::test_months_between PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\n\n============================== 4 passed in 0.43s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0010",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=8",
+      "exit_code": 0,
+      "duration": 2.52,
+      "seed": 8,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=8\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_months.py::test_months_between PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\n\n============================== 4 passed in 0.48s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0011",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=9",
+      "exit_code": 1,
+      "duration": 2.73,
+      "seed": 9,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=9\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_months.py::test_months_between PASSED\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default FAILED\n\n=================================== FAILURES ===================================\n______________________ test_week_starts_monday_by_default ______________________\n\n    def test_week_starts_monday_by_default():\n        # 2024-05-15 is a Wednesday\n>       assert week_start(2024, 5, 15) == \"2024-05-13\"\nE       AssertionError: assert '2024-05-12' == '2024-05-13'\nE         \nE         - 2024-05-13\nE         ?          ^\nE         + 2024-05-12\nE         ?          ^\n\ntests/test_weeks.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_weeks.py::test_week_starts_monday_by_default - AssertionErr...\n========================= 1 failed, 3 passed in 0.68s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0012",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=10",
+      "exit_code": 1,
+      "duration": 3.0,
+      "seed": 10,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=10\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default FAILED\ntests/test_months.py::test_months_between PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\n\n=================================== FAILURES ===================================\n______________________ test_week_starts_monday_by_default ______________________\n\n    def test_week_starts_monday_by_default():\n        # 2024-05-15 is a Wednesday\n>       assert week_start(2024, 5, 15) == \"2024-05-13\"\nE       AssertionError: assert '2024-05-12' == '2024-05-13'\nE         \nE         - 2024-05-13\nE         ?          ^\nE         + 2024-05-12\nE         ?          ^\n\ntests/test_weeks.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_weeks.py::test_week_starts_monday_by_default - AssertionErr...\n========================= 1 failed, 3 passed in 0.70s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0013",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=11",
+      "exit_code": 0,
+      "duration": 2.48,
+      "seed": 11,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=11\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_months.py::test_months_between PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\n\n============================== 4 passed in 0.47s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0014",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=12",
+      "exit_code": 1,
+      "duration": 2.88,
+      "seed": 12,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=12\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_months.py::test_months_between PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default FAILED\n\n=================================== FAILURES ===================================\n______________________ test_week_starts_monday_by_default ______________________\n\n    def test_week_starts_monday_by_default():\n        # 2024-05-15 is a Wednesday\n>       assert week_start(2024, 5, 15) == \"2024-05-13\"\nE       AssertionError: assert '2024-05-12' == '2024-05-13'\nE         \nE         - 2024-05-13\nE         ?          ^\nE         + 2024-05-12\nE         ?          ^\n\ntests/test_weeks.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_weeks.py::test_week_starts_monday_by_default - AssertionErr...\n========================= 1 failed, 3 passed in 0.66s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0015",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=13",
+      "exit_code": 0,
+      "duration": 2.66,
+      "seed": 13,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=13\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_months.py::test_months_between PASSED\n\n============================== 4 passed in 0.47s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0016",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=14",
+      "exit_code": 1,
+      "duration": 2.88,
+      "seed": 14,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=14\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default FAILED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_months.py::test_months_between PASSED\n\n=================================== FAILURES ===================================\n______________________ test_week_starts_monday_by_default ______________________\n\n    def test_week_starts_monday_by_default():\n        # 2024-05-15 is a Wednesday\n>       assert week_start(2024, 5, 15) == \"2024-05-13\"\nE       AssertionError: assert '2024-05-12' == '2024-05-13'\nE         \nE         - 2024-05-13\nE         ?          ^\nE         + 2024-05-12\nE         ?          ^\n\ntests/test_weeks.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_weeks.py::test_week_starts_monday_by_default - AssertionErr...\n========================= 1 failed, 3 passed in 0.67s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0017",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=15",
+      "exit_code": 0,
+      "duration": 2.45,
+      "seed": 15,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=15\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_months.py::test_months_between PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\n\n============================== 4 passed in 0.46s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0018",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=16",
+      "exit_code": 0,
+      "duration": 2.74,
+      "seed": 16,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=16\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_months.py::test_months_between PASSED\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\n\n============================== 4 passed in 0.64s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0019",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=17",
+      "exit_code": 1,
+      "duration": 2.61,
+      "seed": 17,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=17\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_months.py::test_months_between PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default FAILED\n\n=================================== FAILURES ===================================\n______________________ test_week_starts_monday_by_default ______________________\n\n    def test_week_starts_monday_by_default():\n        # 2024-05-15 is a Wednesday\n>       assert week_start(2024, 5, 15) == \"2024-05-13\"\nE       AssertionError: assert '2024-05-12' == '2024-05-13'\nE         \nE         - 2024-05-13\nE         ?          ^\nE         + 2024-05-12\nE         ?          ^\n\ntests/test_weeks.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_weeks.py::test_week_starts_monday_by_default - AssertionErr...\n========================= 1 failed, 3 passed in 0.67s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0020",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=18",
+      "exit_code": 1,
+      "duration": 2.55,
+      "seed": 18,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=18\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default FAILED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_months.py::test_months_between PASSED\n\n=================================== FAILURES ===================================\n______________________ test_week_starts_monday_by_default ______________________\n\n    def test_week_starts_monday_by_default():\n        # 2024-05-15 is a Wednesday\n>       assert week_start(2024, 5, 15) == \"2024-05-13\"\nE       AssertionError: assert '2024-05-12' == '2024-05-13'\nE         \nE         - 2024-05-13\nE         ?          ^\nE         + 2024-05-12\nE         ?          ^\n\ntests/test_weeks.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_weeks.py::test_week_starts_monday_by_default - AssertionErr...\n========================= 1 failed, 3 passed in 0.60s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0021",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=19",
+      "exit_code": 0,
+      "duration": 2.24,
+      "seed": 19,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=19\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_months.py::test_months_between PASSED\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\n\n============================== 4 passed in 0.43s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0022",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=20",
+      "exit_code": 1,
+      "duration": 2.59,
+      "seed": 20,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=20\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default FAILED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_months.py::test_months_between PASSED\n\n=================================== FAILURES ===================================\n______________________ test_week_starts_monday_by_default ______________________\n\n    def test_week_starts_monday_by_default():\n        # 2024-05-15 is a Wednesday\n>       assert week_start(2024, 5, 15) == \"2024-05-13\"\nE       AssertionError: assert '2024-05-12' == '2024-05-13'\nE         \nE         - 2024-05-13\nE         ?          ^\nE         + 2024-05-12\nE         ?          ^\n\ntests/test_weeks.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_weeks.py::test_week_starts_monday_by_default - AssertionErr...\n========================= 1 failed, 3 passed in 0.78s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0023",
+      "kind": "isolation",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_weeks.py::test_week_starts_monday_by_default",
+      "exit_code": 0,
+      "duration": 2.21,
+      "seed": null,
+      "order": [
+        "tests/test_weeks.py::test_week_starts_monday_by_default"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 1 item\n\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\n\n============================== 1 passed in 0.28s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0024",
+      "kind": "isolation",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_weeks.py::test_week_starts_monday_by_default",
+      "exit_code": 0,
+      "duration": 2.29,
+      "seed": null,
+      "order": [
+        "tests/test_weeks.py::test_week_starts_monday_by_default"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 1 item\n\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\n\n============================== 1 passed in 0.34s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0025",
+      "kind": "isolation",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_weeks.py::test_week_starts_monday_by_default",
+      "exit_code": 0,
+      "duration": 2.57,
+      "seed": null,
+      "order": [
+        "tests/test_weeks.py::test_week_starts_monday_by_default"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 1 item\n\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\n\n============================== 1 passed in 0.44s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0026",
+      "kind": "isolation",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_weeks.py::test_week_starts_monday_by_default",
+      "exit_code": 0,
+      "duration": 2.47,
+      "seed": null,
+      "order": [
+        "tests/test_weeks.py::test_week_starts_monday_by_default"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 1 item\n\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\n\n============================== 1 passed in 0.33s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0027",
+      "kind": "isolation",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_weeks.py::test_week_starts_monday_by_default",
+      "exit_code": 0,
+      "duration": 2.43,
+      "seed": null,
+      "order": [
+        "tests/test_weeks.py::test_week_starts_monday_by_default"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 1 item\n\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\n\n============================== 1 passed in 0.33s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0028",
+      "kind": "replay_order",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_locale.py::test_us_calendar_starts_sunday tests/test_months.py::test_month_end_clamps_in_leap_year tests/test_months.py::test_months_between tests/test_weeks.py::test_week_starts_monday_by_default",
+      "exit_code": 1,
+      "duration": 2.45,
+      "seed": null,
+      "order": [
+        "tests/test_locale.py::test_us_calendar_starts_sunday",
+        "tests/test_months.py::test_month_end_clamps_in_leap_year",
+        "tests/test_months.py::test_months_between",
+        "tests/test_weeks.py::test_week_starts_monday_by_default"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 4 items\n\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_months.py::test_months_between PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default FAILED\n\n=================================== FAILURES ===================================\n______________________ test_week_starts_monday_by_default ______________________\n\n    def test_week_starts_monday_by_default():\n        # 2024-05-15 is a Wednesday\n>       assert week_start(2024, 5, 15) == \"2024-05-13\"\nE       AssertionError: assert '2024-05-12' == '2024-05-13'\nE         \nE         - 2024-05-13\nE         ?          ^\nE         + 2024-05-12\nE         ?          ^\n\ntests/test_weeks.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_weeks.py::test_week_starts_monday_by_default - AssertionErr...\n========================= 1 failed, 3 passed in 0.56s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0029",
+      "kind": "replay_order",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_locale.py::test_us_calendar_starts_sunday tests/test_months.py::test_month_end_clamps_in_leap_year tests/test_months.py::test_months_between tests/test_weeks.py::test_week_starts_monday_by_default",
+      "exit_code": 1,
+      "duration": 3.9,
+      "seed": null,
+      "order": [
+        "tests/test_locale.py::test_us_calendar_starts_sunday",
+        "tests/test_months.py::test_month_end_clamps_in_leap_year",
+        "tests/test_months.py::test_months_between",
+        "tests/test_weeks.py::test_week_starts_monday_by_default"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 4 items\n\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_months.py::test_months_between PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default FAILED\n\n=================================== FAILURES ===================================\n______________________ test_week_starts_monday_by_default ______________________\n\n    def test_week_starts_monday_by_default():\n        # 2024-05-15 is a Wednesday\n>       assert week_start(2024, 5, 15) == \"2024-05-13\"\nE       AssertionError: assert '2024-05-12' == '2024-05-13'\nE         \nE         - 2024-05-13\nE         ?          ^\nE         + 2024-05-12\nE         ?          ^\n\ntests/test_weeks.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_weeks.py::test_week_starts_monday_by_default - AssertionErr...\n========================= 1 failed, 3 passed in 1.10s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0030",
+      "kind": "bisect",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_locale.py::test_us_calendar_starts_sunday tests/test_months.py::test_month_end_clamps_in_leap_year tests/test_months.py::test_months_between tests/test_weeks.py::test_week_starts_monday_by_default",
+      "exit_code": 1,
+      "duration": 3.39,
+      "seed": null,
+      "order": [
+        "tests/test_locale.py::test_us_calendar_starts_sunday",
+        "tests/test_months.py::test_month_end_clamps_in_leap_year",
+        "tests/test_months.py::test_months_between",
+        "tests/test_weeks.py::test_week_starts_monday_by_default"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 4 items\n\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_months.py::test_months_between PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default FAILED\n\n=================================== FAILURES ===================================\n______________________ test_week_starts_monday_by_default ______________________\n\n    def test_week_starts_monday_by_default():\n        # 2024-05-15 is a Wednesday\n>       assert week_start(2024, 5, 15) == \"2024-05-13\"\nE       AssertionError: assert '2024-05-12' == '2024-05-13'\nE         \nE         - 2024-05-13\nE         ?          ^\nE         + 2024-05-12\nE         ?          ^\n\ntests/test_weeks.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_weeks.py::test_week_starts_monday_by_default - AssertionErr...\n========================= 1 failed, 3 passed in 0.66s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0031",
+      "kind": "bisect",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_locale.py::test_us_calendar_starts_sunday tests/test_months.py::test_month_end_clamps_in_leap_year tests/test_weeks.py::test_week_starts_monday_by_default",
+      "exit_code": 1,
+      "duration": 2.98,
+      "seed": null,
+      "order": [
+        "tests/test_locale.py::test_us_calendar_starts_sunday",
+        "tests/test_months.py::test_month_end_clamps_in_leap_year",
+        "tests/test_weeks.py::test_week_starts_monday_by_default"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 3 items\n\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default FAILED\n\n=================================== FAILURES ===================================\n______________________ test_week_starts_monday_by_default ______________________\n\n    def test_week_starts_monday_by_default():\n        # 2024-05-15 is a Wednesday\n>       assert week_start(2024, 5, 15) == \"2024-05-13\"\nE       AssertionError: assert '2024-05-12' == '2024-05-13'\nE         \nE         - 2024-05-13\nE         ?          ^\nE         + 2024-05-12\nE         ?          ^\n\ntests/test_weeks.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_weeks.py::test_week_starts_monday_by_default - AssertionErr...\n========================= 1 failed, 2 passed in 0.63s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0032",
+      "kind": "bisect",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_locale.py::test_us_calendar_starts_sunday tests/test_weeks.py::test_week_starts_monday_by_default",
+      "exit_code": 1,
+      "duration": 2.71,
+      "seed": null,
+      "order": [
+        "tests/test_locale.py::test_us_calendar_starts_sunday",
+        "tests/test_weeks.py::test_week_starts_monday_by_default"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 2 items\n\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default FAILED\n\n=================================== FAILURES ===================================\n______________________ test_week_starts_monday_by_default ______________________\n\n    def test_week_starts_monday_by_default():\n        # 2024-05-15 is a Wednesday\n>       assert week_start(2024, 5, 15) == \"2024-05-13\"\nE       AssertionError: assert '2024-05-12' == '2024-05-13'\nE         \nE         - 2024-05-13\nE         ?          ^\nE         + 2024-05-12\nE         ?          ^\n\ntests/test_weeks.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_weeks.py::test_week_starts_monday_by_default - AssertionErr...\n========================= 1 failed, 1 passed in 0.55s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0033",
+      "kind": "bisect",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_weeks.py::test_week_starts_monday_by_default",
+      "exit_code": 0,
+      "duration": 2.44,
+      "seed": null,
+      "order": [
+        "tests/test_weeks.py::test_week_starts_monday_by_default"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 1 item\n\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\n\n============================== 1 passed in 0.31s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0034",
+      "kind": "diagnose_repro",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_locale.py::test_us_calendar_starts_sunday tests/test_weeks.py::test_week_starts_monday_by_default",
+      "exit_code": 1,
+      "duration": 3.23,
+      "seed": null,
+      "order": [
+        "tests/test_locale.py::test_us_calendar_starts_sunday",
+        "tests/test_weeks.py::test_week_starts_monday_by_default"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 2 items\n\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default FAILED\n\n=================================== FAILURES ===================================\n______________________ test_week_starts_monday_by_default ______________________\n\n    def test_week_starts_monday_by_default():\n        # 2024-05-15 is a Wednesday\n>       assert week_start(2024, 5, 15) == \"2024-05-13\"\nE       AssertionError: assert '2024-05-12' == '2024-05-13'\nE         \nE         - 2024-05-13\nE         ?          ^\nE         + 2024-05-12\nE         ?          ^\n\ntests/test_weeks.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_weeks.py::test_week_starts_monday_by_default - AssertionErr...\n========================= 1 failed, 1 passed in 0.59s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0035",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py datekit.periods add_months --batch [{\"args\": [1, 1, 1, \"\"], \"kwargs\": {}}, {\"args\": [1, 1, \"a\", \"abc\"], \"kwargs\": {}}, {\"args\": [1, \"a\", 1, \"Hello, World!\"], \"kwargs\": {}}, {\"args\": [1, \"a\", \"a\", \"apple\"], \"kwargs\": {}}, {\"args\": [\"a\", 1, \"a\", \"\"], \"kwargs\": {}}, {\"args\": [\"a\", \"a\", 1, \"abc\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.21,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"datekit.periods\", \"function\": \"add_months\", \"status\": \"raised\", \"exc_type\": \"ValueError\", \"exc_message\": \"invalid literal for int() with base 10: ''\", \"duration\": 0.00015862800000832067, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"datekit.periods\", \"function\": \"add_months\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"'str' object cannot be interpreted as an integer\", \"duration\": 1.2201999993521895e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 2, \"module\": \"datekit.periods\", \"function\": \"add_months\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"'str' object cannot be interpreted as an integer\", \"duration\": 1.4902999964760966e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 3, \"module\": \"datekit.periods\", \"function\": \"add_months\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"'str' object cannot be interpreted as an integer\", \"duration\": 1.0102000032929936e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 4, \"module\": \"datekit.periods\", \"function\": \"add_months\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"'str' object cannot be interpreted as an integer\", \"duration\": 9.30199996673764e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [",
+      "stderr": ""
+    },
+    {
+      "id": "E-0036",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py datekit.periods add_months --batch [{\"args\": [1, 1, 1, \"\"], \"kwargs\": {}}, {\"args\": [1, 1, \"a\", \"abc\"], \"kwargs\": {}}, {\"args\": [1, \"a\", 1, \"Hello, World!\"], \"kwargs\": {}}, {\"args\": [1, \"a\", \"a\", \"apple\"], \"kwargs\": {}}, {\"args\": [\"a\", 1, \"a\", \"\"], \"kwargs\": {}}, {\"args\": [\"a\", \"a\", 1, \"abc\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.21,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"datekit.periods\", \"function\": \"add_months\", \"status\": \"raised\", \"exc_type\": \"ValueError\", \"exc_message\": \"invalid literal for int() with base 10: ''\", \"duration\": 3.15050000381234e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"datekit.periods\", \"function\": \"add_months\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"'str' object cannot be interpreted as an integer\", \"duration\": 1.9704000010278833e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 2, \"module\": \"datekit.periods\", \"function\": \"add_months\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"'str' object cannot be interpreted as an integer\", \"duration\": 8.000999969226541e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 3, \"module\": \"datekit.periods\", \"function\": \"add_months\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"'str' object cannot be interpreted as an integer\", \"duration\": 5.500999918695015e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 4, \"module\": \"datekit.periods\", \"function\": \"add_months\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"'str' object cannot be interpreted as an integer\", \"duration\": 9.101999921767856e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], ",
+      "stderr": ""
+    },
+    {
+      "id": "E-0037",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py datekit.periods week_start --batch [{\"args\": [1, 1, 1], \"kwargs\": {}}, {\"args\": [1, 1, \"a\"], \"kwargs\": {}}, {\"args\": [1, \"a\", 1], \"kwargs\": {}}, {\"args\": [1, \"a\", \"a\"], \"kwargs\": {}}, {\"args\": [\"a\", 1, 1], \"kwargs\": {}}, {\"args\": [\"a\", 1, \"a\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.29,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"datekit.periods\", \"function\": \"week_start\", \"status\": \"returned\", \"repr\": \"'0001-01-01'\", \"type\": \"str\", \"duration\": 4.4708000018545135e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"datekit.periods\", \"function\": \"week_start\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"'str' object cannot be interpreted as an integer\", \"duration\": 1.2803000004169007e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 2, \"module\": \"datekit.periods\", \"function\": \"week_start\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"'str' object cannot be interpreted as an integer\", \"duration\": 8.700999956090527e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 3, \"module\": \"datekit.periods\", \"function\": \"week_start\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"'str' object cannot be interpreted as an integer\", \"duration\": 7.001000085438136e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 4, \"module\": \"datekit.periods\", \"function\": \"week_start\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"'str' object cannot be interpreted as an integer\", \"duration\": 1.1502000006657909e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"in",
+      "stderr": ""
+    },
+    {
+      "id": "E-0038",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py datekit.periods week_start --batch [{\"args\": [1, 1, 1], \"kwargs\": {}}, {\"args\": [1, 1, \"a\"], \"kwargs\": {}}, {\"args\": [1, \"a\", 1], \"kwargs\": {}}, {\"args\": [1, \"a\", \"a\"], \"kwargs\": {}}, {\"args\": [\"a\", 1, 1], \"kwargs\": {}}, {\"args\": [\"a\", 1, \"a\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.17,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"datekit.periods\", \"function\": \"week_start\", \"status\": \"returned\", \"repr\": \"'0001-01-01'\", \"type\": \"str\", \"duration\": 4.840799999783485e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"datekit.periods\", \"function\": \"week_start\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"'str' object cannot be interpreted as an integer\", \"duration\": 1.0901999985435396e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 2, \"module\": \"datekit.periods\", \"function\": \"week_start\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"'str' object cannot be interpreted as an integer\", \"duration\": 9.601999977348896e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 3, \"module\": \"datekit.periods\", \"function\": \"week_start\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"'str' object cannot be interpreted as an integer\", \"duration\": 8.402000048590708e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 4, \"module\": \"datekit.periods\", \"function\": \"week_start\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"'str' object cannot be interpreted as an integer\", \"duration\": 6.401000064215623e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"inde",
+      "stderr": ""
+    },
+    {
+      "id": "E-0039",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py datekit.periods months_between --batch [{\"args\": [1, 1], \"kwargs\": {}}, {\"args\": [1, \"a\"], \"kwargs\": {}}, {\"args\": [\"a\", 1], \"kwargs\": {}}, {\"args\": [\"a\", \"a\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.19,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"datekit.periods\", \"function\": \"months_between\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"fromisoformat: argument must be str\", \"duration\": 1.2800999911632971e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"datekit.periods\", \"function\": \"months_between\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"fromisoformat: argument must be str\", \"duration\": 6.399999961104186e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 2, \"module\": \"datekit.periods\", \"function\": \"months_between\", \"status\": \"raised\", \"exc_type\": \"ValueError\", \"exc_message\": \"Invalid isoformat string: 'a'\", \"duration\": 9.799999929782643e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 3, \"module\": \"datekit.periods\", \"function\": \"months_between\", \"status\": \"raised\", \"exc_type\": \"ValueError\", \"exc_message\": \"Invalid isoformat string: 'a'\", \"duration\": 9.799999929782643e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0040",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py datekit.periods months_between --batch [{\"args\": [1, 1], \"kwargs\": {}}, {\"args\": [1, \"a\"], \"kwargs\": {}}, {\"args\": [\"a\", 1], \"kwargs\": {}}, {\"args\": [\"a\", \"a\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.62,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"datekit.periods\", \"function\": \"months_between\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"fromisoformat: argument must be str\", \"duration\": 1.8901000089499576e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"datekit.periods\", \"function\": \"months_between\", \"status\": \"raised\", \"exc_type\": \"TypeError\", \"exc_message\": \"fromisoformat: argument must be str\", \"duration\": 8.800999921732e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 2, \"module\": \"datekit.periods\", \"function\": \"months_between\", \"status\": \"raised\", \"exc_type\": \"ValueError\", \"exc_message\": \"Invalid isoformat string: 'a'\", \"duration\": 8.999999977277184e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 3, \"module\": \"datekit.periods\", \"function\": \"months_between\", \"status\": \"raised\", \"exc_type\": \"ValueError\", \"exc_message\": \"Invalid isoformat string: 'a'\", \"duration\": 7.101000051079609e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0041",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py datekit.settings use_week_start --batch [{\"args\": [1], \"kwargs\": {}}, {\"args\": [\"a\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.23,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"datekit.settings\", \"function\": \"use_week_start\", \"status\": \"returned\", \"repr\": \"None\", \"type\": \"NoneType\", \"duration\": 5.500000042957254e-06, \"env_reads\": {}, \"state_before\": {\"WEEK_START\": \"'monday'\"}, \"mutated\": [\"WEEK_START\"], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"datekit.settings\", \"function\": \"use_week_start\", \"status\": \"returned\", \"repr\": \"None\", \"type\": \"NoneType\", \"duration\": 6.699999971715442e-06, \"env_reads\": {}, \"state_before\": {\"WEEK_START\": \"'monday'\"}, \"mutated\": [\"WEEK_START\"], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0042",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py datekit.settings use_week_start --batch [{\"args\": [1], \"kwargs\": {}}, {\"args\": [\"a\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.09,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"datekit.settings\", \"function\": \"use_week_start\", \"status\": \"returned\", \"repr\": \"None\", \"type\": \"NoneType\", \"duration\": 5.310299991378997e-05, \"env_reads\": {}, \"state_before\": {\"WEEK_START\": \"'monday'\"}, \"mutated\": [\"WEEK_START\"], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"datekit.settings\", \"function\": \"use_week_start\", \"status\": \"returned\", \"repr\": \"None\", \"type\": \"NoneType\", \"duration\": 4.699999976764957e-06, \"env_reads\": {}, \"state_before\": {\"WEEK_START\": \"'monday'\"}, \"mutated\": [\"WEEK_START\"], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0043",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=500",
+      "exit_code": 1,
+      "duration": 2.68,
+      "seed": 500,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=500\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_months.py::test_months_between PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default FAILED\n\n=================================== FAILURES ===================================\n______________________ test_week_starts_monday_by_default ______________________\n\n    def test_week_starts_monday_by_default():\n        # 2024-05-15 is a Wednesday\n>       assert week_start(2024, 5, 15) == \"2024-05-13\"\nE       AssertionError: assert '2024-05-12' == '2024-05-13'\nE         \nE         - 2024-05-13\nE         ?          ^\nE         + 2024-05-12\nE         ?          ^\n\ntests/test_weeks.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_weeks.py::test_week_starts_monday_by_default - AssertionErr...\n========================= 1 failed, 3 passed in 0.70s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0044",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=501",
+      "exit_code": 0,
+      "duration": 2.39,
+      "seed": 501,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=501\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\ntests/test_months.py::test_months_between PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\n\n============================== 4 passed in 0.43s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0045",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=502",
+      "exit_code": 1,
+      "duration": 2.53,
+      "seed": 502,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=502\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_months.py::test_months_between PASSED\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default FAILED\n\n=================================== FAILURES ===================================\n______________________ test_week_starts_monday_by_default ______________________\n\n    def test_week_starts_monday_by_default():\n        # 2024-05-15 is a Wednesday\n>       assert week_start(2024, 5, 15) == \"2024-05-13\"\nE       AssertionError: assert '2024-05-12' == '2024-05-13'\nE         \nE         - 2024-05-13\nE         ?          ^\nE         + 2024-05-12\nE         ?          ^\n\ntests/test_weeks.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_weeks.py::test_week_starts_monday_by_default - AssertionErr...\n========================= 1 failed, 3 passed in 0.66s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0046",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=503",
+      "exit_code": 1,
+      "duration": 2.61,
+      "seed": 503,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=503\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default FAILED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_months.py::test_months_between PASSED\n\n=================================== FAILURES ===================================\n______________________ test_week_starts_monday_by_default ______________________\n\n    def test_week_starts_monday_by_default():\n        # 2024-05-15 is a Wednesday\n>       assert week_start(2024, 5, 15) == \"2024-05-13\"\nE       AssertionError: assert '2024-05-12' == '2024-05-13'\nE         \nE         - 2024-05-13\nE         ?          ^\nE         + 2024-05-12\nE         ?          ^\n\ntests/test_weeks.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_weeks.py::test_week_starts_monday_by_default - AssertionErr...\n========================= 1 failed, 3 passed in 0.59s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0047",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=504",
+      "exit_code": 0,
+      "duration": 2.38,
+      "seed": 504,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=504\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 4 items\n\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_months.py::test_months_between PASSED\n\n============================== 4 passed in 0.49s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0048",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=500",
+      "exit_code": 1,
+      "duration": 2.69,
+      "seed": 500,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=500\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 22 items\n\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_3 PASSED\ntests/test_inherit_characterization.py::test_datekit_settings_use_week_start_case_1 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_5 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_1 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_months_between_case_1 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_months_between_case_4 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_4 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_2 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_6 PASSED\ntests/test_inherit_characterization.py::test_datekit_settings_use_week_start_case_2 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_4 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_months_between_case_2 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_6 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_2 PASSED\ntests/t",
+      "stderr": ""
+    },
+    {
+      "id": "E-0049",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=501",
+      "exit_code": 0,
+      "duration": 2.64,
+      "seed": 501,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=501\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 22 items\n\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\ntests/test_months.py::test_months_between PASSED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_6 PASSED\ntests/test_inherit_characterization.py::test_datekit_settings_use_week_start_case_2 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_2 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_months_between_case_1 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_4 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_1 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_months_between_case_4 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_5 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_3 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_5 PASSED\ntests/test_inherit_characterization.py::test_datekit_settings_use_week_start_case_1 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_1 PASSED\ntests/t",
+      "stderr": ""
+    },
+    {
+      "id": "E-0050",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=502",
+      "exit_code": 1,
+      "duration": 2.63,
+      "seed": 502,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=502\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 22 items\n\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_3 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_months_between_case_1 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_1 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_5 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_4 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_months_between_case_4 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_6 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_2 PASSED\ntests/test_inherit_characterization.py::test_datekit_settings_use_week_start_case_2 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_4 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_2 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_6 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_months_between_case_2 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_months_between_case_3 PASSED\ntests/te",
+      "stderr": ""
+    },
+    {
+      "id": "E-0051",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=503",
+      "exit_code": 1,
+      "duration": 2.97,
+      "seed": 503,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=503\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 22 items\n\ntests/test_locale.py::test_us_calendar_starts_sunday PASSED\ntests/test_weeks.py::test_week_starts_monday_by_default FAILED\ntests/test_months.py::test_month_end_clamps_in_leap_year PASSED\ntests/test_months.py::test_months_between PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_2 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_6 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_4 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_months_between_case_1 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_5 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_1 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_months_between_case_4 PASSED\ntests/test_inherit_characterization.py::test_datekit_settings_use_week_start_case_1 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_3 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_1 FAILED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_5 PASSED\ntests/test_inherit_characterization.py",
+      "stderr": ""
+    },
+    {
+      "id": "E-0052",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=504",
+      "exit_code": 0,
+      "duration": 2.66,
+      "seed": 504,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=504\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 22 items\n\ntests/test_weeks.py::test_week_starts_monday_by_default PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_6 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_2 PASSED\ntests/test_inherit_characterization.py::test_datekit_settings_use_week_start_case_1 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_months_between_case_1 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_4 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_1 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_5 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_3 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_months_between_case_4 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_months_between_case_2 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_5 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_1 PASSED\ntests/test_inherit_characterization.py::test_datekit_settings_use_week_start_case_2 PASSED\ntests/test_inherit_characteriz",
+      "stderr": ""
+    },
+    {
+      "id": "E-0053",
+      "kind": "gate_generated_first",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_inherit_characterization.py .",
+      "exit_code": 1,
+      "duration": 3.67,
+      "seed": null,
+      "order": [
+        "tests/test_inherit_characterization.py",
+        "."
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 22 items\n\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_1 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_2 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_3 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_4 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_5 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_add_months_case_6 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_1 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_2 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_3 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_4 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_5 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_week_start_case_6 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_months_between_case_1 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_months_between_case_2 PASSED\ntests/test_inherit_characterization.py::test_datekit_periods_months_bet",
+      "stderr": ""
+    },
+    {
+      "id": "E-0054",
+      "kind": "characterization_validation",
+      "command": "python -m pytest -q -p no:cacheprovider -p no:randomly tests/test_inherit_characterization.py",
+      "exit_code": 0,
+      "duration": 7.38,
+      "seed": null,
+      "order": null,
+      "stdout": ".................                                                        [100%]\n17 passed in 1.50s\n",
+      "stderr": ""
+    }
+  ]
+}

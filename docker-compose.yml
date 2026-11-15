@@ -1,0 +1,37 @@
+# Full mode on a Docker host (e.g. a Nebius AI Cloud VM): uploads enabled, every run isolated.
+#
+#   docker compose build && docker compose up -d
+#
+# The app talks to the host's Docker through its socket. Sandbox runs bind-mount a temp copy
+# of the repo, and that path must mean the same thing to the app and to the Docker host, so
+# /srv/inherit/tmp is mounted at the identical path and used as TMPDIR.
+services:
+  sandbox:
+    # built only so the image exists on the host; never runs as a service
+    build: ./sandbox
+    image: inherit-sandbox
+    command: ["true"]
+    restart: "no"
+
+  app:
+    build: .
+    image: inherit-app
+    depends_on: [sandbox]
+    ports:
+      - "${INHERIT_PORT:-8000}:7860"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      INHERIT_PUBLIC_MODE: "0"
+      SANDBOX_BACKEND: docker
+      SANDBOX_IMAGE: inherit-sandbox
+      TMPDIR: /srv/inherit/tmp
+      INHERIT_RUNS_DIR: /srv/inherit/runs
+      INHERIT_MAX_RUNS_PER_HOUR: "${INHERIT_MAX_RUNS_PER_HOUR:-12}"
+    user: root  # needs the Docker socket; target code itself still runs as non-root in the sandbox
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /srv/inherit/tmp:/srv/inherit/tmp
+      - /srv/inherit/runs:/srv/inherit/runs
+    restart: unless-stopped

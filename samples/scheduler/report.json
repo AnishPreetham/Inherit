@@ -1,0 +1,1084 @@
+{
+  "repo": "scheduler",
+  "generated_at": "2026-10-28T12:32:49+00:00",
+  "seconds": 188.9,
+  "backends": {
+    "llm": "mock",
+    "sandbox": "docker"
+  },
+  "models": {
+    "reasoner": "mock",
+    "worker": "mock"
+  },
+  "stability": {
+    "runs": 20,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "tests_total": 6,
+    "unstable": [
+      {
+        "test": "tests/test_status.py::test_status_reports_activity",
+        "fails": 10,
+        "runs": 20,
+        "classification": "order_dependent",
+        "polluters": [
+          "tests/test_control.py::test_drain_finishes_queue",
+          "tests/test_control.py::test_pause_stops_new_jobs"
+        ],
+        "note": "fails only after running 2 specific earlier test(s)",
+        "evidence_ids": [
+          "E-0022",
+          "E-0023",
+          "E-0024",
+          "E-0025",
+          "E-0026",
+          "E-0027",
+          "E-0028",
+          "E-0029",
+          "E-0030",
+          "E-0031",
+          "E-0032",
+          "E-0033"
+        ]
+      }
+    ],
+    "always_failing": [
+      "tests/test_parse.py::test_parse_hours_and_minutes"
+    ],
+    "stable_observed": 4,
+    "per_test": [
+      {
+        "test": "tests/test_control.py::test_pause_stops_new_jobs",
+        "passed": 20,
+        "failed": 0
+      },
+      {
+        "test": "tests/test_control.py::test_drain_finishes_queue",
+        "passed": 20,
+        "failed": 0
+      },
+      {
+        "test": "tests/test_parse.py::test_parse_minutes",
+        "passed": 20,
+        "failed": 0
+      },
+      {
+        "test": "tests/test_parse.py::test_parse_hours",
+        "passed": 20,
+        "failed": 0
+      },
+      {
+        "test": "tests/test_parse.py::test_parse_hours_and_minutes",
+        "passed": 0,
+        "failed": 20
+      },
+      {
+        "test": "tests/test_status.py::test_status_reports_activity",
+        "passed": 10,
+        "failed": 10
+      }
+    ],
+    "run_matrix": [
+      {
+        "seed": 1,
+        "evidence_id": "E-0002",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes"
+        ]
+      },
+      {
+        "seed": 2,
+        "evidence_id": "E-0003",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes",
+          "tests/test_status.py::test_status_reports_activity"
+        ]
+      },
+      {
+        "seed": 3,
+        "evidence_id": "E-0004",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes",
+          "tests/test_status.py::test_status_reports_activity"
+        ]
+      },
+      {
+        "seed": 4,
+        "evidence_id": "E-0005",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes"
+        ]
+      },
+      {
+        "seed": 5,
+        "evidence_id": "E-0006",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes",
+          "tests/test_status.py::test_status_reports_activity"
+        ]
+      },
+      {
+        "seed": 6,
+        "evidence_id": "E-0007",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes",
+          "tests/test_status.py::test_status_reports_activity"
+        ]
+      },
+      {
+        "seed": 7,
+        "evidence_id": "E-0008",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes"
+        ]
+      },
+      {
+        "seed": 8,
+        "evidence_id": "E-0009",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes"
+        ]
+      },
+      {
+        "seed": 9,
+        "evidence_id": "E-0010",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes",
+          "tests/test_status.py::test_status_reports_activity"
+        ]
+      },
+      {
+        "seed": 10,
+        "evidence_id": "E-0011",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes"
+        ]
+      },
+      {
+        "seed": 11,
+        "evidence_id": "E-0012",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes",
+          "tests/test_status.py::test_status_reports_activity"
+        ]
+      },
+      {
+        "seed": 12,
+        "evidence_id": "E-0013",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes"
+        ]
+      },
+      {
+        "seed": 13,
+        "evidence_id": "E-0014",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes"
+        ]
+      },
+      {
+        "seed": 14,
+        "evidence_id": "E-0015",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes"
+        ]
+      },
+      {
+        "seed": 15,
+        "evidence_id": "E-0016",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes",
+          "tests/test_status.py::test_status_reports_activity"
+        ]
+      },
+      {
+        "seed": 16,
+        "evidence_id": "E-0017",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes",
+          "tests/test_status.py::test_status_reports_activity"
+        ]
+      },
+      {
+        "seed": 17,
+        "evidence_id": "E-0018",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes"
+        ]
+      },
+      {
+        "seed": 18,
+        "evidence_id": "E-0019",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes"
+        ]
+      },
+      {
+        "seed": 19,
+        "evidence_id": "E-0020",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes",
+          "tests/test_status.py::test_status_reports_activity"
+        ]
+      },
+      {
+        "seed": 20,
+        "evidence_id": "E-0021",
+        "failed": [
+          "tests/test_parse.py::test_parse_hours_and_minutes",
+          "tests/test_status.py::test_status_reports_activity"
+        ]
+      }
+    ]
+  },
+  "environment": {
+    "sources": [],
+    "requirements": [],
+    "skipped": [],
+    "install_status": "not_needed",
+    "install_evidence": "",
+    "install_error": "",
+    "missing_modules": [],
+    "collection_errors": []
+  },
+  "investigations": {
+    "limit": 10,
+    "investigated": 1,
+    "unstable": 1
+  },
+  "repairs": [
+    {
+      "victim": "tests/test_status.py::test_status_reports_activity",
+      "status": "no_patch",
+      "reason": "no patch proposed",
+      "cause": "unknown",
+      "explanation": "Offline mock model: no diagnosis. Configure Nebius Token Factory.",
+      "confidence": "low",
+      "diff": "",
+      "runs": 0,
+      "evidence_ids": []
+    }
+  ],
+  "behavior": {
+    "functions_total": 5,
+    "functions_with_pins": 5,
+    "pinned": 8,
+    "flagged_for_review": [
+      {
+        "function": "cronjob.parse.parse_interval",
+        "test": "test_cronjob_parse_parse_interval_case_1",
+        "outcome": {
+          "index": 0,
+          "module": "cronjob.parse",
+          "function": "parse_interval",
+          "status": "raised",
+          "exc_type": "ValueError",
+          "exc_message": "invalid literal for int() with base 10: ''",
+          "duration": 5.603599993264652e-05,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0043",
+          "E-0044"
+        ]
+      },
+      {
+        "function": "cronjob.parse.parse_interval",
+        "test": "test_cronjob_parse_parse_interval_case_2",
+        "outcome": {
+          "index": 1,
+          "module": "cronjob.parse",
+          "function": "parse_interval",
+          "status": "raised",
+          "exc_type": "ValueError",
+          "exc_message": "invalid literal for int() with base 10: 'abc'",
+          "duration": 1.4608999890697305e-05,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0043",
+          "E-0044"
+        ]
+      },
+      {
+        "function": "cronjob.parse.parse_interval",
+        "test": "test_cronjob_parse_parse_interval_case_3",
+        "outcome": {
+          "index": 2,
+          "module": "cronjob.parse",
+          "function": "parse_interval",
+          "status": "raised",
+          "exc_type": "ValueError",
+          "exc_message": "invalid literal for int() with base 10: ''",
+          "duration": 1.3308999996297644e-05,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0043",
+          "E-0044"
+        ]
+      },
+      {
+        "function": "cronjob.parse.parse_interval",
+        "test": "test_cronjob_parse_parse_interval_case_4",
+        "outcome": {
+          "index": 3,
+          "module": "cronjob.parse",
+          "function": "parse_interval",
+          "status": "raised",
+          "exc_type": "ValueError",
+          "exc_message": "invalid literal for int() with base 10: 'apple'",
+          "duration": 1.0807000080603757e-05,
+          "env_reads": {},
+          "state_before": {},
+          "mutated": [],
+          "restore_failed": false
+        },
+        "evidence_ids": [
+          "E-0043",
+          "E-0044"
+        ]
+      }
+    ],
+    "nondeterministic_excluded": 0,
+    "stateful_isolated": 2,
+    "stateful_excluded": 0,
+    "generated_tests_dropped": [],
+    "gate_runs": 6,
+    "failed_functions": {},
+    "validation_passed": true,
+    "validation_evidence": "E-0056"
+  },
+  "docs": {
+    "observed": 8,
+    "inferred": 0,
+    "downgraded": []
+  },
+  "uncertainties": [
+    "This run used the offline mock model, not NVIDIA Nemotron: inputs were heuristic and no real diagnosis was attempted.",
+    "Stability results cover 20 shuffled runs (seeds 1-20) in one sandbox environment. Tests with no observed failures may still fail under other orders, timing, operating systems or load.",
+    "Characterization tests pin what the code does today, which may include bugs. Review them before treating them as a specification.",
+    "cronjob.parse.parse_interval raises ValueError for 4 recorded input(s); confirm this is intended.",
+    "Repair for tests/test_status.py::test_status_reports_activity is no_patch: no patch proposed"
+  ],
+  "model_usage": [
+    {
+      "role": "reasoner",
+      "model": "mock-reasoner",
+      "calls": 6,
+      "ok_calls": 6,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "avg_latency": 0.0
+    },
+    {
+      "role": "worker",
+      "model": "mock-worker",
+      "calls": 5,
+      "ok_calls": 5,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "avg_latency": 0.0
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-0001",
+      "kind": "collect",
+      "command": "python -m pytest -p no:cacheprovider -p no:randomly --collect-only -q",
+      "exit_code": 0,
+      "duration": 2.68,
+      "seed": null,
+      "order": null,
+      "stdout": "tests/test_control.py::test_pause_stops_new_jobs\ntests/test_control.py::test_drain_finishes_queue\ntests/test_parse.py::test_parse_minutes\ntests/test_parse.py::test_parse_hours\ntests/test_parse.py::test_parse_hours_and_minutes\ntests/test_status.py::test_status_reports_activity\n\n6 tests collected in 0.46s\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0002",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=1",
+      "exit_code": 1,
+      "duration": 2.6,
+      "seed": 1,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=1\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_status.py::test_status_reports_activity PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_parse.py::test_parse_hours_and_minutes - AssertionError: as...\n========================= 1 failed, 5 passed in 0.58s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0003",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=2",
+      "exit_code": 1,
+      "duration": 3.26,
+      "seed": 2,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=2\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_status.py::test_status_reports_activity FAILED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.status() in (\"running\", \"paused\", \"draining\")\nE       AssertionError: assert 'idle' in ('running', 'paused', 'draining')\nE        +  where 'idle' = <function status at 0x7df776c52660>()\nE        +    where <function status at 0x7df776c52660> = control.status\n\ntests/test_status.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED tests/tes",
+      "stderr": ""
+    },
+    {
+      "id": "E-0004",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=3",
+      "exit_code": 1,
+      "duration": 2.55,
+      "seed": 3,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=3\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_status.py::test_status_reports_activity FAILED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_minutes PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.status() in (\"running\", \"paused\", \"draining\")\nE       AssertionError: assert 'idle' in ('running', 'paused', 'draining')\nE        +  where 'idle' = <function status at 0x76b9754aa660>()\nE        +    where <function status at 0x76b9754aa660> = control.status\n\ntests/test_status.py:5: AssertionError\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED tests/tes",
+      "stderr": ""
+    },
+    {
+      "id": "E-0005",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=4",
+      "exit_code": 1,
+      "duration": 2.91,
+      "seed": 4,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=4\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_status.py::test_status_reports_activity PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_parse.py::test_parse_hours_and_minutes - AssertionError: as...\n========================= 1 failed, 5 passed in 0.62s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0006",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=5",
+      "exit_code": 1,
+      "duration": 2.77,
+      "seed": 5,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=5\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_status.py::test_status_reports_activity FAILED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.status() in (\"running\", \"paused\", \"draining\")\nE       AssertionError: assert 'idle' in ('running', 'paused', 'draining')\nE        +  where 'idle' = <function status at 0x7727aaaf2660>()\nE        +    where <function status at 0x7727aaaf2660> = control.status\n\ntests/test_status.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED tests/tes",
+      "stderr": ""
+    },
+    {
+      "id": "E-0007",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=6",
+      "exit_code": 1,
+      "duration": 3.25,
+      "seed": 6,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=6\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_status.py::test_status_reports_activity FAILED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.status() in (\"running\", \"paused\", \"draining\")\nE       AssertionError: assert 'idle' in ('running', 'paused', 'draining')\nE        +  where 'idle' = <function status at 0x7a54e4d3e660>()\nE        +    where <function status at 0x7a54e4d3e660> = control.status\n\ntests/test_status.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED tests/tes",
+      "stderr": ""
+    },
+    {
+      "id": "E-0008",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=7",
+      "exit_code": 1,
+      "duration": 4.09,
+      "seed": 7,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=7\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_status.py::test_status_reports_activity PASSED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_parse.py::test_parse_hours_and_minutes - AssertionError: as...\n========================= 1 failed, 5 passed in 1.17s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0009",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=8",
+      "exit_code": 1,
+      "duration": 4.86,
+      "seed": 8,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=8\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_status.py::test_status_reports_activity PASSED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_parse.py::test_parse_hours_and_minutes - AssertionError: as...\n========================= 1 failed, 5 passed in 1.76s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0010",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=9",
+      "exit_code": 1,
+      "duration": 6.01,
+      "seed": 9,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=9\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_status.py::test_status_reports_activity FAILED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.status() in (\"running\", \"paused\", \"draining\")\nE       AssertionError: assert 'idle' in ('running', 'paused', 'draining')\nE        +  where 'idle' = <function status at 0x7a8a95e8a660>()\nE        +    where <function status at 0x7a8a95e8a660> = control.status\n\ntests/test_status.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED tests/tes",
+      "stderr": ""
+    },
+    {
+      "id": "E-0011",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=10",
+      "exit_code": 1,
+      "duration": 3.53,
+      "seed": 10,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=10\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_status.py::test_status_reports_activity PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_parse.py::test_parse_hours_and_minutes - AssertionError: as...\n========================= 1 failed, 5 passed in 0.72s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0012",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=11",
+      "exit_code": 1,
+      "duration": 2.71,
+      "seed": 11,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=11\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_status.py::test_status_reports_activity FAILED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.status() in (\"running\", \"paused\", \"draining\")\nE       AssertionError: assert 'idle' in ('running', 'paused', 'draining')\nE        +  where 'idle' = <function status at 0x77fdc818a660>()\nE        +    where <function status at 0x77fdc818a660> = control.status\n\ntests/test_status.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED tests/te",
+      "stderr": ""
+    },
+    {
+      "id": "E-0013",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=12",
+      "exit_code": 1,
+      "duration": 2.91,
+      "seed": 12,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=12\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_status.py::test_status_reports_activity PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_parse.py::test_parse_hours_and_minutes - AssertionError: as...\n========================= 1 failed, 5 passed in 0.60s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0014",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=13",
+      "exit_code": 1,
+      "duration": 2.49,
+      "seed": 13,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=13\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_status.py::test_status_reports_activity PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_parse.py::test_parse_hours_and_minutes - AssertionError: as...\n========================= 1 failed, 5 passed in 0.56s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0015",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=14",
+      "exit_code": 1,
+      "duration": 2.92,
+      "seed": 14,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=14\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_status.py::test_status_reports_activity PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_parse.py::test_parse_hours_and_minutes - AssertionError: as...\n========================= 1 failed, 5 passed in 0.54s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0016",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=15",
+      "exit_code": 1,
+      "duration": 2.57,
+      "seed": 15,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=15\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_status.py::test_status_reports_activity FAILED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_minutes PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.status() in (\"running\", \"paused\", \"draining\")\nE       AssertionError: assert 'idle' in ('running', 'paused', 'draining')\nE        +  where 'idle' = <function status at 0x7562fd41a660>()\nE        +    where <function status at 0x7562fd41a660> = control.status\n\ntests/test_status.py:5: AssertionError\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED tests/te",
+      "stderr": ""
+    },
+    {
+      "id": "E-0017",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=16",
+      "exit_code": 1,
+      "duration": 3.03,
+      "seed": 16,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=16\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_status.py::test_status_reports_activity FAILED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.status() in (\"running\", \"paused\", \"draining\")\nE       AssertionError: assert 'idle' in ('running', 'paused', 'draining')\nE        +  where 'idle' = <function status at 0x738b6beb2660>()\nE        +    where <function status at 0x738b6beb2660> = control.status\n\ntests/test_status.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED tests/te",
+      "stderr": ""
+    },
+    {
+      "id": "E-0018",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=17",
+      "exit_code": 1,
+      "duration": 2.98,
+      "seed": 17,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=17\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_status.py::test_status_reports_activity PASSED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_parse.py::test_parse_hours_and_minutes - AssertionError: as...\n========================= 1 failed, 5 passed in 0.65s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0019",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=18",
+      "exit_code": 1,
+      "duration": 3.17,
+      "seed": 18,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=18\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_status.py::test_status_reports_activity PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_parse.py::test_parse_hours_and_minutes - AssertionError: as...\n========================= 1 failed, 5 passed in 0.65s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0020",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=19",
+      "exit_code": 1,
+      "duration": 4.05,
+      "seed": 19,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=19\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_status.py::test_status_reports_activity FAILED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.status() in (\"running\", \"paused\", \"draining\")\nE       AssertionError: assert 'idle' in ('running', 'paused', 'draining')\nE        +  where 'idle' = <function status at 0x7e39fd162660>()\nE        +    where <function status at 0x7e39fd162660> = control.status\n\ntests/test_status.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED tests/te",
+      "stderr": ""
+    },
+    {
+      "id": "E-0021",
+      "kind": "suite_random",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=20",
+      "exit_code": 1,
+      "duration": 4.34,
+      "seed": 20,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=20\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_status.py::test_status_reports_activity FAILED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_minutes PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.status() in (\"running\", \"paused\", \"draining\")\nE       AssertionError: assert 'idle' in ('running', 'paused', 'draining')\nE        +  where 'idle' = <function status at 0x732ecccba660>()\nE        +    where <function status at 0x732ecccba660> = control.status\n\ntests/test_status.py:5: AssertionError\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED tests/te",
+      "stderr": ""
+    },
+    {
+      "id": "E-0022",
+      "kind": "isolation",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_status.py::test_status_reports_activity",
+      "exit_code": 0,
+      "duration": 2.86,
+      "seed": null,
+      "order": [
+        "tests/test_status.py::test_status_reports_activity"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 1 item\n\ntests/test_status.py::test_status_reports_activity PASSED\n\n============================== 1 passed in 0.33s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0023",
+      "kind": "isolation",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_status.py::test_status_reports_activity",
+      "exit_code": 0,
+      "duration": 2.91,
+      "seed": null,
+      "order": [
+        "tests/test_status.py::test_status_reports_activity"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 1 item\n\ntests/test_status.py::test_status_reports_activity PASSED\n\n============================== 1 passed in 0.24s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0024",
+      "kind": "isolation",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_status.py::test_status_reports_activity",
+      "exit_code": 0,
+      "duration": 3.63,
+      "seed": null,
+      "order": [
+        "tests/test_status.py::test_status_reports_activity"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 1 item\n\ntests/test_status.py::test_status_reports_activity PASSED\n\n============================== 1 passed in 0.65s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0025",
+      "kind": "isolation",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_status.py::test_status_reports_activity",
+      "exit_code": 0,
+      "duration": 2.71,
+      "seed": null,
+      "order": [
+        "tests/test_status.py::test_status_reports_activity"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 1 item\n\ntests/test_status.py::test_status_reports_activity PASSED\n\n============================== 1 passed in 0.21s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0026",
+      "kind": "isolation",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_status.py::test_status_reports_activity",
+      "exit_code": 0,
+      "duration": 3.1,
+      "seed": null,
+      "order": [
+        "tests/test_status.py::test_status_reports_activity"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 1 item\n\ntests/test_status.py::test_status_reports_activity PASSED\n\n============================== 1 passed in 0.20s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0027",
+      "kind": "replay_order",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_parse.py::test_parse_minutes tests/test_parse.py::test_parse_hours_and_minutes tests/test_parse.py::test_parse_hours tests/test_control.py::test_drain_finishes_queue tests/test_control.py::test_pause_stops_new_jobs tests/test_status.py::test_status_reports_activity",
+      "exit_code": 1,
+      "duration": 3.26,
+      "seed": null,
+      "order": [
+        "tests/test_parse.py::test_parse_minutes",
+        "tests/test_parse.py::test_parse_hours_and_minutes",
+        "tests/test_parse.py::test_parse_hours",
+        "tests/test_control.py::test_drain_finishes_queue",
+        "tests/test_control.py::test_pause_stops_new_jobs",
+        "tests/test_status.py::test_status_reports_activity"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 6 items\n\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_status.py::test_status_reports_activity FAILED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.status() in (\"running\", \"paused\", \"draining\")\nE       AssertionError: assert 'idle' in ('running', 'paused', 'draining')\nE        +  where 'idle' = <function status at 0x74e4b0f82200>()\nE        +    where <function status at 0x74e4b0f82200> = control.status\n\ntests/test_status.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_parse.py::test_parse_hours_and_minutes - Asser",
+      "stderr": ""
+    },
+    {
+      "id": "E-0028",
+      "kind": "replay_order",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_parse.py::test_parse_minutes tests/test_parse.py::test_parse_hours_and_minutes tests/test_parse.py::test_parse_hours tests/test_control.py::test_drain_finishes_queue tests/test_control.py::test_pause_stops_new_jobs tests/test_status.py::test_status_reports_activity",
+      "exit_code": 1,
+      "duration": 4.59,
+      "seed": null,
+      "order": [
+        "tests/test_parse.py::test_parse_minutes",
+        "tests/test_parse.py::test_parse_hours_and_minutes",
+        "tests/test_parse.py::test_parse_hours",
+        "tests/test_control.py::test_drain_finishes_queue",
+        "tests/test_control.py::test_pause_stops_new_jobs",
+        "tests/test_status.py::test_status_reports_activity"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 6 items\n\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_status.py::test_status_reports_activity FAILED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.status() in (\"running\", \"paused\", \"draining\")\nE       AssertionError: assert 'idle' in ('running', 'paused', 'draining')\nE        +  where 'idle' = <function status at 0x7c64bd652200>()\nE        +    where <function status at 0x7c64bd652200> = control.status\n\ntests/test_status.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_parse.py::test_parse_hours_and_minutes - Asser",
+      "stderr": ""
+    },
+    {
+      "id": "E-0029",
+      "kind": "bisect",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_parse.py::test_parse_minutes tests/test_parse.py::test_parse_hours_and_minutes tests/test_parse.py::test_parse_hours tests/test_control.py::test_drain_finishes_queue tests/test_control.py::test_pause_stops_new_jobs tests/test_status.py::test_status_reports_activity",
+      "exit_code": 1,
+      "duration": 4.67,
+      "seed": null,
+      "order": [
+        "tests/test_parse.py::test_parse_minutes",
+        "tests/test_parse.py::test_parse_hours_and_minutes",
+        "tests/test_parse.py::test_parse_hours",
+        "tests/test_control.py::test_drain_finishes_queue",
+        "tests/test_control.py::test_pause_stops_new_jobs",
+        "tests/test_status.py::test_status_reports_activity"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 6 items\n\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_status.py::test_status_reports_activity FAILED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.status() in (\"running\", \"paused\", \"draining\")\nE       AssertionError: assert 'idle' in ('running', 'paused', 'draining')\nE        +  where 'idle' = <function status at 0x7af67a166200>()\nE        +    where <function status at 0x7af67a166200> = control.status\n\ntests/test_status.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_parse.py::test_parse_hours_and_minutes - Asser",
+      "stderr": ""
+    },
+    {
+      "id": "E-0030",
+      "kind": "bisect",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_parse.py::test_parse_minutes tests/test_parse.py::test_parse_hours_and_minutes tests/test_parse.py::test_parse_hours tests/test_status.py::test_status_reports_activity",
+      "exit_code": 1,
+      "duration": 5.81,
+      "seed": null,
+      "order": [
+        "tests/test_parse.py::test_parse_minutes",
+        "tests/test_parse.py::test_parse_hours_and_minutes",
+        "tests/test_parse.py::test_parse_hours",
+        "tests/test_status.py::test_status_reports_activity"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 4 items\n\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_status.py::test_status_reports_activity PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_parse.py::test_parse_hours_and_minutes - AssertionError: as...\n========================= 1 failed, 3 passed in 1.00s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0031",
+      "kind": "bisect",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_control.py::test_drain_finishes_queue tests/test_control.py::test_pause_stops_new_jobs tests/test_status.py::test_status_reports_activity",
+      "exit_code": 1,
+      "duration": 4.73,
+      "seed": null,
+      "order": [
+        "tests/test_control.py::test_drain_finishes_queue",
+        "tests/test_control.py::test_pause_stops_new_jobs",
+        "tests/test_status.py::test_status_reports_activity"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 3 items\n\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_status.py::test_status_reports_activity FAILED\n\n=================================== FAILURES ===================================\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.status() in (\"running\", \"paused\", \"draining\")\nE       AssertionError: assert 'idle' in ('running', 'paused', 'draining')\nE        +  where 'idle' = <function status at 0x7d2c329d1a80>()\nE        +    where <function status at 0x7d2c329d1a80> = control.status\n\ntests/test_status.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_status.py::test_status_reports_activity - AssertionError: a...\n========================= 1 failed, 2 passed in 0.70s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0032",
+      "kind": "bisect",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_control.py::test_drain_finishes_queue tests/test_status.py::test_status_reports_activity",
+      "exit_code": 0,
+      "duration": 4.98,
+      "seed": null,
+      "order": [
+        "tests/test_control.py::test_drain_finishes_queue",
+        "tests/test_status.py::test_status_reports_activity"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 2 items\n\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_status.py::test_status_reports_activity PASSED\n\n============================== 2 passed in 0.50s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0033",
+      "kind": "bisect",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_control.py::test_pause_stops_new_jobs tests/test_status.py::test_status_reports_activity",
+      "exit_code": 0,
+      "duration": 5.81,
+      "seed": null,
+      "order": [
+        "tests/test_control.py::test_pause_stops_new_jobs",
+        "tests/test_status.py::test_status_reports_activity"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 2 items\n\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_status.py::test_status_reports_activity PASSED\n\n============================== 2 passed in 0.45s ===============================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0034",
+      "kind": "diagnose_repro",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_control.py::test_drain_finishes_queue tests/test_control.py::test_pause_stops_new_jobs tests/test_status.py::test_status_reports_activity",
+      "exit_code": 1,
+      "duration": 6.55,
+      "seed": null,
+      "order": [
+        "tests/test_control.py::test_drain_finishes_queue",
+        "tests/test_control.py::test_pause_stops_new_jobs",
+        "tests/test_status.py::test_status_reports_activity"
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 3 items\n\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_status.py::test_status_reports_activity FAILED\n\n=================================== FAILURES ===================================\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.status() in (\"running\", \"paused\", \"draining\")\nE       AssertionError: assert 'idle' in ('running', 'paused', 'draining')\nE        +  where 'idle' = <function status at 0x7be02b985a80>()\nE        +    where <function status at 0x7be02b985a80> = control.status\n\ntests/test_status.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_status.py::test_status_reports_activity - AssertionError: a...\n========================= 1 failed, 2 passed in 0.84s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0035",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py cronjob.control pause --batch [{\"args\": [], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 3.01,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"cronjob.control\", \"function\": \"pause\", \"status\": \"returned\", \"repr\": \"None\", \"type\": \"NoneType\", \"duration\": 6.9120001171540935e-06, \"env_reads\": {}, \"state_before\": {\"STATE\": \"{'paused': False, 'draining': False, 'queued': 3}\"}, \"mutated\": [\"STATE\"], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0036",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py cronjob.control pause --batch [{\"args\": [], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 2.64,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"cronjob.control\", \"function\": \"pause\", \"status\": \"returned\", \"repr\": \"None\", \"type\": \"NoneType\", \"duration\": 7.401999937428627e-06, \"env_reads\": {}, \"state_before\": {\"STATE\": \"{'paused': False, 'draining': False, 'queued': 3}\"}, \"mutated\": [\"STATE\"], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0037",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py cronjob.control drain --batch [{\"args\": [], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 3.28,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"cronjob.control\", \"function\": \"drain\", \"status\": \"returned\", \"repr\": \"None\", \"type\": \"NoneType\", \"duration\": 6.300999984887312e-06, \"env_reads\": {}, \"state_before\": {\"STATE\": \"{'paused': False, 'draining': False, 'queued': 3}\"}, \"mutated\": [\"STATE\"], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0038",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py cronjob.control drain --batch [{\"args\": [], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 2.73,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"cronjob.control\", \"function\": \"drain\", \"status\": \"returned\", \"repr\": \"None\", \"type\": \"NoneType\", \"duration\": 6.500999916170258e-06, \"env_reads\": {}, \"state_before\": {\"STATE\": \"{'paused': False, 'draining': False, 'queued': 3}\"}, \"mutated\": [\"STATE\"], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0039",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py cronjob.control status --batch [{\"args\": [], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 2.56,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"cronjob.control\", \"function\": \"status\", \"status\": \"returned\", \"repr\": \"'running'\", \"type\": \"str\", \"duration\": 6.7010000748268794e-06, \"env_reads\": {}, \"state_before\": {\"STATE\": \"{'paused': False, 'draining': False, 'queued': 3}\"}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0040",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py cronjob.control status --batch [{\"args\": [], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 3.05,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"cronjob.control\", \"function\": \"status\", \"status\": \"returned\", \"repr\": \"'running'\", \"type\": \"str\", \"duration\": 7.999999979801942e-06, \"env_reads\": {}, \"state_before\": {\"STATE\": \"{'paused': False, 'draining': False, 'queued': 3}\"}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0041",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py cronjob.control can_accept_jobs --batch [{\"args\": [], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 3.48,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"cronjob.control\", \"function\": \"can_accept_jobs\", \"status\": \"returned\", \"repr\": \"True\", \"type\": \"bool\", \"duration\": 6.699999858028605e-06, \"env_reads\": {}, \"state_before\": {\"STATE\": \"{'paused': False, 'draining': False, 'queued': 3}\"}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0042",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py cronjob.control can_accept_jobs --batch [{\"args\": [], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 2.54,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"cronjob.control\", \"function\": \"can_accept_jobs\", \"status\": \"returned\", \"repr\": \"True\", \"type\": \"bool\", \"duration\": 6.999000106588937e-06, \"env_reads\": {}, \"state_before\": {\"STATE\": \"{'paused': False, 'draining': False, 'queued': 3}\"}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0043",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py cronjob.parse parse_interval --batch [{\"args\": [\"\"], \"kwargs\": {}}, {\"args\": [\"abc\"], \"kwargs\": {}}, {\"args\": [\"Hello, World!\"], \"kwargs\": {}}, {\"args\": [\"apple\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 2.57,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"cronjob.parse\", \"function\": \"parse_interval\", \"status\": \"raised\", \"exc_type\": \"ValueError\", \"exc_message\": \"invalid literal for int() with base 10: ''\", \"duration\": 5.603599993264652e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"cronjob.parse\", \"function\": \"parse_interval\", \"status\": \"raised\", \"exc_type\": \"ValueError\", \"exc_message\": \"invalid literal for int() with base 10: 'abc'\", \"duration\": 1.4608999890697305e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 2, \"module\": \"cronjob.parse\", \"function\": \"parse_interval\", \"status\": \"raised\", \"exc_type\": \"ValueError\", \"exc_message\": \"invalid literal for int() with base 10: ''\", \"duration\": 1.3308999996297644e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 3, \"module\": \"cronjob.parse\", \"function\": \"parse_interval\", \"status\": \"raised\", \"exc_type\": \"ValueError\", \"exc_message\": \"invalid literal for int() with base 10: 'apple'\", \"duration\": 1.0807000080603757e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0044",
+      "kind": "probe_batch",
+      "command": "python /opt/inherit/probe.py cronjob.parse parse_interval --batch [{\"args\": [\"\"], \"kwargs\": {}}, {\"args\": [\"abc\"], \"kwargs\": {}}, {\"args\": [\"Hello, World!\"], \"kwargs\": {}}, {\"args\": [\"apple\"], \"kwargs\": {}}]",
+      "exit_code": 0,
+      "duration": 1.62,
+      "seed": null,
+      "order": null,
+      "stdout": "INHERIT_PROBE {\"index\": 0, \"module\": \"cronjob.parse\", \"function\": \"parse_interval\", \"status\": \"raised\", \"exc_type\": \"ValueError\", \"exc_message\": \"invalid literal for int() with base 10: ''\", \"duration\": 4.44279999101127e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 1, \"module\": \"cronjob.parse\", \"function\": \"parse_interval\", \"status\": \"raised\", \"exc_type\": \"ValueError\", \"exc_message\": \"invalid literal for int() with base 10: 'abc'\", \"duration\": 1.0007000128098298e-05, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 2, \"module\": \"cronjob.parse\", \"function\": \"parse_interval\", \"status\": \"raised\", \"exc_type\": \"ValueError\", \"exc_message\": \"invalid literal for int() with base 10: ''\", \"duration\": 9.204999969369965e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\nINHERIT_PROBE {\"index\": 3, \"module\": \"cronjob.parse\", \"function\": \"parse_interval\", \"status\": \"raised\", \"exc_type\": \"ValueError\", \"exc_message\": \"invalid literal for int() with base 10: 'apple'\", \"duration\": 6.8050001118535874e-06, \"env_reads\": {}, \"state_before\": {}, \"mutated\": [], \"restore_failed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0045",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=500",
+      "exit_code": 1,
+      "duration": 3.41,
+      "seed": 500,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=500\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_status.py::test_status_reports_activity FAILED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\n\n=================================== FAILURES ===================================\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.status() in (\"running\", \"paused\", \"draining\")\nE       AssertionError: assert 'idle' in ('running', 'paused', 'draining')\nE        +  where 'idle' = <function status at 0x7d74ff5d6660>()\nE        +    where <function status at 0x7d74ff5d6660> = control.status\n\ntests/test_status.py:5: AssertionError\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED tests/t",
+      "stderr": ""
+    },
+    {
+      "id": "E-0046",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=501",
+      "exit_code": 1,
+      "duration": 3.07,
+      "seed": 501,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=501\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_status.py::test_status_reports_activity FAILED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.status() in (\"running\", \"paused\", \"draining\")\nE       AssertionError: assert 'idle' in ('running', 'paused', 'draining')\nE        +  where 'idle' = <function status at 0x7f705cafa660>()\nE        +    where <function status at 0x7f705cafa660> = control.status\n\ntests/test_status.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED tests/t",
+      "stderr": ""
+    },
+    {
+      "id": "E-0047",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=502",
+      "exit_code": 1,
+      "duration": 2.27,
+      "seed": 502,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=502\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_status.py::test_status_reports_activity FAILED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_hours PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.status() in (\"running\", \"paused\", \"draining\")\nE       AssertionError: assert 'idle' in ('running', 'paused', 'draining')\nE        +  where 'idle' = <function status at 0x799762396660>()\nE        +    where <function status at 0x799762396660> = control.status\n\ntests/test_status.py:5: AssertionError\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED tests/t",
+      "stderr": ""
+    },
+    {
+      "id": "E-0048",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=503",
+      "exit_code": 1,
+      "duration": 2.28,
+      "seed": 503,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=503\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_status.py::test_status_reports_activity FAILED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.status() in (\"running\", \"paused\", \"draining\")\nE       AssertionError: assert 'idle' in ('running', 'paused', 'draining')\nE        +  where 'idle' = <function status at 0x7db4839de660>()\nE        +    where <function status at 0x7db4839de660> = control.status\n\ntests/test_status.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED tests/t",
+      "stderr": ""
+    },
+    {
+      "id": "E-0049",
+      "kind": "gate_baseline",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=504",
+      "exit_code": 1,
+      "duration": 2.23,
+      "seed": 504,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=504\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 6 items\n\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_status.py::test_status_reports_activity PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: assert 60 == 90\nE        +  where 60 = parse_interval('1h30m')\n\ntests/test_parse.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_parse.py::test_parse_hours_and_minutes - AssertionError: as...\n========================= 1 failed, 5 passed in 0.47s ==========================\n",
+      "stderr": ""
+    },
+    {
+      "id": "E-0050",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=500",
+      "exit_code": 1,
+      "duration": 3.27,
+      "seed": 500,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=500\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 14 items\n\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_3 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_pause_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_2 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_drain_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_4 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_status_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_can_accept_jobs_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_1 PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_status.py::test_status_reports_activity FAILED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\n\n=================================== FAILURES ===================================\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.",
+      "stderr": ""
+    },
+    {
+      "id": "E-0051",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=501",
+      "exit_code": 1,
+      "duration": 2.96,
+      "seed": 501,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=501\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 14 items\n\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_status.py::test_status_reports_activity FAILED\ntests/test_inherit_characterization.py::test_cronjob_control_can_accept_jobs_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_3 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_status_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_2 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_4 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_pause_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_drain_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_1 PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_in",
+      "stderr": ""
+    },
+    {
+      "id": "E-0052",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=502",
+      "exit_code": 1,
+      "duration": 2.36,
+      "seed": 502,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=502\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 14 items\n\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_3 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_2 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_can_accept_jobs_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_4 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_drain_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_status_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_pause_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_1 PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_status.py::test_status_reports_activity FAILED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_hours PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_status_reports_activity _________________________\n\n    def test_status_reports_activity():\n>       assert control.",
+      "stderr": ""
+    },
+    {
+      "id": "E-0053",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=503",
+      "exit_code": 1,
+      "duration": 2.56,
+      "seed": 503,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=503\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 14 items\n\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_status.py::test_status_reports_activity FAILED\ntests/test_inherit_characterization.py::test_cronjob_control_status_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_3 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_drain_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_pause_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_2 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_4 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_can_accept_jobs_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_1 PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_in",
+      "stderr": ""
+    },
+    {
+      "id": "E-0054",
+      "kind": "gate_generated",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors --randomly-seed=504",
+      "exit_code": 1,
+      "duration": 2.4,
+      "seed": 504,
+      "order": null,
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nUsing --randomly-seed=504\nrootdir: /work\nplugins: randomly-5.0.0\ncollecting ... collected 14 items\n\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_status.py::test_status_reports_activity PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_3 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_drain_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_status_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_pause_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_2 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_4 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_can_accept_jobs_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_1 PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_control.py::test_pause_stops_new_jobs PASSED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_in",
+      "stderr": ""
+    },
+    {
+      "id": "E-0055",
+      "kind": "gate_generated_first",
+      "command": "python -m pytest -p no:cacheprovider -v -o console_output_style=classic --continue-on-collection-errors -p no:randomly tests/test_inherit_characterization.py .",
+      "exit_code": 1,
+      "duration": 2.53,
+      "seed": null,
+      "order": [
+        "tests/test_inherit_characterization.py",
+        "."
+      ],
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /usr/local/bin/python\nrootdir: /work\ncollecting ... collected 14 items\n\ntests/test_control.py::test_pause_stops_new_jobs PASSED\ntests/test_control.py::test_drain_finishes_queue PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_pause_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_drain_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_status_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_control_can_accept_jobs_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_1 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_2 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_3 PASSED\ntests/test_inherit_characterization.py::test_cronjob_parse_parse_interval_case_4 PASSED\ntests/test_parse.py::test_parse_minutes PASSED\ntests/test_parse.py::test_parse_hours PASSED\ntests/test_parse.py::test_parse_hours_and_minutes FAILED\ntests/test_status.py::test_status_reports_activity FAILED\n\n=================================== FAILURES ===================================\n_________________________ test_parse_hours_and_minutes _________________________\n\n    def test_parse_hours_and_minutes():\n>       assert parse_interval(\"1h30m\") == 90\nE       AssertionError: asse",
+      "stderr": ""
+    },
+    {
+      "id": "E-0056",
+      "kind": "characterization_validation",
+      "command": "python -m pytest -q -p no:cacheprovider -p no:randomly tests/test_inherit_characterization.py",
+      "exit_code": 0,
+      "duration": 1.95,
+      "seed": null,
+      "order": null,
+      "stdout": "........                                                                 [100%]\n8 passed in 0.26s\n",
+      "stderr": ""
+    }
+  ]
+}
